@@ -36,8 +36,7 @@ If not, see [fcm](https://firebase.google.com/docs/cloud-messaging).
 1.  Get the configuration file from the `Firebase` console
     Access [Firebase Console](https://console.firebase.google.com),
     Click the gear icon on the left sidebar to enter **Project Settings**
-
-        ![](image/firebase-fcm1.jpg)
+    ![](image/firebase-fcm1.jpg)
 
 2.  Then, in the horizontal tab at the top of the page, select **Service Accounts**.
     Drop down the page to the bottom, click **generate new private key**, and save the downloaded JSON file properly.
@@ -46,10 +45,8 @@ If not, see [fcm](https://firebase.google.com/docs/cloud-messaging).
 3.  Copy relevant configuration items to voce chat settings
     Enter **VoceChat Settings** page, select **Firebase** in **Configuration**. Four configuration items can be filled in this page, namely token URL, project ID, private key and client email.
     You can download in step 1 above, find the corresponding field in the JSON file, copy and paste it, and then save it.
-
-        ![](image/firebase-settings.jpg)
+    ![](image/firebase-settings.jpg)
 
 4.  Go to **Cloud Messaging** Tab
     In the lower part of the page, inside **Apple app configuration**, click **Upload**. Select the .p8 file saved in **Step 1.5**, fill **Key ID** and **Team ID** (which can be found in APNs settings above), and hit **Upload**
-
-        ![](image/firebase-fcm3.jpg)
+    ![](image/firebase-fcm3.jpg)
