@@ -367,10 +367,3 @@ Vocechat is an open-source product with a free community version and only charge
 <!-- Github: [https://github.com/privoce/vocechat-server](https://github.com/privoce/vocechat-server)   -->
 
 Our server: [privoce.voce.chat](https://privoce.voce.chat)
-
-<!--
-Twitter: [https://twitter.com/vocechat](https://twitter.com/vocechat)
-Discord: [https://discord.com/vocechat](https://discord.com/vocechat)
-Vocechat: [https://twitter.com/vocechat](https://twitter.com/vocechat)
-Email: [admin@voce.chat](admin@voce.chat)
--->
