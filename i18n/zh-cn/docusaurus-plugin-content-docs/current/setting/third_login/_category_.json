@@ -1,0 +1,7 @@
+{
+    "position": 5,
+    "label": "第三方登录",
+    "customProps": {
+        "description": "This description can be used in the swizzled DocCard"
+    }
+}

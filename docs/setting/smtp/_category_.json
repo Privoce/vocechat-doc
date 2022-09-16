@@ -1,0 +1,7 @@
+{
+    "position": 3,
+    "label": "SMTP",
+    "customProps": {
+        "description": "This description can be used in the swizzled DocCard"
+    }
+}

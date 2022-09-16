@@ -21,11 +21,11 @@ const config = {
 
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want
-  // to replace "en" with "zh-Hans".
-  // i18n: {
-  //   defaultLocale: 'en',
-  //   locales: ['en'],
-  // },
+  // to replace "en" with "zh-cn".
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en', 'zh-cn'],
+  },
 
   presets: [
     [
@@ -33,6 +33,7 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
+
           routeBasePath: "/",
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
@@ -57,6 +58,10 @@ const config = {
           src: 'https://voce.chat/favicon.ico',
         },
         items: [
+          {
+            type: 'localeDropdown',
+            position: 'left',
+          },
           // {
           //   type: 'doc',
           //   docId: 'intro',
@@ -77,16 +82,12 @@ const config = {
             title: 'Community',
             items: [
               {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-              },
-              {
                 label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
+                href: 'https://discord.gg/Q49AVn6pHs',
               },
               {
                 label: 'Twitter',
-                href: 'https://twitter.com/docusaurus',
+                href: 'https://twitter.com/vocechat',
               },
             ],
           },

@@ -1,0 +1,8 @@
+{
+    "position": 4,
+    "label": "HTTPS配置",
+    "collapsed": false,
+    "customProps": {
+        "description": "This description can be used in the swizzled DocCard"
+    }
+}
