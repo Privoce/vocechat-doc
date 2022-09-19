@@ -189,7 +189,7 @@ Vocechat is an open-source product with a free community version and only charge
         <td>✅</td>
         <td>✅</td>
         <td>✅</td>
-        <td>✅</td>
+        <td>❌</td>
         <td>✅</td>
         <td>✅</td>
         <td>✅</td>
@@ -211,7 +211,7 @@ Vocechat is an open-source product with a free community version and only charge
         <td>✅</td>
         <td>✅</td>
         <td>✅</td>
-        <td>✅</td>
+        <td>❌</td>
         <td>✅</td>
         <td>✅</td>
         <td>✅</td>
