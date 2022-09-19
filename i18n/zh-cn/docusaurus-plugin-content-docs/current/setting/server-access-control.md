@@ -3,17 +3,17 @@ sidebar_position: 1
 title: 访问控制 & 访客模式
 ---
 
-At settings, the 1st section is Overview, and that's where you can set up the **Default Sign Up** and **Guest Mode**.
+在Server设置里，第一项Overview中，可设置**Default Sign Up（注册方式）** and **Guest Mode（访客模式）**.
 
-- Default Sign up
+- 注册方式
 
-  - Who can sign up to this server
-    - Everyone
-    - Invitation Link Only
+  - 谁可以注册成为这个server成员？
+    - 任何人
+    - 有邀请链接的人
 
-- Guest Mode
-  - If enabled, visitors will see public channels on this server.
-    - Enabled
-    - Disabled
+- 访客模式
+  - 如果开启了访客模式，访客不登陆便能看到公开频道的内容
+    - 开启
+    - 关闭
 
-Guest mode is usually enabled in [iframe embed](/iframe-embed) under your site, so that site visitors can directly see your public channel content.
+访客模式常在 [iframe内嵌VoceChat](/iframe-embed) 的场景开启, 你内嵌VoceChat的网站便可以让访客直接看到公开频道的内容。
