@@ -164,8 +164,7 @@ docker run -d --restart=always \
 ## 2. Nginx 反向代理, vocechat-server 端自动申请和配置证书
 
 Nginx 通过识别数据流中的 Host 透明转发给 vocechat-server，证书由 vocechat-server 来自动申请和配置。
-注意:此时 Nginx 会全面转发 443 端口的流量，不能再单独配置 443 相关的 Host 了！但是可以转发给多个后端的 HTTPS service。
-
+**注意:此时 Nginx 会全面转发 443 端口的流量，不能再单独配置 443 相关的 Host 了，但是可以转发给多个后端的 HTTPS service。**
 ```
 ┌─────────┐                  ┌─────────┐        ┌─────────┐
 │         │                  │         │        │ vocechat│
@@ -217,4 +216,3 @@ docker run -d --restart=always \
 ````
 
 访问: https://www.domain.com/  
-默认账号密码：admin@vocechat.com / 123456

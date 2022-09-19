@@ -100,9 +100,10 @@ docker run -d --restart=always \
 
 ```
 
-### 3。5 进入 Docker 内部
+### 3.5 进入 Docker 内部
 
 ```shell
 docker exec -it vocechat-server /bin/sh
 cd /home/vocechat-server/data
 ```
+如需要帮助，请在主页社区联系我们：[https://voce.chat](https://voce.chat) ，如需合作请email联系han@privoce.com
