@@ -187,9 +187,9 @@ Vocechat is an open-source product with a free community version and only charge
     <tr align="center">
         <th align="left">Signal</th>
         <td>✅</td>
-        <td>❌</td>
-        <td>❌</td>
-        <td>❌</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>✅</td>
         <td>✅</td>
         <td>✅</td>
         <td>✅</td>
@@ -210,8 +210,8 @@ Vocechat is an open-source product with a free community version and only charge
         <th align="left">Telegram</th>
         <td>✅</td>
         <td>✅</td>
-        <td>❌</td>
-        <td>❌</td>
+        <td>✅</td>
+        <td>✅</td>
         <td>✅</td>
         <td>✅</td>
         <td>✅</td>
