@@ -29,11 +29,11 @@ title: 简介
 - [x] 置顶 / 2022-Q1
 - [x] 转发 / 2022-Q1
 - [x] 收藏 / 2022-Q1
-- [x] 阅后即焚 / 2022-Q1
-- [x] 语音 / 2022-Q2
-- [x] 视频 / 2022-Q2
+- [x] 阅后即焚（高级功能） / 2022-Q1
+- [x] 语音（高级功能）/ 2022-Q2
+- [x] 视频（高级功能）/ 2022-Q2
 
 ### 联系我们
 
-- Github: [https://github.com/privoce/vocechat-web](https://github.com/privoce/vocechat-web)
+- Github: [https://github.com/privoce](https://github.com/privoce)
 - Email: **han@privoce.com**
