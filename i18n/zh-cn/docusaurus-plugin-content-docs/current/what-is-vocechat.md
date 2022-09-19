@@ -36,4 +36,4 @@ title: 简介
 ### 联系我们
 
 - Github: [https://github.com/privoce/vocechat-web](https://github.com/privoce/vocechat-web)
-- Email: **admin@vocechat.com**
+- Email: **han@privoce.com**
