@@ -4,7 +4,7 @@ title: Godaddy
 ---
 
 # How to get certificates in GoDaddy?
-###GoDaddy购买并配置SSL证书常在英文环境中进行，暂未进行中文翻译。
+### GoDaddy购买并配置SSL证书常在英文环境中进行，暂未进行中文翻译。
 
 Prepositional knowledges:
 
