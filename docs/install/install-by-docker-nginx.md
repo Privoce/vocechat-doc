@@ -201,7 +201,7 @@ stream {
 
 then, start vocechat-server
 
-```bash
+```shell
 mkdir -p ~/.vocechat-server/data
 docker run -d --restart=always \
   -p 443:443 \

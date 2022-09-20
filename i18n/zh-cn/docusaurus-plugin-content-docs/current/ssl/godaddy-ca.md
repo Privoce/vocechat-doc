@@ -4,7 +4,8 @@ title: Godaddy
 ---
 
 # How to get certificates in GoDaddy?
-### GoDaddy购买并配置SSL证书常在英文环境中进行，暂未进行中文翻译。
+
+### GoDaddy 购买并配置 SSL 证书常在英文环境中进行，暂未进行中文翻译。
 
 Prepositional knowledges:
 
@@ -59,7 +60,7 @@ Godaddy website: [https://www.godaddy.com/](https://www.godaddy.com/)
 ![Godaddy-Download-Cert](image/godaddy-download-cert.jpg)  
 You will get a compressed file xxx Zip. After extracting, the following files are obtained:
 
-```shell
+```bash
 -rw-rw-r--@ 1 user  staff   2.4K May  4 07:47 1aeb156731cb52d3.crt
 -rw-rw-r--@ 1 user  staff   2.4K May  4 07:47 1aeb156731cb52d3.pem
 -rw-rw-r--@ 1 user  staff   4.7K May  4 07:47 gd_bundle-g2-g1.crt

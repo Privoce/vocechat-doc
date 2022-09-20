@@ -104,7 +104,7 @@ Nginx 监听 443 端口，证书配置在 Nginx，通过 host 转发给 vocechat
 
 修改 nginx 配置文件，增加:
 
-```
+```nginx
 server {
     listen       443;
     server_name  www.domain.com;                # 修改为自己的域名
@@ -137,7 +137,6 @@ server {
         # proxy_buffering off;            # instead by: X-Accel-Buffering: no
     }
 }
-
 # 配置跳转
 server {
     listen       80;
@@ -165,6 +164,7 @@ docker run -d --restart=always \
 
 Nginx 通过识别数据流中的 Host 透明转发给 vocechat-server，证书由 vocechat-server 来自动申请和配置。
 **注意:此时 Nginx 会全面转发 443 端口的流量，不能再单独配置 443 相关的 Host 了，但是可以转发给多个后端的 HTTPS service。**
+
 ```
 ┌─────────┐                  ┌─────────┐        ┌─────────┐
 │         │                  │         │        │ vocechat│
@@ -201,8 +201,7 @@ stream {
 
 然后启动 vocechat-server
 
-````shell
-```bash
+```shell
 mkdir -p ~/.vocechat-server/data
 docker run -d --restart=always \
   -p 443:443 \
@@ -213,6 +212,6 @@ docker run -d --restart=always \
   --network.domain "www.domain.com" \
   --network.tls.type "acme_tls_alpn_01" \
   --network.tls.acme.cache_path "/home/vocechat-server/data/cert"
-````
+```
 
-访问: https://www.domain.com/  
+访问: https://www.domain.com/
