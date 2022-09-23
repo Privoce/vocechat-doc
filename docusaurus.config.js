@@ -128,12 +128,12 @@ const config = {
     },
     algolia: {
       // The application ID provided by Algolia
-      appId: 'SM0E1SGGCN',
+      appId: 'QQ19MFT9P5',
 
       // Public API key: it is safe to commit it
-      apiKey: '10d5b27efbcd53e6945e136a0cd7fe03',
+      apiKey: '0139335cd424688080316ced5d7dbb51',
 
-      indexName: 'doc-vocechat',
+      indexName: 'voce',
 
       // // Optional: see doc section below
       // contextualSearch: true,
