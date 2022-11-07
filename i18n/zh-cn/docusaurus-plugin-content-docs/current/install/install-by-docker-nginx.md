@@ -89,7 +89,7 @@ tail -f /home/nginx/log/*.log
 
 访问：https://rocket.vocechat.com/
 
-## 1. Nginx 反向代理, Nginx 端配置证书
+## Nginx 反向代理, Nginx 端配置证书
 
 Nginx 监听 443 端口，证书配置在 Nginx，通过 host 转发给 vocechat-server:3000，此时 vocechat-server 是普通的 HTTP.
 假定您已经有了自己的 nginx 服务器，需要准备好**域名证书**，然后找到 nginx 的配置文件，在合适的位置添加如下内容:
@@ -157,10 +157,9 @@ docker run -d --restart=always \
   --network.domain "www.domain.com"
 ```
 
-访问: https://www.domain.com/  
-默认账号密码：admin@vocechat.com / 123456
+访问: https://www.domain.com/
 
-## 2. Nginx 反向代理, vocechat-server 端自动申请和配置证书
+## Nginx 反向代理, vocechat-server 端自动申请和配置证书
 
 Nginx 通过识别数据流中的 Host 透明转发给 vocechat-server，证书由 vocechat-server 来自动申请和配置。
 **注意:此时 Nginx 会全面转发 443 端口的流量，不能再单独配置 443 相关的 Host 了，但是可以转发给多个后端的 HTTPS service。**
