@@ -32,7 +32,9 @@ docker run -d --restart=always \
 
 ## 服务器全功能部署
 
-> 如果你的服务器没有被其它服务占用 https 端口（即 443），可以考虑该方式，否则，请参考 [Docker & Nginx 安装](/install/install-by-docker-nginx) 中的 https 部分
+:::tip
+如果你的服务器没有被其它服务占用 https 端口（即 443），可以考虑该方式，否则，请参考 [Docker & Nginx 安装](/install/install-by-docker-nginx) 中的 https 部分
+:::
 
 vocechat-server 支持自动申请 https 证书（借助[CertBot](https://certbot.eff.org/pages/about)），使用该部署方式有两个前提：
 
