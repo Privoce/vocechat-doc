@@ -8,7 +8,7 @@ title: 使用挂件（widget）
 
 使用挂件之前，请确保具备以下条件：
 
-- 已完成 vocechat 的部署（部署流程请参考：[Docker 安装 [推荐]](/install-by-docker)）
+- 已完成 vocechat 的部署（部署流程请参考：[Docker 安装 [推荐]](/install/install-by-docker)）
 - 已完成 vocechat 的初始化流程
 - 允许公共注册
 - 开启并配置好至少一个第三方登录
