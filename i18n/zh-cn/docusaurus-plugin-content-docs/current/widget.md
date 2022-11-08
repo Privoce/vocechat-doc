@@ -58,4 +58,6 @@ title: 使用挂件（widget）
 - vocechat widget: https://yangerxiao.com/
   ![widget demo](image/vocechat.widget.demo.jpeg)
 
-> 欢迎联系我们贡献线上实例 👏🏻👏🏻👏🏻
+:::tip 👏🏻👏🏻👏🏻
+欢迎联系我们贡献线上实例
+:::

@@ -26,7 +26,9 @@ docker run -d --restart=always \
 
 浏览器访问: http://localhost:3000/
 
-> 如果是服务器端，将`localhost`替换为自己的公网 IP 地址
+:::note
+如果是服务器端，将`localhost`替换为自己的公网 IP 地址
+:::
 
 ## 服务器全功能部署
 
@@ -118,4 +120,6 @@ cd /home/vocechat-server/data
 
 部署成功 vocechat，并且已完成初始化工作，可以很方便地借助 widget，把聊天场景拓展到任意网站。具体请参看 [使用挂件（widget）](/widget)
 
+:::tip
 如需要帮助，请在官网联系我们：[https://voce.chat](https://voce.chat) ，如需合作请 email 联系 **han@privoce.com**
+:::

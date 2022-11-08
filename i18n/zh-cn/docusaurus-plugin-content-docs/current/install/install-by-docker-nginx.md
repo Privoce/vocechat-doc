@@ -3,7 +3,9 @@ sidebar_position: 2
 title: Docker & Nginx 安装
 ---
 
-> 如果你自己服务器已安装 Nginx 和 Docker，推荐使用该方式部署 vocechat。下面举例的服务器操作系统为 `CentOS 7.9`，域名为`vocechat.yourdomain.com`
+:::tip
+如果你自己服务器已安装 Nginx 和 Docker，推荐使用该方式部署 vocechat。下面举例的服务器操作系统为 `CentOS 7.9`，域名为`vocechat.yourdomain.com`
+:::
 
 ## 概述
 
@@ -52,7 +54,9 @@ server{
 
 检查配置文件的语法：`nginx -t`，没问题后，启用新增配置：`nginx -s reload`。此时，浏览器访问`http://vocechat.yourdomain.com`，应该能够进入初始化页面。
 
-> 注意：不要忘记设置域名解析
+:::caution 提示
+不要忘记设置域名解析
+:::
 
 ## 配置 https
 
