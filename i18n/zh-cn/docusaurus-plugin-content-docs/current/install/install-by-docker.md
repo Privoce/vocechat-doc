@@ -5,11 +5,11 @@ title: Docker 安装 [推荐]
 
 # Docker 部署 vocechat
 
-支持 x86 Docker，ARM 平台请直接运行二进制。
+> 注意，目前仅支持 x86 平台，ARM 平台请直接运行二进制。
 
-## 快速体验: HTTP 方式
+## 快速体验: HTTP
 
-快速的体验的方式。 示意图 & 命令:
+示意图 & 命令:
 
 ```
 ┌─────────┐                  ┌─────────┐
@@ -19,7 +19,7 @@ title: Docker 安装 [推荐]
 └─────────┘                  └─────────┘
 ```
 
-```bash
+```shell
 docker run -d --restart=always \
   -p 3000:3000 \
   --name vocechat-server \
@@ -30,9 +30,16 @@ docker run -d --restart=always \
 
 > 如果是服务器端，将`localhost`替换为自己的公网 IP 地址
 
-## HTTPS 方式，自动申请证书
+## 全功能部署：自动申请 https 证书的方式
 
-vocechat-server 支持自动申请 https 证书(借助[CertBot](https://certbot.eff.org/pages/about))，这种模式需要 443 端口没有被占用，并且域名已解析到该服务器 IP。 示意图 & 命令:
+> 如果你的服务器没有被其它服务占用 https 端口（即 443），可以考虑该方式，否则，请参考 [Docker & Nginx 安装](/install/install-by-docker-nginx) 中的 https 部分
+
+vocechat-server 支持自动申请 https 证书（借助[CertBot](https://certbot.eff.org/pages/about)），使用该部署方式有两个前提：
+
+- 服务器 443 端口没有被占用
+- 准备一个域名，并已解析到该服务器 IP。
+
+示意图 & 命令:
 
 ```
 ┌─────────┐                  ┌─────────┐
@@ -50,7 +57,7 @@ docker run -d --restart=always \
   -v ~/.vocechat-server/data:/home/vocechat-server/data \
   vocechat/vocechat-server:latest \
   --network.bind "0.0.0.0:443" \
-  --network.domain "www.domain.com" \
+  --network.domain "vocechat.yourdomain.com" \
   --network.tls.type "acme_tls_alpn_01" \
   --network.tls.acme.cache_path "/home/vocechat-server/data/cert"
 ```
@@ -59,11 +66,11 @@ docker run -d --restart=always \
 
 - `network.bind:` 服务端绑定的 IP 和端口，`0.0.0.0` 为所有 IP
 - `network.domain:` 域名
-- `network.type:` TLS 验证方式，这里为 `acme_tls_alpn_01`，更多请参考 `config/config.toml` 。
+- `network.type:` TLS 验证方式，这里为 `acme_tls_alpn_01`，更多请参考代码目录 `config/config.toml` 。
 - `network.tls.acme.cache_path:` 证书存放位置。
-- `network.tls.acme.directory_url:` 默认的验证机构，默认 `https://acme-v02.api.letsencrypt.org/directory`。
+- `network.tls.acme.directory_url:` 默认的验证机构，可选，默认 `https://acme-v02.api.letsencrypt.org/directory`。
 
-访问:`https://www.domain.com/` 。
+访问:`https://vocechat.yourdomain.com/`，完成初始化 。
 
 如果 80/443 端口被 Nginx 占用, 请参考 [Nginx 反向代理](install-by-docker-nginx.md)
 
@@ -108,5 +115,9 @@ docker run -d --restart=always \
 docker exec -it vocechat-server /bin/sh
 cd /home/vocechat-server/data
 ```
+
+## 使用 widget 扩展聊天场景
+
+部署成功 vocechat，并且已完成初始化工作，可以很方便地借助 widget，把聊天场景拓展到任意网站。具体请参看 [使用挂件（widget）](/widget)
 
 如需要帮助，请在官网联系我们：[https://voce.chat](https://voce.chat) ，如需合作请 email 联系 **han@privoce.com**

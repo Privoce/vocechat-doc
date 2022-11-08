@@ -14,7 +14,7 @@ title: shell 安装
 这里要注意的是，如果你要开启 TLS，那么端口必须为 443，也就意味着你的 vocechat-server 必须独占 443。
 
 ```bash
-curl -sSf https://sh.vocechat.com/install.sh | sh
+curl -sSf https://s.vocechat.com/install.sh | sh
 ```
 
 #### 2. 启动

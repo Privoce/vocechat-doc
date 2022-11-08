@@ -12,7 +12,7 @@ In the previous page, we introduced installing vocechat through docker. Generall
 During the installation process, the bound port, domain name and whether TLS is enabled will be asked (the certificate will be applied automatically).
 
 ```bash
-curl -sSf https://sh.voce.chat/install.sh | sh
+curl -sSf https://s.voce.chat/install.sh | sh
 ```
 
 #### 2. Start
