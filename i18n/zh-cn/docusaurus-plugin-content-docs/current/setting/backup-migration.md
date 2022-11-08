@@ -39,7 +39,7 @@ docker run -d --restart=always \
   -p 443:443 \
   --name vocechat-server \
   -v ~/.vocechat-server/data:/home/vocechat-server/data \
-  vocechat/vocechat-server:latest \
+  privoce/vocechat-server:latest \
   --network.bind "0.0.0.0:443" \
   --network.domain "www.domain.com" \
   --network.tls.type "acme_tls_alpn_01" \

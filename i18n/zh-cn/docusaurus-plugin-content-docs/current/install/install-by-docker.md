@@ -5,9 +5,7 @@ title: Docker 安装 [推荐]
 
 # Docker 部署 vocechat
 
-> 注意，目前仅支持 x86 平台，ARM 平台请直接运行二进制。
-
-## 快速体验: HTTP
+## 本地快速体验
 
 示意图 & 命令:
 
@@ -23,14 +21,14 @@ title: Docker 安装 [推荐]
 docker run -d --restart=always \
   -p 3000:3000 \
   --name vocechat-server \
-  vocechat/vocechat-server:latest
+  privoce/vocechat-server:latest
 ```
 
 浏览器访问: http://localhost:3000/
 
 > 如果是服务器端，将`localhost`替换为自己的公网 IP 地址
 
-## 全功能部署：自动申请 https 证书的方式
+## 服务器全功能部署
 
 > 如果你的服务器没有被其它服务占用 https 端口（即 443），可以考虑该方式，否则，请参考 [Docker & Nginx 安装](/install/install-by-docker-nginx) 中的 https 部分
 
@@ -55,7 +53,7 @@ docker run -d --restart=always \
   -p 443:443 \
   --name vocechat-server \
   -v ~/.vocechat-server/data:/home/vocechat-server/data \
-  vocechat/vocechat-server:latest \
+  privoce/vocechat-server:latest \
   --network.bind "0.0.0.0:443" \
   --network.domain "vocechat.yourdomain.com" \
   --network.tls.type "acme_tls_alpn_01" \
@@ -99,13 +97,13 @@ cp -rf ~/.vocechat-server/data ~/.vocechat-server/backup
 ```shell
 docker stop vocechat-server
 docker rm vocechat-server
-docker pull vocechat/vocechat-server:latest
+docker pull privoce/vocechat-server:latest
 
 # 这里改为自己的
 docker run -d --restart=always \
   -p 3000:3000 \
   --name vocechat-server \
-  vocechat/vocechat-server:latest
+  privoce/vocechat-server:latest
 
 ```
 
