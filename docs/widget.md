@@ -10,7 +10,7 @@ Code Example:
 ```html
 <!-- put this code snippet into your html file -->
 <script
-  data-host-id="4"
+  data-host-id="1"
   data-origin="https://privoce.voce.chat"
   data-close-width="52"
   data-close-height="52"

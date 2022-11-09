@@ -1,17 +1,21 @@
 ---
 sidebar_position: 3
 slug: /widget
-title: 使用挂件（widget）
+title: 使用挂件
 ---
 
 ## 前置条件
 
 使用挂件之前，请确保具备以下条件：
 
-- 已完成 vocechat 的部署（部署流程请参考：[Docker 安装 [推荐]](/install/install-by-docker)）
-- 已完成 vocechat 的初始化流程
-- 允许公共注册
+- 完成 vocechat 的部署（部署流程请参考：[安装部署 VoceChat](/install)）
+- 域名支持 https
+- 完成 vocechat 的初始化流程
+- 允许公共注册 （Setting --> Overview）
+  ![开启公共注册](image/setting.reg.everyone.png)
 - 开启并配置好至少一个第三方登录
+  - [Google 登录配置](/setting/third_login/login-google)
+  - [Github 登录配置](/setting/third_login/login-github)
 
 ## 使用 widget
 
@@ -20,12 +24,12 @@ title: 使用挂件（widget）
 ```html
 <!-- 将以下代码片段放于你的网页内，建议放于body底部 -->
 <script
-  data-host-id="4"
+  data-host-id="1"
   data-origin="https://vocechat.yourdomain.com"
   data-close-width="52"
   data-close-height="52"
-  data-open-width="600"
-  data-open-height="800"
+  data-open-width="380"
+  data-open-height="680"
   src="https://vocechat.yourdomain.com/widget.js"
   async
 />
@@ -42,8 +46,8 @@ title: 使用挂件（widget）
   <tr ><td >origin</td><td >location.origin</td><td >指明脚本的来源</td></tr>
   <tr ><td >close-width</td><td >52(px)</td><td >挂件关闭态的宽度</td></tr>
   <tr ><td >close-height</td><td >52(px)</td><td >挂件关闭态的高度</td></tr>
-  <tr ><td >open-width</td><td >600(px)</td><td >挂件打开态的宽度</td></tr>
-  <tr ><td >open-height</td><td >800(px)</td><td >挂件打开态的高度</td></tr>
+  <tr ><td >open-width</td><td >380(px)</td><td >挂件打开态的宽度</td></tr>
+  <tr ><td >open-height</td><td >680(px)</td><td >挂件打开态的高度</td></tr>
 </tbody>
 <tfoot >
   <tr><td colspan="3">* 所有的配置项目都是可选的，并以<i >data-</i>开头</td></tr>
