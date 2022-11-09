@@ -161,7 +161,7 @@ docker run -d --restart=always \
 
 访问:`https://vocechat.yourdomain.com/`，完成初始化 。
 
-如果 80/443 端口被 Nginx 占用, 请参考 [Nginx 反向代理](install-by-docker-nginx.md)
+如果 80/443 端口被 Nginx 占用, 请参考 [Docker + Nginx](/install/install-by-docker#docker--nginx)
 
 ## 其他相关命令
 

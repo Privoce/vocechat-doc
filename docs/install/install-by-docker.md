@@ -73,7 +73,7 @@ network.tls.acme.cache_path: location of cetificate.
 network.tls.acme.directory_url: default verification authority, default "https://acme-v02.api.letsencrypt.org/directory".  
 visit: https://www.domain.com/ .
 
-If the 80/443 port is occupied by nginx, please refer to [Nginx Reverse proxy](/Install/install-by-docker-nginx)
+If the 80/443 port is occupied by nginx, please refer to Nginx Reverse proxy
 
 ## 3 Other Commands
 
