@@ -58,6 +58,6 @@ Explanation of the code above:
 - vocechat widget: https://yangerxiao.com/
   ![widget demo](image/vocechat.widget.demo.jpeg)
 
-:::tip 👏🏻👏🏻👏🏻
-Send your example (website url) to us through our chat widget: https://voce.chat
-:::
+ 👏🏻👏🏻👏🏻
+Try our chat widget: https://voce.chat  and send your example (website url) to us to win a $120 coupon!
+
