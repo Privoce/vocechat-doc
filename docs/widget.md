@@ -24,7 +24,6 @@ Take this as an example`https://vocechat.yourdomain.com`:
 <!-- embed this code snippet to your html body -->
 <script
   data-host-id="1"
-  data-origin="https://vocechat.yourdomain.com"
   data-close-width="52"
   data-close-height="52"
   data-open-width="380"
@@ -42,7 +41,6 @@ Explanation of the code above:
 </thead>
 <tbody>
   <tr ><td >host-id</td><td >1</td><td >The user (id=1 means the first user) that the guest will chat with</td></tr>
-  <tr ><td >origin</td><td >location.origin</td><td >Which vocechat server you are using</td></tr>
   <tr ><td >close-width</td><td >52(px)</td><td >Chat icon floater width</td></tr>
   <tr ><td >close-height</td><td >52(px)</td><td >Chat icon floater height</td></tr>
   <tr ><td >open-width</td><td >380(px)</td><td >Chat widget width</td></tr>
@@ -58,6 +56,5 @@ Explanation of the code above:
 - vocechat widget: https://yangerxiao.com/
   ![widget demo](image/vocechat.widget.demo.jpeg)
 
- 👏🏻👏🏻👏🏻
-Try our chat widget: https://voce.chat  and send your example (website url) to us to win a $120 coupon!
-
+👏🏻👏🏻👏🏻
+Try our chat widget: https://voce.chat and send your example (website url) to us to win a $120 coupon!

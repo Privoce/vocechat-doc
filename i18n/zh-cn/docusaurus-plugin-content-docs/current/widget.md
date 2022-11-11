@@ -25,7 +25,6 @@ title: 使用挂件
 <!-- 将以下代码片段放于你的网页内，建议放于body底部 -->
 <script
   data-host-id="1"
-  data-origin="https://vocechat.yourdomain.com"
   data-close-width="52"
   data-close-height="52"
   data-open-width="380"
@@ -43,7 +42,6 @@ title: 使用挂件
 </thead>
 <tbody>
   <tr ><td >host-id</td><td >1</td><td >指定访客和谁聊天</td></tr>
-  <tr ><td >origin</td><td >location.origin</td><td >指明脚本的来源</td></tr>
   <tr ><td >close-width</td><td >52(px)</td><td >挂件关闭态的宽度</td></tr>
   <tr ><td >close-height</td><td >52(px)</td><td >挂件关闭态的高度</td></tr>
   <tr ><td >open-width</td><td >380(px)</td><td >挂件打开态的宽度</td></tr>
