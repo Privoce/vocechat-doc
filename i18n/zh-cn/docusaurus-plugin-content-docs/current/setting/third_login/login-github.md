@@ -16,10 +16,10 @@ title: Github 登录
 
 ![img.jpg](image/login-github-0.png)
 
-## 获得 ClientID, ClientSecret:
+## 获得 ClientID, Client Secret
 
 ![img.jpg](image/login-github-1.jpg)
 
-## 将 ClientID, ClientSecret 填入 vocechat 后台：
+## 将 ClientID, Client Secret 填入 vocechat 后台
 
 ![img.jpg](image/login-github-2.jpg)

@@ -1,7 +1,7 @@
 ---
 sidebar_position: 1
-title: Docker 安装
-description: 我们推荐使用Docker+Nginx的安装方式
+title: Docker
+description: Docker+Nginx are recommended
 ---
 
 ## 本地快速体验

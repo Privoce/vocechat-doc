@@ -1,7 +1,7 @@
 ---
 sidebar_position: 3
 slug: /widget
-title: 使用挂件
+title: 网页聊天挂件
 ---
 
 ## 前置条件
