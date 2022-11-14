@@ -54,7 +54,19 @@ Explanation of the code above:
 
 - vocechat：https://vocechat.yangerxiao.com/
 - vocechat widget: https://yangerxiao.com/
-  ![widget demo](image/vocechat.widget.demo.jpeg)
+  ![widget demo](image/widget.demo.tristan.jpeg)
+
+### https://vc.moduoyu.com/
+
+- vocechat：https://vc.moduoyu.com/
+- vocechat widget: https://laoona.com/
+  ![widget demo](image/widget.demo.shilei.png)
+
+### https://vocechat.tomzhu.site/
+
+- vocechat：https://vocechat.tomzhu.site/
+- vocechat widget: https://tomzhu.site/
+  ![widget demo](image/widget.demo.tom.png)
 
 👏🏻👏🏻👏🏻
 Try our chat widget: https://voce.chat and send your example (website url) to us to win a $120 coupon!

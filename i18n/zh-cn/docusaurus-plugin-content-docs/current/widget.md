@@ -58,7 +58,19 @@ title: 网页聊天挂件
 
 - vocechat：https://vocechat.yangerxiao.com/
 - vocechat widget: https://yangerxiao.com/
-  ![widget demo](image/vocechat.widget.demo.jpeg)
+  ![widget demo](image/widget.demo.tristan.jpeg)
+
+### 石磊的个人站点
+
+- vocechat：https://vc.moduoyu.com/
+- vocechat widget: https://laoona.com/
+  ![widget demo](image/widget.demo.shilei.png)
+
+### Tom 的个人小站
+
+- vocechat：https://vocechat.tomzhu.site/
+- vocechat widget: https://tomzhu.site/
+  ![widget demo](image/widget.demo.tom.png)
 
 :::tip 👏🏻👏🏻👏🏻
 欢迎联系我们贡献线上实例
