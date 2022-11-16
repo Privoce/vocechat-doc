@@ -17,7 +17,7 @@ description: 适用于小型设备（比如树莓派、NAS设备），或者想�
 这里要注意的是，如果你要开启 TLS，那么端口必须为 443，也就意味着你的 `vocechat-server` 必须独占 443。
 
 ```bash
-curl -sSf https://s.vocechat.com/install.sh | sh
+curl -sSf https://s.voce.chat/install.sh | sh
 ```
 
 ## 启动
