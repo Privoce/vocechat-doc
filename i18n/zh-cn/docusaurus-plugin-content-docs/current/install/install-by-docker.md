@@ -17,9 +17,13 @@ docker run -d --restart=always \
   privoce/vocechat-server:latest
 ```
 
-浏览器访问: http://localhost:3000/
+浏览器访问: `http://localhost:3000/`
 
 ## 服务器部署
+
+:::tip
+请提前准备好一个域名，以下用`vocechat.yourdomain.com`举例
+:::
 
 ### Docker + Nginx
 
@@ -30,9 +34,13 @@ docker run -d --restart=always \
   -p 3009:3000 \
   --name vocechat-server \
   -v ~/.vocechat-server/data:/home/vocechat-server/data \
-  privoce/vocechat-server:latest
-
+  privoce/vocechat-server:latest \
+  --network.frontend_url "https://vocechat.yourdomain.com"
 ```
+
+:::tip
+`network.frontend_url`为必填参数放在最后，不要忘了根据实际情况加协议（`http(s)`）
+:::
 
 #### 配置 Nginx http 反向代理
 
@@ -183,7 +191,7 @@ docker logs -f vocechat-server
 cp -rf ~/.vocechat-server/data ~/.vocechat-server/backup
 ```
 
-### 更新 Docker:
+### 更新 Docker
 
 ```shell
 docker stop vocechat-server
@@ -194,8 +202,9 @@ docker pull privoce/vocechat-server:latest
 docker run -d --restart=always \
   -p 3000:3000 \
   --name vocechat-server \
+  -v ~/.vocechat-server/data:/home/vocechat-server/data \
   privoce/vocechat-server:latest
-
+  --network.frontend_url "https://vocechat.yourdomain.com"
 ```
 
 ### 进入 Docker 内部
