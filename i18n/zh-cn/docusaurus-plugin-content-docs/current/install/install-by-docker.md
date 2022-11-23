@@ -12,12 +12,12 @@ description: 我们推荐使用Docker+Nginx的安装方式
 
 ```shell
 docker run -d --restart=always \
-  -p 3000:3000 \
+  -p 3009:3000 \
   --name vocechat-server \
   privoce/vocechat-server:latest
 ```
 
-浏览器访问: `http://localhost:3000/`
+浏览器访问: `http://localhost:3009/`
 
 ## 服务器部署
 
@@ -200,10 +200,10 @@ docker pull privoce/vocechat-server:latest
 
 # 这里改为自己之前部署执行过的docker命令行
 docker run -d --restart=always \
-  -p 3000:3000 \
+  -p 3009:3000 \
   --name vocechat-server \
   -v ~/.vocechat-server/data:/home/vocechat-server/data \
-  privoce/vocechat-server:latest
+  privoce/vocechat-server:latest \
   --network.frontend_url "https://vocechat.yourdomain.com"
 ```
 
