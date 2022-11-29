@@ -23,7 +23,3 @@ VoceChat 目前支持安卓和苹果两大平台，请前往 VoceChat 官网自�
 ### APP 首页
 
 ![APP首页](image/app.home.png)
-
-:::tip 👏🏻👏🏻👏🏻
-欢迎联系我们贡献线上实例
-:::
