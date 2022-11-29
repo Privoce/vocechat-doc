@@ -1,7 +1,7 @@
 ---
 sidebar_position: 2.5
 slug: /mobile-app
-title: 使用VoceChat APP
+title: 使用移动APP
 ---
 
 ## 安装
