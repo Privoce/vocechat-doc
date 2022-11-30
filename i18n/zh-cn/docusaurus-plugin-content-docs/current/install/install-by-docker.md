@@ -39,7 +39,7 @@ docker run -d --restart=always \
 ```
 
 :::tip
-`network.frontend_url`为必填参数放在最后，不要忘了根据实际情况加协议（`http(s)`）
+`network.frontend_url`为必填参数放在最后，不要忘了根据实际情况加协议`http(s)`
 :::
 
 #### 配置 Nginx http 反向代理
@@ -72,7 +72,7 @@ server{
 
 #### 配置 https
 
-基本原理：让 Nginx 监听 443 端口，证书配置在 Nginx，通过 host 转发给 `vocechat-server:3000`，此时 vocechat-server 接受的依旧是 http。
+基本原理：让 Nginx 监听 443 端口，证书配置在 Nginx，通过 host 转发给 `vocechat-server:3009`，此时 vocechat-server 接受的依旧是 http。
 
 ```
 ┌─────────┐                  ┌─────────┐        ┌─────────┐
@@ -219,5 +219,5 @@ cd /home/vocechat-server/data
 部署成功 vocechat，并且已完成初始化工作，可以继续安装使用我们的移动 APP，具体使用请移步：[使用 VoceChat APP](/mobile-app)；还可以很方便地借助挂件，把聊天场景拓展到任意网站。具体请参看 [使用挂件](/widget)
 
 :::tip
-如需要帮助，请在官网联系我们：[https://voce.chat](https://voce.chat) ，如需合作请 email 联系 **han@privoce.com**
+如需要帮助，请在官网联系我们：[voce.chat](https://voce.chat) ，如需合作请 email: **han@privoce.com**
 :::
