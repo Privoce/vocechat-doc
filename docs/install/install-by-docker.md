@@ -34,6 +34,24 @@ docker run -d --restart=always \
 
 ```
 
+### 或者使用docker-compose一键部署
+
+```yaml
+version: "3"
+services:
+  vocechat:
+    image: "privoce/vocechat-server:latest"
+    container_name: "vocechat"
+    restart: "always"
+    ports:
+      - "3000:3000"
+    volumes:
+      - "/etc/localtime:/etc/localtime" # 保证和服务器时区一致
+      - "./data:/home/vocechat-server/data" # 数据目录
+    command:
+      - --network.frontend_url vocechat.yourdomain.com # 站点url
+```
+
 #### 配置 Nginx http 反向代理
 
 在 Nginx 配置文件目录（一般在`/etc/nginx/conf.d`）新建 Nginx 配置文件`vocechat.yourdomain.com.conf`，并配置好 http 请求：
