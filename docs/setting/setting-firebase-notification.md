@@ -7,7 +7,7 @@ title: Firebase & Notification
 
 The administrator needs to configure **FCM** in Firebase Cloud Console.
 
-⚠️ Please be noted that Push Notifications will **NOT** be available on mobile devices (iOS and Android) if a customized configuration is applied. It will only work on web client. A default Firebase configuration is privoded in the latest web client. You may check it out in Settings -> Firebase. 
+⚠️ Please be noted that Push Notifications will **NOT** be available on mobile devices (iOS and Android) if a customized configuration is applied. This is because of Push Notification project signing mechanism. In this case Push Notifications will only be available on web clients. A default Firebase configuration is privoded in the latest web client. You may check at Settings -> Firebase using an admin account. A long-term plan will solve it by providing SDK, which will support self-signing. 
 
 ⚠️ If the VoceChat backend is deployed in Mainland China, Push Notifications may not be available because of Internet regulation, as the Push Notifications service is based on Google Firebase. We are working on an alternative directly supporting APNs and other Android services in Mainland China.
 
