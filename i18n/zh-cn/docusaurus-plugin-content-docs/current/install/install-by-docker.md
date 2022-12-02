@@ -4,6 +4,10 @@ title: Docker 安装
 description: 我们推荐使用Docker+Nginx的安装方式
 ---
 
+:::warning 重要提示
+请确认你的系统架构：默认安装 `linux/amd64`，如果是 `linux/arm64`，请拉取`privoce/vocechat-server:latest-arm64`
+:::
+
 ## 本地快速体验
 
 :::tip
