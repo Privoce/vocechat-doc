@@ -3,13 +3,13 @@ sidebar_position: 2
 title: Firebase & Notification
 ---
 
-# How to configure the push notification service in Vocechat?
+# How to configure the push notifications service in Vocechat?
 
 The administrator needs to configure **FCM** in Firebase Cloud Console.
 
-⚠️ Please be noted that Push Notifiation will **NOT** be available on mobile devices (iOS and Android) if a customized configuration is applied. It will only work on web client. A default Firebase config is applied in latest web client. You may check it out in Settings -> Firebase. 
+⚠️ Please be noted that Push Notifications will **NOT** be available on mobile devices (iOS and Android) if a customized configuration is applied. It will only work on web client. A default Firebase configuration is privoded in the latest web client. You may check it out in Settings -> Firebase. 
 
-⚠️ If the VoceChat backend is deployed in Mainland China, Push Notification may not be available because of Internet regulation, as the Push Notification service is based on Google Firebase. We are working on an alternative directly supporting APNs and other Android services in Mainland China.
+⚠️ If the VoceChat backend is deployed in Mainland China, Push Notifications may not be available because of Internet regulation, as the Push Notifications service is based on Google Firebase. We are working on an alternative directly supporting APNs and other Android services in Mainland China.
 
 <!-- ## 1. Obtain APNs Auth Key
 
