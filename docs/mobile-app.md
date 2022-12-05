@@ -1,7 +1,7 @@
 ---
 sidebar_position: 2.5
 slug: /mobile-app
-title: 使用VoceChat APP
+title: 使用VoceChat Mobile APP
 ---
 
 ## 安装
@@ -23,7 +23,3 @@ VoceChat 目前支持安卓和苹果两大平台，请前往 VoceChat 官网自�
 ### APP 首页
 
 ![APP首页](image/app.home.png)
-
-:::tip 👏🏻👏🏻👏🏻
-欢迎联系我们贡献线上实例
-:::

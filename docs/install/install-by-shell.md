@@ -2,6 +2,13 @@
 sidebar_position: 3
 ---
 
+:::tip
+
+- 该安装方式适用于小型设备（比如树莓派、NAS 等设备），或者想最大化性能的极客。
+- 基本原理是直接运行二进制的方式，目前支持 Linux x86_64, Arm32, Aarch64 架构。
+- 确保您的系统目录 /etc/init.d 存在，并且可写。
+  :::
+
 # Deploy through Shell
 
 If you want to run our binary program directly, you can use this method. Now we support Linux x86\_ 64, arm32, aarch64 architecture.
