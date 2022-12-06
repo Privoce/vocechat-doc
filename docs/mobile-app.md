@@ -6,7 +6,7 @@ title: VoceChat Mobile APP
 
 ## Download
 
-VoceChat app supports iOS and Android, visit VoceChat Download link[Download VoceChat App](https://voce.chat/#download)
+VoceChat app supports iOS and Android, visit VoceChat Download link [Download VoceChat App](https://voce.chat/#download)
 
 ## Use
 
