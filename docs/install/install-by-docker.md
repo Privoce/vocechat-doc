@@ -4,14 +4,14 @@ title: Docker
 description: Docker+Nginx are recommended
 ---
 
-:::warning 重要提示
-请确认你的系统架构：默认安装 `linux/amd64`，如果是 `linux/arm64`，请拉取`privoce/vocechat-server:latest-arm64`
+:::warning Important!
+System architecture：the default settings is for `linux/amd64`, if you have `linux/arm64`, please use `privoce/vocechat-server:latest-arm64`
 :::
 
-## 本地快速体验
+## Try in your PC (localhost)
 
 :::tip
-假如没有服务器，但是在本地电脑装有 Docker，可以执行以下命令行，快速体验 VoceChat
+If you have Docker in your local machine, you may run VoceChat with the following lines in your ternimal:
 :::
 
 ```shell
@@ -21,17 +21,17 @@ docker run -d --restart=always \
   privoce/vocechat-server:latest
 ```
 
-浏览器访问: `http://localhost:3009/`
+Open this URL on your browser: `http://localhost:3009/`
 
-## 服务器部署
+## Run VoceChat on your server
 
 :::tip
-请提前准备好一个域名，以下用`vocechat.yourdomain.com`举例
+Let's suppose your domain is `vocechat.yourdomain.com`:
 :::
 
-### Docker + Nginx
+### Method 1: Docker + Nginx
 
-#### 运行 VoceChat
+#### Run VoceChat
 
 ```shell
 docker run -d --restart=always \
@@ -43,12 +43,12 @@ docker run -d --restart=always \
 ```
 
 :::tip
-`network.frontend_url`为必填参数放在最后，不要忘了根据实际情况加协议`http(s)`
+`network.frontend_url`is required to be changed to your domain, don't forget the `http(s)` part.
 :::
 
-#### 配置 Nginx http 反向代理
+#### Method 2: With Nginx http reverse proxy
 
-在 Nginx 配置文件目录（一般在`/etc/nginx/conf.d`）新建 Nginx 配置文件`vocechat.yourdomain.com.conf`，并配置好 http 请求：
+At Nginx configration file（usually at `/etc/nginx/conf.d`）creat new file--`vocechat.yourdomain.com.conf`, and set up the http request like the following：
 
 ```nginx
 server{
@@ -68,15 +68,15 @@ server{
 }
 ```
 
-检查配置文件的语法：`nginx -t`，没问题后，启用新增配置：`nginx -s reload`。此时，浏览器访问`http://vocechat.yourdomain.com`，能够进入初始化页面，即为配置成功。
+Check your config file：`nginx -t`, if there's no problem, reload:`nginx -s reload`. Open your URL on your browser`http://vocechat.yourdomain.com`, then you should see VoeChat onboarding page.
 
-:::caution 提示
-不要忘记设置域名解析
+:::caution Reminder
+Don't forget to set up your DNS :)
 :::
 
-#### 配置 https
+#### Set up https
 
-基本原理：让 Nginx 监听 443 端口，证书配置在 Nginx，通过 host 转发给 `vocechat-server:3009`，此时 vocechat-server 接受的依旧是 http。
+How it works：Let nginx listen to port 443, the https SSL certificate is set to nginx so that port 443 is with https, and the reverse proxy will direct request to `vocechat-server:3009`。
 
 ```
 ┌─────────┐                  ┌─────────┐        ┌─────────┐
@@ -86,22 +86,22 @@ server{
 └─────────┘                  └─────────┘        └─────────┘
 ```
 
-启用 https 有多种方式，此处我们推荐使用[certbot](https://certbot.eff.org/instructions)，借助 certbot 可以自动生成证书并自动添加到对应域名的 Nginx 配置文件，完成 https 的启用。
+There are two major ways of adding https SSL--use your own, or use our auto-generation (it's free!)[certbot](https://certbot.eff.org/instructions), with the help of certbot, we can automatically generate the SSL and Nginx config files, and your https will be ready。
 
-##### Certbot 的使用
+##### Certbot Details
 
-访问 https://certbot.eff.org/instructions ，请自行选择服务器环境，完成安装:
+Visit https://certbot.eff.org/instructions, choose your env and download the certificate:
 
 ![certbot install](image/certbot.install.png)
 
-使用以下命令，certbot 会列出已有的 Nginx 配置，选择对应的域名，获取证书，并让 certbot 自动编辑该 Nginx 配置文件，一键开启 https 访问：
+Use the following lines to let certbot list out the current Nginx details, choose the domain that you want to use certbot, and let certbot automatically write the Nginx config file to enable https:
 
 ```shell
-# 如果非root用户，把sudo加上
+# if you are not a root user, add sudo
 sudo certbot certonly --nginx
 ```
 
-此时，配置文件`vocechat.yourdomain.com.conf`已变为：
+At this step, the `vocechat.yourdomain.com.conf` should be look like this：
 
 ```nginx
 
@@ -137,18 +137,18 @@ server{
 
 ```
 
-重载 Nginx 配置（`nginx -s reload`）之后，此时，浏览器访问`http://vocechat.yourdomain.com`会自动切换为 https，即`https://vocechat.yourdomain.com`
+Reload Nginx config (`nginx -s reload`), then visit `http://vocechat.yourdomain.com`, you can see there's https already! `https://vocechat.yourdomain.com`
 
-### Docker
+### Method 3: Use docker on a server explicity for vocechat
 
 :::tip
-如果你的服务器没有被其它服务占用 https 端口（即 443），可以考虑该方式，否则，请参考 [Docker + Nginx](/install/install-by-docker#docker--nginx)
+If you server is new and only for vocechat (nothing using https port 443), feel free to use this method, otherwise, use [Docker + Nginx](/install/install-by-docker#docker--nginx)
 :::
 
-vocechat-server 支持自动申请 https 证书（借助[CertBot](https://certbot.eff.org/pages/about)），使用该部署方式有两个前提：
+vocechat-server will use certbot to apply for a free https SSL for you! ( See[CertBot](https://certbot.eff.org/pages/about)）, and to reiterate the prerequisites：
 
-- 服务器 443 端口没有被占用
-- 准备一个域名，并已解析到该服务器 IP。
+- your server's 443 is not in use.
+- You already have a domain name pointing to your IP address。
 
 ```bash
 mkdir -p ~/.vocechat-server/data
@@ -163,46 +163,46 @@ docker run -d --restart=always \
   --network.tls.acme.cache_path "/home/vocechat-server/data/cert"
 ```
 
-参数说明:
+Explanation of the parameters:
 
-- `network.bind:` 服务端绑定的 IP 和端口，`0.0.0.0` 为所有 IP
-- `network.domain:` 域名
-- `network.type:` TLS 验证方式，这里为 `acme_tls_alpn_01`，更多请参考代码目录 `config/config.toml` 。
-- `network.tls.acme.cache_path:` 证书存放位置。
-- `network.tls.acme.directory_url:` 默认的验证机构，可选，默认 `https://acme-v02.api.letsencrypt.org/directory`。
+- `network.bind:` The IP and port the server binds with，`0.0.0.0` 为所有 IP
+- `network.domain:` domain name
+- `network.type:` TLS should be `acme_tls_alpn_01`, see more details here `config/config.toml` .
+- `network.tls.acme.cache_path:` the path to store the certificate.
+- `network.tls.acme.directory_url:` (not shown but you can change it) the default orgnization that checks your SSL certificate，the default is: `https://acme-v02.api.letsencrypt.org/directory`。
 
-访问:`https://vocechat.yourdomain.com/`，完成初始化 。
+Visit:`https://vocechat.yourdomain.com/` to start using vocechat!
 
-如果 80/443 端口被 Nginx 占用, 请参考 [Docker + Nginx](/install/install-by-docker#docker--nginx)
+If 80/443 ports are used by Nginx, please see the Docker + Nginx method to install vocechat: [Docker + Nginx](/install/install-by-docker#docker--nginx)
 
-## 其他相关命令
+## Other useful commands:
 
-### 停止服务
+### Stop vocechat server
 
 ```bash
 docker stop vocechat-server
 ```
 
-### 查看日志
+### Check vocechat logs
 
 ```bash
 docker logs -f vocechat-server
 ```
 
-### 备份数据
+### Backup vocechat data
 
 ```bash
 cp -rf ~/.vocechat-server/data ~/.vocechat-server/backup
 ```
 
-### 更新 Docker
+### Update vocechat Docker
 
 ```shell
 docker stop vocechat-server
 docker rm vocechat-server
 docker pull privoce/vocechat-server:latest
 
-# 这里改为自己之前部署执行过的docker命令行
+# Change the following lines to fit your own settings:)
 docker run -d --restart=always \
   -p 3009:3000 \
   --name vocechat-server \
@@ -211,17 +211,17 @@ docker run -d --restart=always \
   --network.frontend_url "https://vocechat.yourdomain.com"
 ```
 
-### 进入 Docker 内部
+### See Docker data
 
 ```shell
 docker exec -it vocechat-server /bin/sh
 cd /home/vocechat-server/data
 ```
 
-## 移动 APP 与挂件
+## Use mobile APP or popup chat widget
 
-部署成功 vocechat，并且已完成初始化工作，可以继续安装使用我们的移动 APP，具体使用请移步：[使用 VoceChat APP](/mobile-app)；还可以很方便地借助挂件，把聊天场景拓展到任意网站。具体请参看 [使用挂件](/widget)
+After having vocechat on your server, feel free to use our mobile APP with your friends or collegues：[Use VoceChat APP](/mobile-app). Also, a popup widget is available to get embeded on any website for visitors to chat with the admin of the vocechat server [Use Chat Widget](/widget)
 
 :::tip
-如需要帮助，请在官网联系我们：[voce.chat](https://voce.chat) ，如需合作请 email: **han@privoce.com**
+If you still need help, feel free to chat with us on our official website: [voce.chat](https://voce.chat), if you want to collaborate with us, send an email to: **han@privoce.com**
 :::
