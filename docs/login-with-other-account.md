@@ -1,6 +1,6 @@
 ---
 sidebar_position: 4
-title: Connect to your existing user identity system.
+title: Connect to your Existing user ID layer
 ---
 
 If you already have an ID system on your app and want to connet it ot VoceChat, check this out!
