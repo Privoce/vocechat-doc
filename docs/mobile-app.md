@@ -1,25 +1,25 @@
 ---
 sidebar_position: 2.5
 slug: /mobile-app
-title: 使用VoceChat Mobile APP
+title: VoceChat Mobile APP
 ---
 
-## 安装
+## Download
 
-VoceChat 目前支持安卓和苹果两大平台，请前往 VoceChat 官网自行选择下载安装：[VoceChat 官网](https://voce.chat/#download)
+VoceChat app supports iOS and Android, visit VoceChat Download link[Download VoceChat App](https://voce.chat/#download)
 
-## 使用
+## Use
 
-假设您已部署成功 VoceChat，并完成了初始化，我们拿 `https://vocechat.yourdomain.com`举例：
+Make sure you have a server link, e.g., `https://vocechat.yourdomain.com`: you may have first want to have VoceChat installed on your server.
 
-### 连接服务器
+### Connect to a server
 
-![连接自部署服务器](image/app.connect.png)
+![Connect to a server](image/app.connect.png)
 
-### 账号登录
+### Sign in
 
-![账号登录](image/app.login.jpg)
+![Sign in](image/app.login.jpg)
 
-### APP 首页
+### APP Home Screen
 
-![APP首页](image/app.home.png)
+![APP Home Screen](image/app.home.png)
