@@ -4,9 +4,9 @@ sidebar_position: 3
 
 :::tip
 
-- 该安装方式适用于小型设备（比如树莓派、NAS 等设备），或者想最大化性能的极客。
-- 基本原理是直接运行二进制的方式，目前支持 Linux x86_64, Arm32, Aarch64 架构。
-- 确保您的系统目录 /etc/init.d 存在，并且可写。
+- VoceChat works well for devices like Raspberry Pi, NAS, use shell to install is good for geeks who want to maximize performance。
+- You will run the compiled binary code on your machine, now support Linux x86_64, Arm32, Aarch64.
+- Make sure you have this directory: /etc/init.d and you have write permission.
   :::
 
 # Deploy through Shell
