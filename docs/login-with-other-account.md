@@ -1,34 +1,34 @@
 ---
 sidebar_position: 4
-title: 接入自有账号登录
+title: Connect to your existing user identity system.
 ---
 
-假设您有自己的账号体系，想利用已有账号来自动登录 VoceChat，借助 VoceChat 提供的 API，可以很方便地接入进来。
+If you already have an ID system on your app and want to connet it ot VoceChat, check this out!
 
 :::tip
-需自己写一个对接 VoceChat 的 API，有一定的编程工作
+May take around 1h of coding.
 :::
 
-## 接入步骤
+## Have a running VoceChat app first
 
-以 `https://vocechat.yourdomain.com/` 为例，请自行替换域名，另，登录账号需为**管理角色**。
+You should have VoceChat run somewhere, e.g., `https://vocechat.yourdomain.com/`. You need to be an **Admin** of this VoceChat server.
 
-### 获取 API 密钥
+### Get API token
 
-访问页面：`https://vocechat.yourdomain.com/#/setting?nav=api`
+Visit: `https://vocechat.yourdomain.com/#/setting?nav=api`
 
-![第三方APP Secret](image/oauth.secret.png)
+![3rd party APP Secret](image/oauth.secret.png)
 
-### 调用 VoceChat API
+### Use VoceChat API
 
-拿到密钥后，在自己的代码库里调用 VoceChat 后端 API，生成用户登录的 token
+After having the API token ready, use VoceChat server API to create the login token for users.
 
-![第三方APP create](image/oauth.create.png)
+![3rd party APP create user](image/oauth.create.png)
 
-:::tip 注意
-后端 API 文档 `https://vocechat.yourdomain.com/api/swagger`，用到的接口是：`/token/create_third_party_key`。通过 `header` 传过去 密钥，`body` 里填自家产品的用户 ID(`userid`) 和用户名(`username`)，返回的 token 时效 2 分钟，可重复调用，建议每次跳转前即时调用。
+:::tip Attention
+In the API doc `https://vocechat.yourdomain.com/api/swagger`, the API we have used is:`/token/create_third_party_key`. We pass the API token through `header`, and inside `body`, you need to fill in the user ID by yourself (`userid`) and username (`username`) by yourself as well. The API token has an expiration limit of 2 minites and can be renewed by calling again. We recommend you to get a new API token whenever there is a sign in action.
 :::
 
-### 完成自动登录
+### Sign in
 
-拿到 token 后，将其作为 path 附到地址 `https://vocechat.yourdomain.com/#/oauth/[token]`，该 URL 即为自动登录 VoceChat 地址，访问该地址即可使用自家产品的账号信息自动登录 VoceChat。
+After getting the sign in token, append it to your VoceChat website path like this `https://vocechat.yourdomain.com/#/oauth/[token]`, this URL is the sign in URL to VoceChat for your user.
