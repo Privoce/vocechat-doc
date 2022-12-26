@@ -10,7 +10,7 @@ Iframe embed a VoceChat at anywhere, ususally on your own website.
 All you need is iframe, change src to your VoceChat domain，e.g., `privoce.voce.chat` is our embedded space on our official website: [https://voce.chat](https://voce.chat), and the exmaple `code` is here:
 
 ```html
-<iframe src="//privoce.voce.chat" width="1200" height="800px" frameborder="0" />
+<iframe src="//privoce.voce.chat" width="1200" height="800px" frameborder="0"></iframe>
 <!-- Change the src to your vocechat url. Width and height can be changed, and we recommend using CSS to control it -->
 ```
 
