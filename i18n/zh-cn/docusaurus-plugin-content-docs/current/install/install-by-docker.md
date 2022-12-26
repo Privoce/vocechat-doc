@@ -39,12 +39,9 @@ docker run -d --restart=always \
   --name vocechat-server \
   -v ~/.vocechat-server/data:/home/vocechat-server/data \
   privoce/vocechat-server:latest \
+  # network.frontend_url为必填参数，务必放在最后，是个网址，所以不要忘了根据实际情况加协议http(s)://
   --network.frontend_url "https://vocechat.yourdomain.com"
 ```
-
-:::tip
-`network.frontend_url`为必填参数放在最后，不要忘了根据实际情况加协议`http(s)`
-:::
 
 #### 配置 Nginx http 反向代理
 
