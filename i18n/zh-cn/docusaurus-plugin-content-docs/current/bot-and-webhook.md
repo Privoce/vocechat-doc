@@ -36,25 +36,74 @@ API Key 是机器人与 VoceChat 通信的凭证，请妥善保存，如有泄�
 
 ## API Key 的使用
 
-有了 API Key，就可以写自定义 API，利用创建的机器人，向 VoceChat 发消息了，目前开放了两个 API（均可在已部署的 API 文档内找到）：
 :::tip
-调用 API 时，均需要设置 header：`x-api-key`:`API Key`(此处请替换为自己的 API Key 值)
+以下提到的所有 API 均可在[已部署的 API 文档](/api-doc)内找到，
 :::
+
+有了 API Key，就可以通过自定义 API，借助机器人向 VoceChat 发消息了，目前开放了两个 API（均可在已部署的 API 文档内找到）：
+:::warning 重要提示
+调用机器人相关 API 时，均须设置 http header：`x-api-key`:`API Key`（此处请替换为自己的 API Key 值）
+:::
+
+### 消息类型介绍
+
+VoceChat 目前定义了三种消息类型：**文本消息**，**Markdown 消息**和**文件消息**。它们有各自的数据结构和注意点。
+
+#### 文本消息
+
+- http header: `content-type: text/plain`
+- body: 纯文本，例如：`message`
+
+#### Markdown 消息
+
+- http header: `content-type: text/markdown`
+- body: Markdown 源码，例如：`**bold**`
+
+#### 文件消息（图片，音视频，文档等）
+
+- http header: `content-type: vocechat/file`
+- body:
+  ```json
+  {
+    "path": "string"
+  }
+  ```
+
+**文件消息比较特殊，需要先调用上传文件的 API（见下面 👇🏻），使用上传成功拿到的资源 path 填充到 body 里，然后当做消息发出去。**
 
 ### 向特定用户发消息，对应私聊场景
 
-`/bot/send_to_user/{uid}`:`uid`为用户 ID，具体使用方式请参考自部署的 API 文档
+API：`/bot/send_to_user/{uid}`，`uid`为用户 ID
+
+以向`uid:1`发送纯文本消息`hello`为例，http 请求结构（此处只列举出关键描述）：
+
+```shell
+POST /bot/send_to_user/1 HTTP/1.1
+content-type: text/plain
+
+hello
+```
+
+具体使用方式请参考自部署的 API 文档
 
 ### 向特定频道发消息，对应群聊场景
 
 :::tip
 特定频道必须是该机器人所在的频道
 :::
-`/bot/send_to_group/{gid}`:`gid`为频道 ID，具体使用方式请参考自部署的 API 文档
+API：`/bot/send_to_group/{gid}`，`gid`为频道 ID，具体使用方式请参考自部署的 API 文档
+
+### 其他相关 API
+
+- `/bot/file/upload`：上传文件 API，用于后续发送文件类消息
+- `/bot`：获取与机器人相关的所有频道列表
+- `/bot`：获取与机器人相关的所有频道列表
+- `/bot/user/{uid}`：获取用户信息
+- `/bot/group/{gid}`：获取频道信息
 
 ## 设置 Webhook
 
-:::tip
+:::warning 重要提示
 Webhook 地址会预校验：`HTTP GET`请求响应`200`则通过校验。后续 VoceChat 会以`HTTP POST`方式向该地址推送聊天数据
 :::
 
@@ -62,7 +111,15 @@ Webhook 地址会预校验：`HTTP GET`请求响应`200`则通过校验。后续
 
 ## Webhook 推送的数据类型
 
-VoceChat 会实时向已设置的 Webhook 推送所有该机器人相关的消息数据，包括不限于：新消息，编辑消息，删除消息，回复消息，点赞等。下面分别举例：
+VoceChat 会实时向已设置的 Webhook 推送所有该机器人相关的消息数据，包括不限于：
+
+- **新消息**
+- **编辑消息**
+- **删除消息**
+- **回复消息**
+- **点赞**
+
+下面分别举例：
 
 ### 新消息
 
@@ -74,13 +131,13 @@ VoceChat 会实时向已设置的 Webhook 推送所有该机器人相关的消�
   "detail": {
     "content": "message", //消息内容
     "content_type": "text/plain", //消息类型，text/plain：纯文本消息，text/markdown：markdown消息，vocechat/file：文件类消息
-    "expires_in": null, //消息过期时长，如果有数字，说明该消息是个限时消息
-    "properties": null, //一些有关消息的元数据，比如如果是个图片消息，会有一些宽高，图片名称等元信息
+    "expires_in": null, //消息过期时长，如果有大于0数字，说明该消息是个限时消息
+    "properties": null, //一些有关消息的元数据，比如at信息，如果是个图片消息，会有一些宽高，图片名称等元信息
     "type": "normal" //消息类型，normal代表是新消息
   },
   "from_uid": 7910, //来自于谁
   "mid": 2978, //消息ID
-  "target": { "gid": 2 } //发送给谁，gid代表是发送给频道，uid代表是发送给个人
+  "target": { "gid": 2 } //发送给谁，gid代表是发送给频道，uid代表是发送给个人，此时的数据结构举例：{"uid":1}
 }
 ```
 
@@ -100,10 +157,10 @@ VoceChat 会实时向已设置的 Webhook 推送所有该机器人相关的消�
       "content": "edit message",
       "content_type": "text/plain",
       "properties": null,
-      "type": "edit" //具体的消息类型，edit代表是编辑消息
+      "type": "edit" //二级消息类型，edit代表是编辑消息
     },
     "mid": 2890,
-    "type": "reaction" //初步的消息类型，reaction代表是针对消息的响应
+    "type": "reaction" //一级消息类型，reaction代表是针对消息的响应
   },
   "from_uid": 722,
   "mid": 2979,
@@ -120,7 +177,7 @@ VoceChat 会实时向已设置的 Webhook 推送所有该机器人相关的消�
   "created_at": 1672060943856,
   "detail": {
     "detail": {
-      "type": "delete" //具体的消息类型，delete代表是删除消息
+      "type": "delete" //二级消息类型，delete代表是删除消息
     },
     "mid": 2889, //被删除的消息ID
     "type": "reaction"
@@ -143,7 +200,7 @@ VoceChat 会实时向已设置的 Webhook 推送所有该机器人相关的消�
     "content_type": "text/plain",
     "mid": 2858, //被回复的消息ID
     "properties": { "mentions": [] },
-    "type": "reply" //具体的消息类型，reply代表是回复消息
+    "type": "reply" //二级消息类型，reply代表是回复消息
   },
   "from_uid": 722,
   "mid": 2981,
@@ -161,7 +218,7 @@ VoceChat 会实时向已设置的 Webhook 推送所有该机器人相关的消�
   "detail": {
     "detail": {
       "action": "👍", //具体的点赞内容，是个emoji字符
-      "type": "like" //具体的消息类型，like代表是点赞消息
+      "type": "like" //二级消息类型，like代表是点赞消息
     },
     "mid": 2881, //被点赞的消息ID
     "type": "reaction"
