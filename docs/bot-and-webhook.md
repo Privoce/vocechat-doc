@@ -1,65 +1,65 @@
 ---
 sidebar_position: 3.2
-title: 机器人与Webhook
+title: Bot and Webhook
 ---
 
-## 什么是 VoceChat 机器人
+## What is a VoceChat Bot User
 
-VoceChat 机器人本质是一个可以让你可编程控制的 VoceChat 账号，创建成功后，借助`API Key`可以便捷地向 VoceChat 发消息（频道和私聊都可以）。
+VoceChat bot user can be created by the server admin and used to send messages to a designated member or channel. After creation, there will be an `API Key`which is required when you send a message (the messaging process is explained in detail below).
 
-## 什么是 Webhook
+## What is VoceChat's Webhook
 
-Webhook 依附于机器人而存在，是一个用以接收 VoceChat 推送数据的 URL 地址，可以这么理解：机器人负责把消息传送到 VoceChat，Webhook 则负责传出 VoceChat 消息到指定自定义 API。
+VoceChat's webhook is used to received messages. Each webhook is linked to a bot, and the webhook URL should be provided by the server admin to receive the data received by this very bot user. 
 
-## 创建机器人
-
-:::tip
-机器人管理入口只有管理账号才能看到
-:::
-由`设置 => 机器人&Webhook`进入机器人管理页面，点击`新增`按钮，弹窗中设置机器人姓名与 Webhook（选填），即可完成机器人的创建。
-
-![创建机器人](image/bot.create.png)
+## Create a Bot
 
 :::tip
-创建成功后，可以在列表修改机器人头像
+Only server admins can create bots.
 :::
+Go to `Settings => Bot&Webhook`, click `new`, set bot name and webhook url (optional).
 
-## 初始化一个 API Key
+![Create a bot](image/bot.create.png)
 
 :::tip
-API Key 是机器人与 VoceChat 通信的凭证，请妥善保存，如有泄露或遗失，请及时删除，重新生成。
+You can change the profile of the bot as well.
 :::
-给 API Key 起个名称，用以区分其他 API Key：
-![创建api key](image/bot.api.key.png)
-复制并妥善保存生成的 API Key：
-![copyapi key](image/bot.copy.api.key.png)
 
-## API Key 的使用
+## Create an API Key
 
 :::tip
-以下提到的所有 API 均可在[已部署的 API 文档](/api-doc)内找到，
+API Key is used for the bot to send message to VoceChat, please save it privately. If you have losed or exposed it, don't hesitate to delete the old key and create a new one.
+:::
+You can also name an API Key to distinguish its usage from other API keys：
+![create api key](image/bot.api.key.png)
+Copy the API Key：
+![copy api key](image/bot.copy.api.key.png)
+
+## How to use API key
+
+:::tip
+All the messaging related API can be found at the [API doc](/api-doc),
 :::
 
-有了 API Key，就可以通过自定义 API，借助机器人向 VoceChat 发消息了，目前开放了两个 API（均可在已部署的 API 文档内找到）：
-:::warning 重要提示
-调用机器人相关 API 时，均须设置 http header：`x-api-key`:`API Key`（此处请替换为自己的 API Key 值）
+After gettnig the API Key, you can send messages to a user or a channel:
+:::warning Attention
+When sending messages, you should set the http header：`x-api-key`:`xxxxxxxxxxxxxxxxxx`(change to your API key's real value)
 :::
 
-### 消息类型介绍
+### Types of Messages
 
-VoceChat 目前定义了三种消息类型：**文本消息**，**Markdown 消息**和**文件消息**。它们有各自的数据结构和注意点。
+VoceChat has three supported messages types：**Text**，**Markdown**和**Files**.
 
-#### 文本消息
+#### Text
 
 - http header: `content-type: text/plain`
 - body: 纯文本，例如：`message`
 
-#### Markdown 消息
+#### Markdown
 
 - http header: `content-type: text/markdown`
 - body: Markdown 源码，例如：`**bold**`
 
-#### 文件消息（图片，音视频，文档等）
+#### Files(Images, Vidoes, etc.)
 
 - http header: `content-type: vocechat/file`
 - body:
@@ -69,13 +69,13 @@ VoceChat 目前定义了三种消息类型：**文本消息**，**Markdown 消�
   }
   ```
 
-**文件消息比较特殊，需要先调用上传文件的 API（见下面 👇🏻），使用上传成功拿到的资源 path 填充到 body 里，然后当做消息发出去。**
+**Files need to be uploaded first using this API👇🏻, then you can use the uploaded file path as shown above**
 
-### 向特定用户发消息，对应私聊场景
+### Send message to a user
 
-API：`/bot/send_to_user/{uid}`，`uid`为用户 ID
+API：`/bot/send_to_user/{uid}`，`uid`is the user ID. You can get the user ID on the web front end when chatting with the user (the URL will have the user ID).
 
-举例：向`uid:1`发送纯文本消息：`hello`，http 请求结构（此处只列举出关键描述）：
+E.g.: send a text message `hello` the to user with `uid:1`. The http request should be like this (you have to adapt this to the programming language of your own):
 
 ```
 POST /bot/send_to_user/1 HTTP/1.1
@@ -85,7 +85,7 @@ x-api-key: xxxx-xxxx-xxxx
 hello
 ```
 
-举例：向`uid:1`发送 markdown 消息：加粗的`hello`，http 请求结构（此处只列举出关键描述）：
+E.g.: send a markdown message `hello` to the user with `uid:1`. The http request should be like this (you have to adapt this to the programming language of your own):
 
 ```
 POST /bot/send_to_user/1 HTTP/1.1
@@ -95,101 +95,122 @@ x-api-key: xxxx-xxxx-xxxx
 **hello**
 ```
 
-具体使用方式请参考自部署的 API 文档
+For more details, see [API doc](/api-doc).
 
-### 向特定频道发消息，对应群聊场景
+### Send message to a channel
 
 :::tip
-特定频道必须是该机器人所在的频道
+Add the bot to the channel you want to send message to first!
 :::
-API：`/bot/send_to_group/{gid}`，`gid`为频道 ID，使用方式和私聊场景大同小异，只是在 API PATH 上有区别，其他一样。
+API：`/bot/send_to_group/{gid}`，`gid`is the channel ID. You can get the channel ID on the web front end when chatting in the channel (the URL will have the channel ID).
 
-### 其他相关 API
 
-- `/bot/file/upload`：上传文件 API，用于后续发送文件类消息
-- `/bot`：获取与机器人相关的所有频道列表
-- `/bot/user/{uid}`：获取用户信息
-- `/bot/group/{gid}`：获取频道信息
+E.g.: send a text message `hello` to the channel with `gid:1` , the http request should be like this (you have to adapt this to the programming language of your own):
 
-## 设置 Webhook
+```
+POST /bot/send_to_group/1 HTTP/1.1
+content-type: text/plain
+x-api-key: xxxx-xxxx-xxxx
 
-:::warning 重要提示
-Webhook 地址会预校验：`HTTP GET`请求响应`200`则通过校验。后续 VoceChat 会以`HTTP POST`方式向该地址推送聊天数据
+hello
+```
+
+E.g.: send a markdown message `hello` to the channel with `gid:1` , the http request should be like this (you have to adapt this to the programming language of your own):
+
+```
+POST /bot/send_to_group/1 HTTP/1.1
+content-type: text/markdown
+x-api-key: xxxx-xxxx-xxxx
+
+**hello**
+```
+
+For more details, see [API doc](/api-doc).
+
+### Other related APIs
+
+- `/bot/file/upload`：File uploading API. Used before sending files.
+- `/bot`：Get all channels the bot is in.
+- `/bot/user/{uid}`：Get info of a user.
+- `/bot/group/{gid}`：Get info of a group.
+
+## Webhook Settings
+
+:::warning Important!
+Webhook URL should be a valid one whose `HTTP GET`response should be `200`. The messages will send through `HTTP POST` to this URL.
 :::
 
 ![set webhook](image/bot.webhook.png)
 
-## Webhook 推送的数据类型
+## Webhook Messages Types.
 
-VoceChat 会实时向已设置的 Webhook 推送所有该机器人相关的消息数据，包括不限于：
+VoceChat will send messages to webhooks including:
 
-- **新消息**
-- **编辑消息**
-- **删除消息**
-- **回复消息**
-- **点赞**
+- **New Message**
+- **Edit of a Message**
+- **Deletion of a Message**
+- **Reply of a Message**
+- **Like of a Message**
 
-下面分别举例：
+Here are how the messages look like：
 
-### 新消息
-
-有新消息时，会推送此数据：
+### New Message
 
 ```json
 {
-  "created_at": 1672048481664, //消息创建的时间戳
+  "created_at": 1672048481664, //timestamp of when the message is created
   "detail": {
-    "content": "message", //消息内容
-    "content_type": "text/plain", //消息类型，text/plain：纯文本消息，text/markdown：markdown消息，vocechat/file：文件类消息
-    "expires_in": null, //消息过期时长，如果有大于0数字，说明该消息是个限时消息
-    "properties": null, //一些有关消息的元数据，比如at信息，如果是个图片消息，会有一些宽高，图片名称等元信息
-    "type": "normal" //消息类型，normal代表是新消息
+    "content": "message", //content of the essage
+    "content_type": "text/plain", //content type, three of them: text/plain, text/markdown, vocechat/file
+    "expires_in": null, //When will this message disappear: if there is a non-zero number "x", then this message will disappear (get deleted) in x seconds.
+    "properties": null, //mentions a person; image metadata.
+    "type": "normal" //types of messages, normal means new message. Other types include edit, deletion, reply, like.
   },
-  "from_uid": 7910, //来自于谁
-  "mid": 2978, //消息ID
-  "target": { "gid": 2 } //发送给谁，gid代表是发送给频道，uid代表是发送给个人，此时的数据结构举例：{"uid":1}
+  "from_uid": 7910, //from which user
+  "mid": 2978, //message ID
+  "target": { "gid": 2 } //to which user or channel, gid means the message is sent to a channel with this gid, uid means the message is sent to a user with this uid. 
 }
 ```
 
 :::tip
-以下的数据结构和上面的大同小异，只注释关键区别部分
+The message types below are less used--you can see for "deletion", "edit" and "like", there is an extra type parameter with the value "reaction", which means those are actions upon another message.
 :::
 
-### 编辑消息
+### Edit
 
-消息被编辑时，会推送此数据：
+When a messaged is edited, the webhook will receive this:
 
 ```json
 {
   "created_at": 1672060767247,
   "detail": {
     "detail": {
-      "content": "edit message",
+      "content": "hello I'm editing this message lol",
       "content_type": "text/plain",
       "properties": null,
-      "type": "edit" //二级消息类型，edit代表是编辑消息
+      "type": "edit" 
     },
-    "mid": 2890,
-    "type": "reaction" //一级消息类型，reaction代表是针对消息的响应
+    "mid": 2890, //this is the id of the message that will be replaced
+    "type": "reaction"
   },
   "from_uid": 722,
-  "mid": 2979,
+  "mid": 2979, 
   "target": { "uid": 13466 }
 }
 ```
 
-### 删除消息
+### Deletion
 
-消息被删除时，会推送此数据：
+When a messaged is deleted, the webhook will receive this:
 
 ```json
 {
   "created_at": 1672060943856,
   "detail": {
     "detail": {
-      "type": "delete" //二级消息类型，delete代表是删除消息
+      "type": "delete"
     },
-    "mid": 2889, //被删除的消息ID
+    "mid": 2889, //the message ID
     "type": "reaction"
   },
   "from_uid": 722,
@@ -198,9 +219,9 @@ VoceChat 会实时向已设置的 Webhook 推送所有该机器人相关的消�
 }
 ```
 
-### 回复消息
+### Reply
 
-消息被回复时，会推送此数据：
+When a messaged is a reply message, the webhook will receive this:
 
 ```json
 {
@@ -208,9 +229,9 @@ VoceChat 会实时向已设置的 Webhook 推送所有该机器人相关的消�
   "detail": {
     "content": "reply message",
     "content_type": "text/plain",
-    "mid": 2858, //被回复的消息ID
+    "mid": 2858, //the ID of the message that is being replied to
     "properties": { "mentions": [] },
-    "type": "reply" //二级消息类型，reply代表是回复消息
+    "type": "reply"
   },
   "from_uid": 722,
   "mid": 2981,
@@ -218,19 +239,19 @@ VoceChat 会实时向已设置的 Webhook 推送所有该机器人相关的消�
 }
 ```
 
-### 点赞
+### Like
 
-消息被点赞时，会推送此数据：
+When a messaged is liked, the webhook will receive this:
 
 ```json
 {
   "created_at": 1672061213196,
   "detail": {
     "detail": {
-      "action": "👍", //具体的点赞内容，是个emoji字符
-      "type": "like" //二级消息类型，like代表是点赞消息
+      "action": "👍", //the liked emoji
+      "type": "like" 
     },
-    "mid": 2881, //被点赞的消息ID
+    "mid": 2881, //the ID of the message being liked
     "type": "reaction"
   },
   "from_uid": 722,
@@ -238,3 +259,4 @@ VoceChat 会实时向已设置的 Webhook 推送所有该机器人相关的消�
   "target": { "uid": 13466 }
 }
 ```
+There are two "type" parameters, the first one refers to the message type, and the second one refers to whether the new message is an action upon an another (older) message.
