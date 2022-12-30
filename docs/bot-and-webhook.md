@@ -9,7 +9,7 @@ VoceChat bot user can be created by the server admin and used to send messages t
 
 ## What is VoceChat's Webhook
 
-VoceChat's webhook is used to received messages. Each webhook is linked to a bot, and the webhook URL should be provided by the server admin to receive the data received by this very bot user. 
+VoceChat's webhook is used to received messages. Each webhook is linked to a bot, and the webhook URL should be provided by the server admin to receive the data received by this very bot user.
 
 ## Create a Bot
 
@@ -80,7 +80,7 @@ E.g.: send a text message `hello` the to user with `uid:1`. The http request sho
 ```
 POST /bot/send_to_user/1 HTTP/1.1
 content-type: text/plain
-x-api-key: xxxx-xxxx-xxxx
+x-api-key: xxxxxxxxxx
 
 hello
 ```
@@ -90,7 +90,7 @@ E.g.: send a markdown message `hello` to the user with `uid:1`. The http request
 ```
 POST /bot/send_to_user/1 HTTP/1.1
 content-type: text/markdown
-x-api-key: xxxx-xxxx-xxxx
+x-api-key: xxxxxxxxxx
 
 **hello**
 ```
@@ -104,13 +104,12 @@ Add the bot to the channel you want to send message to first!
 :::
 API：`/bot/send_to_group/{gid}`，`gid`is the channel ID. You can get the channel ID on the web front end when chatting in the channel (the URL will have the channel ID).
 
-
 E.g.: send a text message `hello` to the channel with `gid:1` , the http request should be like this (you have to adapt this to the programming language of your own):
 
 ```
 POST /bot/send_to_group/1 HTTP/1.1
 content-type: text/plain
-x-api-key: xxxx-xxxx-xxxx
+x-api-key: xxxxxxxxxx
 
 hello
 ```
@@ -120,7 +119,7 @@ E.g.: send a markdown message `hello` to the channel with `gid:1` , the http req
 ```
 POST /bot/send_to_group/1 HTTP/1.1
 content-type: text/markdown
-x-api-key: xxxx-xxxx-xxxx
+x-api-key: xxxxxxxxxx
 
 **hello**
 ```
@@ -168,7 +167,7 @@ Here are how the messages look like：
   },
   "from_uid": 7910, //from which user
   "mid": 2978, //message ID
-  "target": { "gid": 2 } //to which user or channel, gid means the message is sent to a channel with this gid, uid means the message is sent to a user with this uid. 
+  "target": { "gid": 2 } //to which user or channel, gid means the message is sent to a channel with this gid, uid means the message is sent to a user with this uid.
 }
 ```
 
@@ -188,13 +187,13 @@ When a messaged is edited, the webhook will receive this:
       "content": "hello I'm editing this message lol",
       "content_type": "text/plain",
       "properties": null,
-      "type": "edit" 
+      "type": "edit"
     },
     "mid": 2890, //this is the id of the message that will be replaced
     "type": "reaction"
   },
   "from_uid": 722,
-  "mid": 2979, 
+  "mid": 2979,
   "target": { "uid": 13466 }
 }
 ```
@@ -249,7 +248,7 @@ When a messaged is liked, the webhook will receive this:
   "detail": {
     "detail": {
       "action": "👍", //the emoji used
-      "type": "like" 
+      "type": "like"
     },
     "mid": 2881, //the ID of the message being liked
     "type": "reaction"
@@ -259,4 +258,5 @@ When a messaged is liked, the webhook will receive this:
   "target": { "uid": 13466 }
 }
 ```
+
 There are two "type" parameters, the first one refers to the message type, and the second one refers to whether the new message is an action upon an another (older) message.

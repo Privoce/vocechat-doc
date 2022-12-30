@@ -80,7 +80,7 @@ API：`/bot/send_to_user/{uid}`，`uid`为用户 ID
 ```
 POST /bot/send_to_user/1 HTTP/1.1
 content-type: text/plain
-x-api-key: xxxx-xxxx-xxxx
+x-api-key: xxxxxxxxxxxx
 
 hello
 ```
@@ -90,7 +90,7 @@ hello
 ```
 POST /bot/send_to_user/1 HTTP/1.1
 content-type: text/markdown
-x-api-key: xxxx-xxxx-xxxx
+x-api-key: xxxxxxxxxxxx
 
 **hello**
 ```
@@ -139,7 +139,7 @@ VoceChat 会实时向已设置的 Webhook 推送所有该机器人相关的消�
 {
   "created_at": 1672048481664, //消息创建的时间戳
   "detail": {
-    "content": "message", //消息内容
+    "content": "hello this is my message to you", //消息内容
     "content_type": "text/plain", //消息类型，text/plain：纯文本消息，text/markdown：markdown消息，vocechat/file：文件类消息
     "expires_in": null, //消息过期时长，如果有大于0数字，说明该消息是个限时消息
     "properties": null, //一些有关消息的元数据，比如at信息，如果是个图片消息，会有一些宽高，图片名称等元信息
@@ -164,7 +164,7 @@ VoceChat 会实时向已设置的 Webhook 推送所有该机器人相关的消�
   "created_at": 1672060767247,
   "detail": {
     "detail": {
-      "content": "edit message",
+      "content": "hello I'm editing this message lol",
       "content_type": "text/plain",
       "properties": null,
       "type": "edit" //二级消息类型，edit代表是编辑消息
@@ -206,7 +206,7 @@ VoceChat 会实时向已设置的 Webhook 推送所有该机器人相关的消�
 {
   "created_at": 1672061091917,
   "detail": {
-    "content": "reply message",
+    "content": "I want to reply to a message",
     "content_type": "text/plain",
     "mid": 2858, //被回复的消息ID
     "properties": { "mentions": [] },
