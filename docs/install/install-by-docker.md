@@ -54,14 +54,14 @@ At Nginx configration file（usually at `/etc/nginx/conf.d`）creat new file--`v
 server{
   server_name vocechat.yourdomain.com;
   location / {
-        proxy_pass http://127.0.0.1:3009; # 此处端口号取决于docker运行的对外端口号
+        proxy_pass http://127.0.0.1:3009; # this port number "3009" should be the same as the port of the vocechat docker image
         proxy_redirect off;
         proxy_set_header        Host    $host;
         proxy_set_header        X-Real-IP       $remote_addr;
         proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_next_upstream error timeout invalid_header http_500 http_502 http_503 http_504;
-        proxy_max_temp_file_size 0; # 关掉硬盘缓存，增加写速度
-        # SSE 相关配置
+        proxy_max_temp_file_size 0; # this line aims to maximize the writing speed
+        # SSE Configrations
         proxy_http_version 1.1;
         proxy_set_header Connection '';
     }
@@ -108,14 +108,14 @@ At this step, the `vocechat.yourdomain.com.conf` should be look like this：
 server{
     server_name vocechat.yourdomain.com;
     location / {
-        proxy_pass http://127.0.0.1:3009; # 此处端口号取决于docker运行的对外端口号
+        proxy_pass http://127.0.0.1:3009; # this port number "3009" should be the same as the port of the vocechat docker image
         proxy_redirect off;
         proxy_set_header        Host    $host;
         proxy_set_header        X-Real-IP       $remote_addr;
         proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_next_upstream error timeout invalid_header http_500 http_502 http_503 http_504;
-        proxy_max_temp_file_size 0; # 关掉硬盘缓存，增加写速度
-        # SSE 相关配置
+        proxy_max_temp_file_size 0; # this line aims to maximize the writing speed
+        # SSE Configrations
         proxy_http_version 1.1;
         proxy_set_header Connection '';
     }
@@ -165,7 +165,7 @@ docker run -d --restart=always \
 
 Explanation of the parameters:
 
-- `network.bind:` The IP and port the server binds with，`0.0.0.0` 为所有 IP
+- `network.bind:` The IP and port the server binds with，`0.0.0.0` means all IPs
 - `network.domain:` domain name
 - `network.type:` TLS should be `acme_tls_alpn_01`, see more details here `config/config.toml` .
 - `network.tls.acme.cache_path:` the path to store the certificate.
