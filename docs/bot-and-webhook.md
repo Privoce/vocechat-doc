@@ -160,7 +160,7 @@ Here are how the messages look like：
 {
   "created_at": 1672048481664, //timestamp of when the message is created
   "detail": {
-    "content": "message", //content of the essage
+    "content": "hello this is my message to you", //content of the essage
     "content_type": "text/plain", //content type, three of them: text/plain, text/markdown, vocechat/file
     "expires_in": null, //When will this message disappear: if there is a non-zero number "x", then this message will disappear (get deleted) in x seconds.
     "properties": null, //mentions a person; image metadata.
@@ -227,7 +227,7 @@ When a messaged is a reply message, the webhook will receive this:
 {
   "created_at": 1672061091917,
   "detail": {
-    "content": "reply message",
+    "content": "I want to reply to a message",
     "content_type": "text/plain",
     "mid": 2858, //the ID of the message that is being replied to
     "properties": { "mentions": [] },
