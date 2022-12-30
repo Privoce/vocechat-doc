@@ -52,12 +52,12 @@ VoceChat has three supported messages types：**Text**，**Markdown**和**Files*
 #### Text
 
 - http header: `content-type: text/plain`
-- body: 纯文本，例如：`message`
+- body: `just pure text message like this`
 
 #### Markdown
 
 - http header: `content-type: text/markdown`
-- body: Markdown 源码，例如：`**bold**`
+- body: `**this is an exmaple markdown bolded message**`
 
 #### Files(Images, Vidoes, etc.)
 
@@ -248,7 +248,7 @@ When a messaged is liked, the webhook will receive this:
   "created_at": 1672061213196,
   "detail": {
     "detail": {
-      "action": "👍", //the liked emoji
+      "action": "👍", //the emoji used
       "type": "like" 
     },
     "mid": 2881, //the ID of the message being liked
