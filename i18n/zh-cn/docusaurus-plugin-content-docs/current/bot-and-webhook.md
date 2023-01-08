@@ -73,12 +73,12 @@ VoceChat 目前定义了三种消息类型：**文本消息**，**Markdown 消�
 
 ### 向特定用户发消息，对应私聊场景
 
-API：`/bot/send_to_user/{uid}`，`uid`为用户 ID
+API：`/api/bot/send_to_user/{uid}`，`uid`为用户 ID
 
 举例：向`uid:1`发送纯文本消息：`hello`，http 请求结构（此处只列举出关键描述）：
 
 ```
-POST /bot/send_to_user/1 HTTP/1.1
+POST /api/bot/send_to_user/1 HTTP/1.1
 content-type: text/plain
 x-api-key: xxxxxxxxxxxx
 
@@ -88,7 +88,7 @@ hello
 举例：向`uid:1`发送 markdown 消息：加粗的`hello`，http 请求结构（此处只列举出关键描述）：
 
 ```
-POST /bot/send_to_user/1 HTTP/1.1
+POST /api/bot/send_to_user/1 HTTP/1.1
 content-type: text/markdown
 x-api-key: xxxxxxxxxxxx
 
@@ -102,14 +102,14 @@ x-api-key: xxxxxxxxxxxx
 :::tip
 特定频道必须是该机器人所在的频道
 :::
-API：`/bot/send_to_group/{gid}`，`gid`为频道 ID，使用方式和私聊场景大同小异，只是在 API PATH 上有区别，其他一样。
+API：`/api/bot/send_to_group/{gid}`，`gid`为频道 ID，使用方式和私聊场景大同小异，只是在 API PATH 上有区别，其他一样。
 
 ### 其他相关 API
 
-- `/bot/file/upload`：上传文件 API，用于后续发送文件类消息
-- `/bot`：获取与机器人相关的所有频道列表
-- `/bot/user/{uid}`：获取用户信息
-- `/bot/group/{gid}`：获取频道信息
+- `/api/bot/file/upload`：上传文件 API，用于后续发送文件类消息
+- `/api/bot`：获取与机器人相关的所有频道列表
+- `/api/bot/user/{uid}`：获取用户信息
+- `/api/bot/group/{gid}`：获取频道信息
 
 ## 设置 Webhook
 

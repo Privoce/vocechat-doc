@@ -73,12 +73,12 @@ VoceChat has three supported messages types：**Text**，**Markdown**和**Files*
 
 ### Send message to a user
 
-API：`/bot/send_to_user/{uid}`，`uid`is the user ID. You can get the user ID on the web front end when chatting with the user (the URL will have the user ID).
+API：`/api/bot/send_to_user/{uid}`，`uid`is the user ID. You can get the user ID on the web front end when chatting with the user (the URL will have the user ID).
 
 E.g.: send a text message `hello` the to user with `uid:1`. The http request should be like this (you have to adapt this to the programming language of your own):
 
 ```
-POST /bot/send_to_user/1 HTTP/1.1
+POST /api/bot/send_to_user/1 HTTP/1.1
 content-type: text/plain
 x-api-key: xxxxxxxxxx
 
@@ -88,7 +88,7 @@ hello
 E.g.: send a markdown message `hello` to the user with `uid:1`. The http request should be like this (you have to adapt this to the programming language of your own):
 
 ```
-POST /bot/send_to_user/1 HTTP/1.1
+POST /api/bot/send_to_user/1 HTTP/1.1
 content-type: text/markdown
 x-api-key: xxxxxxxxxx
 
@@ -102,12 +102,12 @@ For more details, see [API doc](/api-doc).
 :::tip
 Add the bot to the channel you want to send message to first!
 :::
-API：`/bot/send_to_group/{gid}`，`gid`is the channel ID. You can get the channel ID on the web front end when chatting in the channel (the URL will have the channel ID).
+API：`/api/bot/send_to_group/{gid}`，`gid`is the channel ID. You can get the channel ID on the web front end when chatting in the channel (the URL will have the channel ID).
 
 E.g.: send a text message `hello` to the channel with `gid:1` , the http request should be like this (you have to adapt this to the programming language of your own):
 
 ```
-POST /bot/send_to_group/1 HTTP/1.1
+POST /api/bot/send_to_group/1 HTTP/1.1
 content-type: text/plain
 x-api-key: xxxxxxxxxx
 
@@ -117,7 +117,7 @@ hello
 E.g.: send a markdown message `hello` to the channel with `gid:1` , the http request should be like this (you have to adapt this to the programming language of your own):
 
 ```
-POST /bot/send_to_group/1 HTTP/1.1
+POST /api/bot/send_to_group/1 HTTP/1.1
 content-type: text/markdown
 x-api-key: xxxxxxxxxx
 
@@ -128,10 +128,10 @@ For more details, see [API doc](/api-doc).
 
 ### Other related APIs
 
-- `/bot/file/upload`：File uploading API. Used before sending files.
-- `/bot`：Get all channels the bot is in.
-- `/bot/user/{uid}`：Get info of a user.
-- `/bot/group/{gid}`：Get info of a group.
+- `/api/bot/file/upload`：File uploading API. Used before sending files.
+- `/api/bot`：Get all channels the bot is in.
+- `/api/bot/user/{uid}`：Get info of a user.
+- `/api/bot/group/{gid}`：Get info of a group.
 
 ## Webhook Settings
 
