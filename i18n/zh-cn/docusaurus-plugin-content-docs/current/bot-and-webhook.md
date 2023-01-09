@@ -78,7 +78,7 @@ API：`/api/bot/send_to_user/{uid}`，`uid`为用户 ID
 举例：向`uid:1`发送纯文本消息：`hello`，http 请求结构（此处只列举出关键描述）：
 
 ```
-POST /api/bot/send_to_user/1 HTTP/1.1
+POST /api/bot/send_to_user/1
 content-type: text/plain
 x-api-key: xxxxxxxxxxxx
 
@@ -88,7 +88,7 @@ hello
 举例：向`uid:1`发送 markdown 消息：加粗的`hello`，http 请求结构（此处只列举出关键描述）：
 
 ```
-POST /api/bot/send_to_user/1 HTTP/1.1
+POST /api/bot/send_to_user/1
 content-type: text/markdown
 x-api-key: xxxxxxxxxxxx
 

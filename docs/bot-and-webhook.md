@@ -78,7 +78,7 @@ API：`/api/bot/send_to_user/{uid}`，`uid`is the user ID. You can get the user 
 E.g.: send a text message `hello` the to user with `uid:1`. The http request should be like this (you have to adapt this to the programming language of your own):
 
 ```
-POST /api/bot/send_to_user/1 HTTP/1.1
+POST /api/bot/send_to_user/1
 content-type: text/plain
 x-api-key: xxxxxxxxxx
 
@@ -88,7 +88,7 @@ hello
 E.g.: send a markdown message `hello` to the user with `uid:1`. The http request should be like this (you have to adapt this to the programming language of your own):
 
 ```
-POST /api/bot/send_to_user/1 HTTP/1.1
+POST /api/bot/send_to_user/1
 content-type: text/markdown
 x-api-key: xxxxxxxxxx
 
@@ -107,7 +107,7 @@ API：`/api/bot/send_to_group/{gid}`，`gid`is the channel ID. You can get the c
 E.g.: send a text message `hello` to the channel with `gid:1` , the http request should be like this (you have to adapt this to the programming language of your own):
 
 ```
-POST /api/bot/send_to_group/1 HTTP/1.1
+POST /api/bot/send_to_group/1
 content-type: text/plain
 x-api-key: xxxxxxxxxx
 
@@ -117,7 +117,7 @@ hello
 E.g.: send a markdown message `hello` to the channel with `gid:1` , the http request should be like this (you have to adapt this to the programming language of your own):
 
 ```
-POST /api/bot/send_to_group/1 HTTP/1.1
+POST /api/bot/send_to_group/1
 content-type: text/markdown
 x-api-key: xxxxxxxxxx
 
