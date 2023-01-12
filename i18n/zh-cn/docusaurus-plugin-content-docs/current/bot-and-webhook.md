@@ -3,6 +3,10 @@ sidebar_position: 3.2
 title: 机器人与Webhook
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+
 ## 什么是 VoceChat 机器人
 
 VoceChat 机器人本质是一个可以让你可编程控制的 VoceChat 账号，创建成功后，借助`API Key`可以便捷地向 VoceChat 发消息（频道和私聊都可以）。
@@ -78,12 +82,51 @@ API：`/api/bot/send_to_user/{uid}`，`uid`为用户 ID
 举例：向`uid:1`发送纯文本消息：`hello`，http 请求结构（此处只列举出关键描述）：
 
 ```
-POST /api/bot/send_to_user/1
+POST https://replace.yours.domain/api/bot/send_to_user/1
 content-type: text/plain
 x-api-key: xxxxxxxxxxxx
 
 hello
 ```
+具体编程语言举例：
+:::tip 温馨提示
+无论哪种编程语言，本质上都是为了构建上面举例的HTTP请求，
+:::
+<Tabs groupId="langs">
+  <TabItem value="js" label="Node.js" default>
+
+   ```js
+    //向uid为1的用户发送纯文本消息：hello
+    import axios from 'axios';
+    axios.post(`https://replace.your.domain/api/bot/send_to_user/1`,`hello`,{
+      headers:{
+        'content-type':"text/plain",
+        'x-api-key':"xxxxxxxxxxxx"
+      }
+    }).then(resp=>{
+      console.log("发送成功，消息ID：",resp.data)
+    }).catch(err=>{
+      console.error("发送失败：",err.message)
+    })
+   ```
+
+  </TabItem>
+  <TabItem value="java" label="Java">
+
+    ```java
+      coming soon
+    ```
+
+  </TabItem>
+  <TabItem value="php" label="PHP">
+
+    ```php
+      coming soon
+    ```
+
+  </TabItem>
+  
+</Tabs>
 
 举例：向`uid:1`发送 markdown 消息：加粗的`hello`，http 请求结构（此处只列举出关键描述）：
 
@@ -95,6 +138,43 @@ x-api-key: xxxxxxxxxxxx
 **hello**
 ```
 
+具体编程语言举例：
+
+<Tabs groupId="langs">
+  <TabItem value="js" label="Node.js" default>
+
+   ```js
+    //向uid为1的用户发送markdown消息： 加粗的hello文本
+    import axios from 'axios';
+    axios.post(`https://replace.your.domain/api/bot/send_to_user/1`,`**hello**`,{
+      headers:{
+        'content-type':"text/markdown",
+        'x-api-key':"xxxxxxxxxxxx"
+      }
+    }).then(resp=>{
+      console.log("发送成功，消息ID：",resp.data)
+    }).catch(err=>{
+      console.error("发送失败：",err.message)
+    })
+   ```
+
+  </TabItem>
+  <TabItem value="java" label="Java">
+
+    ```java
+      coming soon
+    ```
+
+  </TabItem>
+  <TabItem value="php" label="PHP">
+
+    ```php
+      coming soon
+    ```
+
+  </TabItem>
+  
+</Tabs>
 具体使用方式请参考自部署的 API 文档
 
 ### 向特定频道发消息，对应群聊场景
