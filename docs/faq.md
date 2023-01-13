@@ -41,9 +41,9 @@ This API supports chunck uploading (optional), if used（recommended chunck size
 - `chunk_is_last`: whether this is the last chunck
 
 
-:::tip Tip
-If you want to upload a whole file together, set chunk_data to the whole file, and set chunk_is_last to be true, then you can upload the file all at once. :::
-
+:::tip 注意
+If you want to upload a whole file together, set chunk_data to the whole file, and set chunk_is_last to be true, then you can upload the file all at once.
+:::
 
 When the last chunck is uploaded, you will receive:
 ``` json
