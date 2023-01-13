@@ -39,6 +39,10 @@ VoceChat是一个完全由用户自部署使用的产品，部署成功，除了
 - `file_id`：即第一步拿到的`file_id`
 - `chunk_data`：该次循环的文件分片
 - `chunk_is_last`：是否是最后一个分片
+:::tip 注意
+如需要一次上传
+chunk_data 设为整个文件内容， chunk_is_last 为 true，就可以一次性上传。
+:::tip 注意
 
 最后一个分片上传完，拿到API的响应：
 ``` json
