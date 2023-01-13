@@ -5,7 +5,7 @@ title: Frequently Asked Questions
 
 ## Is VoceChat Free？
 
-VoceChat has a free tier for community server no more than **20人** members. You need to purchase a license if your server is larger than 20 members.
+VoceChat has a free tier for community server no more than **20** members. You need to purchase a license if your server is larger than 20 members.
 
 ## Is there a backdoor?
 
@@ -20,7 +20,7 @@ We have a default official setting of the Firebase, which is used to send notifi
 VoceChat sending files requires uploading the file(s) first:
 
 :::tip Tip
-Check [swagger](/api-doc)to see the API details, also, all API involved requires the user's session token to be passed through header: `x-api-key`.
+Check [swagger](/api-doc) to see the API details, also, all API involved requires the user's session token to be passed through header: `x-api-key`.
 :::
 
 ### First step: prepare
