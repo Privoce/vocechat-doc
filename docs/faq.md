@@ -1,46 +1,50 @@
 ---
 sidebar_position: 99
-title: 常见问题
+title: Frequently Asked Questions
 ---
 
-## VoceChat是完全免费吗？
+## Is VoceChat Free？
 
-目前VoceChat的使用是完全免费的，只是有用户数量限制：**20人**。一般的个人用户完全够用，如需提高人数限制，请自行购买升级证书，或者[联系我们](/contact)，申请免费升级。
+VoceChat has a free tier for community server no more than **20人** members. You need to purchase a license if your server is larger than 20 members.
 
-## VoceChat有后门吗？
+## Is there a backdoor?
 
-VoceChat是一个完全由用户自部署使用的产品，部署成功，除了升级证书，其它所有使用均在自部署的服务器上完成，没有后门，包括我们都不知道您已部署成功的实例地址。后期，我们会将后端开源，进一步接受监督。
+VoceChat has no backdoor, no data collection, everything is hosted on your own server, even the license mechanism is based on RSA and runs locally.
 
-## 一直收不到消息推送
+## Can't receive notification?
 
-目前VoceChat的消息推送需借助Google相关服务，所以，由于众所周知的原因，请确认您部署的服务器是否在中国大陆。
+We have a default official setting of the Firebase, which is used to send notification. If Google service cannot be reached by your server or device, then you may not receive notification as expected.
 
-## 文件消息（包括图片）的发送，涉及哪些API，如何完成消息发送？
+## How to send files with VoceChat API？
 
-与文本消息不同，VoceChat发送文件消息，需要多个API配合完成，在此按照使用顺序介绍下：
+VoceChat sending files requires uploading the file(s) first:
 
-:::tip 注意
-下面提到的API均可在已部署的[swagger文档](/api-doc)中找到，另，涉及的API均有登录校验，即需要通过header：`x-api-key`将登录token带过去，下面不再赘述。
+:::tip Tip
+Check [swagger](/api-doc)to see the API details, also, all API involved requires the user's session token to be passed through header: `x-api-key`.
 :::
 
-### 第一步：准备工作
+### First step: prepare
 
-此时用到的API：`/resource/file/prepare`。
-调用该API的目的是告诉后端要上传文件了，POST过去两个信息：
-- `content_type`：文件类型，值和http里的header：`content-type`一致，具体请参考：[MIME](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types)
-- `filename`：文件名，带扩展名的文件名，比如：file.txt,abc.png
+API：`/resource/file/prepare`。
+This will POST two parameters：
+- `content_type`: should stay the same as in the http header: `content-type`. More infr: [MIME](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types)
+- `filename`: filename and the extension, e.g., file.txt, abc.png.
 
-该API会响应一个随机字符串，即`file_id`，用于后续的API。
+A `file_id` will be generated which will be used later.
 
-### 第二步：上传文件
-此时用到的API：`/resource/file/upload`。
-该API支持分片上传文件，客户端需自行完成文件分片事宜（建议分片大小设置为200KB）。所以根据文件大小，很可能会多次循环调用，每次需要POST过去三个信息：
+### Second step：upload
+API：`/resource/file/upload`.
+This API supports chunck uploading (optional), if used（recommended chunck size is 200KB), you need to call this several times, each call will POST the following:
 
-- `file_id`：即第一步拿到的`file_id`
-- `chunk_data`：该次循环的文件分片
-- `chunk_is_last`：是否是最后一个分片
+- `file_id`: the last step's `file_id`
+- `chunk_data`: the file chunck
+- `chunk_is_last`: whether this is the last chunck
 
-最后一个分片上传完，拿到API的响应：
+:::tip Tip If you want to upload a whole file together, set chunk_data to the whole file, and set chunk_is_last to be true, then you can upload the file all at once. :::tip Tip
+
+
+
+When the last chunck is uploaded, you will receive:
 ``` json
 {
   "path": "string",
@@ -52,23 +56,23 @@ VoceChat是一个完全由用户自部署使用的产品，部署成功，除了
   }
 }
 ```
-此时，我们主要用到的字段是：`path`，用于后续的API
+We need to use this `path` in the next step!
 
-### 第三步：发送消息
+### Third step：send file message
 
-此时用到的API取决于发消息的上下文：频道或者私聊。不过不同上下文只是path路径不同，传参和响应格式是一样的，所以我们此处仅使用发送私聊消息举例：
+Here is an example to send this file to a user:
 
-用到的API：`/user/{uid}/send`。使用方式：
-- 设置header：`content-type:vocechat/file`
-- API 路径里的`uid`即为正在私聊的用户id
-- POST内容
+API：`/user/{uid}/send`
+- Set header: `content-type:vocechat/file`
+- The `uid` should be the receiver's uid (see it at the front end url)
+- POST
   ``` json
   {
     "path": "string"
   }
   ```
-  此处的`path`即为第二步拿到的`path`
+  This `path` is the `path` you received in the second step.
 
-## 部署成功了，也完成了初始化，但是界面显示一直加载中
+## After installing and onboarding, there is always a loading sign.
 
-请确认您的API有没有使用CDN，如果有，请去除，或者针对`/api`路径做排除。
+Make sure your server API has no CDN, you have to make sure `/api` has no CDN.
