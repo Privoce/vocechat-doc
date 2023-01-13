@@ -79,7 +79,7 @@ VoceChat 目前定义了三种消息类型：**文本消息**，**Markdown 消�
 
 API：`/api/bot/send_to_user/{uid}`，`uid`为用户 ID
 
-举例：向`uid:1`发送纯文本消息：`hello`，http 请求结构（此处只列举出关键描述）：
+HTTP请求举例：向`uid:1`发送纯文本消息：`hello`，http 请求结构（此处只列举出关键描述）：
 
 ```
 POST https://replace.yours.domain/api/bot/send_to_user/1
@@ -90,16 +90,18 @@ hello
 ```
 具体编程语言举例：
 :::tip 温馨提示
-无论哪种编程语言，本质上都是为了构建上面举例的HTTP请求，
+无论哪种编程语言，本质上都是为了构建上面举例的HTTP请求
 :::
 <Tabs groupId="langs">
   <TabItem value="js" label="Node.js" default>
 
    ```js
-    //向uid为1的用户发送纯文本消息：hello
+    //我们使用最常用的axios发请求，向uid为1的用户发送纯文本消息：hello
     import axios from 'axios';
+
     axios.post(`https://replace.your.domain/api/bot/send_to_user/1`,`hello`,{
       headers:{
+        // highlight-next-line
         'content-type':"text/plain",
         'x-api-key':"xxxxxxxxxxxx"
       }
@@ -128,7 +130,7 @@ hello
   
 </Tabs>
 
-举例：向`uid:1`发送 markdown 消息：加粗的`hello`，http 请求结构（此处只列举出关键描述）：
+HTTP请求举例：向`uid:1`发送 markdown 消息：加粗的`hello`，http 请求结构（此处只列举出关键描述）：
 
 ```
 POST /api/bot/send_to_user/1
@@ -144,10 +146,12 @@ x-api-key: xxxxxxxxxxxx
   <TabItem value="js" label="Node.js" default>
 
    ```js
-    //向uid为1的用户发送markdown消息： 加粗的hello文本
+    //我们使用最常用的axios发请求，向uid为1的用户发送markdown消息：加粗的hello
     import axios from 'axios';
+
     axios.post(`https://replace.your.domain/api/bot/send_to_user/1`,`**hello**`,{
       headers:{
+        // highlight-next-line
         'content-type':"text/markdown",
         'x-api-key':"xxxxxxxxxxxx"
       }
