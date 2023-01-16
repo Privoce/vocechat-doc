@@ -149,7 +149,7 @@ VoceChat will send messages to webhooks including:
 - **Edit of a Message**
 - **Deletion of a Message**
 - **Reply of a Message**
-- **Like of a Message**
+<!-- - **Like of a Message** -->
 
 Here are how the messages look like：
 
@@ -238,7 +238,7 @@ When a messaged is a reply message, the webhook will receive this:
 }
 ```
 
-### Like
+<!-- ### Like
 
 When a messaged is liked, the webhook will receive this:
 
@@ -257,6 +257,6 @@ When a messaged is liked, the webhook will receive this:
   "mid": 2982,
   "target": { "uid": 13466 }
 }
-```
+``` -->
 
 There are two "type" parameters, the first one refers to the message type, and the second one refers to whether the new message is an action upon an another (older) message.

@@ -190,10 +190,11 @@ API：`/api/bot/send_to_group/{gid}`，`gid`为频道 ID，使用方式和私聊
 
 ### 其他相关 API
 
-- `/api/bot/file/upload`：上传文件 API，用于后续发送文件类消息
 - `/api/bot`：获取与机器人相关的所有频道列表
-- `/api/bot/user/{uid}`：获取用户信息
-- `/api/bot/group/{gid}`：获取频道信息
+- `/api/bot/file/prepare`：上传文件前的准备 API，其返回值在后续调用上传API的时候会用到
+- `/api/bot/file/upload`：上传文件 API，用于后续发送文件类消息
+- `/api/bot/user/{uid}`：获取具体的用户信息
+- `/api/bot/group/{gid}`：获取具体的频道信息
 
 ## 设置 Webhook
 
@@ -211,7 +212,7 @@ VoceChat 会实时向已设置的 Webhook 推送所有该机器人相关的消�
 - **编辑消息**
 - **删除消息**
 - **回复消息**
-- **点赞**
+<!-- - **点赞** -->
 
 下面分别举例：
 
@@ -302,7 +303,7 @@ VoceChat 会实时向已设置的 Webhook 推送所有该机器人相关的消�
 }
 ```
 
-### 点赞
+<!-- ### 点赞
 
 消息被点赞时，会推送此数据：
 
@@ -321,4 +322,4 @@ VoceChat 会实时向已设置的 Webhook 推送所有该机器人相关的消�
   "mid": 2982,
   "target": { "uid": 13466 }
 }
-```
+``` -->
