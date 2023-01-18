@@ -196,6 +196,10 @@ API：`/api/bot/send_to_group/{gid}`，`gid`为频道 ID，使用方式和私聊
 - `/api/bot/user/{uid}`：获取具体的用户信息
 - `/api/bot/group/{gid}`：获取具体的频道信息
 
+:::tip
+机器人文件上传相关API的使用，请参考[FAQ](/faq#file_msg)
+:::
+
 ## 设置 Webhook
 
 :::warning 重要提示
@@ -212,7 +216,6 @@ VoceChat 会实时向已设置的 Webhook 推送所有该机器人相关的消�
 - **编辑消息**
 - **删除消息**
 - **回复消息**
-<!-- - **点赞** -->
 
 下面分别举例：
 
@@ -302,24 +305,3 @@ VoceChat 会实时向已设置的 Webhook 推送所有该机器人相关的消�
   "target": { "uid": 13466 }
 }
 ```
-
-<!-- ### 点赞
-
-消息被点赞时，会推送此数据：
-
-```json
-{
-  "created_at": 1672061213196,
-  "detail": {
-    "detail": {
-      "action": "👍", //具体的点赞内容，是个emoji字符
-      "type": "like" //二级消息类型，like代表是点赞消息
-    },
-    "mid": 2881, //被点赞的消息ID
-    "type": "reaction"
-  },
-  "from_uid": 722,
-  "mid": 2982,
-  "target": { "uid": 13466 }
-}
-``` -->

@@ -39,9 +39,15 @@ docker run -d --restart=always \
   --name vocechat-server \
   -v ~/.vocechat-server/data:/home/vocechat-server/data \
   privoce/vocechat-server:latest \
-  # network.frontend_url为必填参数，务必放在最后，是个网址，所以不要忘了根据实际情况加协议http(s)://
   --network.frontend_url "https://vocechat.yourdomain.com"
 ```
+:::tip
+
+- `-v ~/.vocechat-server/data:/home/vocechat-server/data`目的是将docker内的数据映射出来，作用是后续vocechat-server升级同时保留已有数据，`~/.vocechat-server/data`只是举例，可自行定义。
+- `network.frontend_url`用于生成邀请链接，发送邀请邮件等场景，为可选参数，是个带网络协议的域名，所以不要忘了根据实际情况加协议`http(s)`。如果部署时未指定，也可在初始化Server流程时设置。
+
+:::
+
 
 #### 配置 Nginx http 反向代理
 

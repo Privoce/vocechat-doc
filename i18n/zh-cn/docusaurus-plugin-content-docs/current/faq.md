@@ -17,7 +17,7 @@ VoceChat是一个完全由用户自部署使用的产品，部署成功，除了
 
 ## 文件消息（包括图片）的发送，涉及哪些API，如何完成消息发送？{#file_msg}
 
-与文本消息不同，VoceChat发送文件消息，需要多个API配合完成，在此按照使用顺序介绍下：
+与文本消息不同，VoceChat(包括机器人)发送文件消息，需要多个API配合完成，在此按照使用顺序介绍下：
 
 :::tip 注意
 下面提到的API均可在已部署的[swagger文档](/api-doc)中找到，另，涉及的API均有登录校验，即需要通过header：`x-api-key`将登录token带过去，下面不再赘述。
@@ -34,29 +34,31 @@ VoceChat是一个完全由用户自部署使用的产品，部署成功，除了
 
 ### 第二步：上传文件
 此时用到的API：`/resource/file/upload`。
-该API支持分片上传文件，客户端需自行完成文件分片事宜（建议分片大小设置为200KB）。所以根据文件大小，很可能会多次循环调用，每次需要POST过去三个信息：
+该API默认是分片上传文件，客户端需自行完成文件分片事宜（大小需根据自己的网络服务器配置而定，建议分片大小设置为200KB）。所以根据文件大小，很可能会多次循环调用，每次需要POST过去三个信息：
 
 - `file_id`：即第一步拿到的`file_id`
 - `chunk_data`：该次循环的文件分片
 - `chunk_is_last`：是否是最后一个分片
 
 :::tip 注意
-如需要一次上传
-chunk_data 设为整个文件内容， chunk_is_last 为 true，就可以一次性上传。
-:::tip 注意
+文件分片不是强制的，也可以一次性上传：`chunk_data` 设为整个文件内容， `chunk_is_last` 为 `true`，相当于一次性上传文件。
+:::
 
 最后一个分片上传完，拿到API的响应：
 ``` json
 {
   "path": "string",
-  "size": 0,
+  "size": number,
   "hash": "string",
   "image_properties": {
-    "width": 0,
-    "height": 0
+    "width": number,
+    "height": number
   }
 }
 ```
+:::tip 注意
+如果是图片，会有`image_properties`相关信息
+:::
 此时，我们主要用到的字段是：`path`，用于后续的API
 
 ### 第三步：发送消息
