@@ -198,7 +198,7 @@ docker logs -f vocechat-server
 cp -rf ~/.vocechat-server/data ~/.vocechat-server/backup
 ```
 
-### 更新 Docker
+### 升级server版本（更新docker镜像）{#upgrade}
 
 ```shell
 docker stop vocechat-server

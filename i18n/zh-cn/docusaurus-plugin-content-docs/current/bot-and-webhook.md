@@ -36,7 +36,7 @@ API Key 是机器人与 VoceChat 通信的凭证，请妥善保存，如有泄�
 给 API Key 起个名称，用以区分其他 API Key：
 ![创建api key](image/bot.api.key.png)
 复制并妥善保存生成的 API Key：
-![copyapi key](image/bot.copy.api.key.png)
+![copy api key](image/bot.copy.api.key.png)
 
 ## API Key 的使用
 
@@ -67,6 +67,7 @@ VoceChat 目前定义了三种消息类型：**文本消息**，**Markdown 消�
 
 - http header: `content-type: vocechat/file`
 - body:
+
   ```json
   {
     "path": "string"
@@ -88,6 +89,7 @@ x-api-key: xxxxxxxxxxxx
 
 hello
 ```
+
 具体编程语言举例：
 :::tip 温馨提示
 无论哪种编程语言，本质上都是为了构建上面举例的HTTP请求
@@ -115,16 +117,12 @@ hello
   </TabItem>
   <TabItem value="java" label="Java">
 
-    ```java
       coming soon
-    ```
 
   </TabItem>
   <TabItem value="php" label="PHP">
 
-    ```php
       coming soon
-    ```
 
   </TabItem>
   
@@ -165,16 +163,12 @@ x-api-key: xxxxxxxxxxxx
   </TabItem>
   <TabItem value="java" label="Java">
 
-    ```java
       coming soon
-    ```
 
   </TabItem>
   <TabItem value="php" label="PHP">
 
-    ```php
       coming soon
-    ```
 
   </TabItem>
   
@@ -230,7 +224,7 @@ VoceChat 会实时向已设置的 Webhook 推送所有该机器人相关的消�
     "content": "hello this is my message to you", //消息内容
     "content_type": "text/plain", //消息类型，text/plain：纯文本消息，text/markdown：markdown消息，vocechat/file：文件类消息
     "expires_in": null, //消息过期时长，如果有大于0数字，说明该消息是个限时消息
-    "properties": null, //一些有关消息的元数据，比如at信息，如果是个图片消息，会有一些宽高，图片名称等元信息
+    "properties": null, //一些有关消息的元数据，比如at信息，文件消息的具体类型信息，如果是个图片消息，还会有一些宽高，图片名称等元信息
     "type": "normal" //消息类型，normal代表是新消息
   },
   "from_uid": 7910, //来自于谁
@@ -238,6 +232,16 @@ VoceChat 会实时向已设置的 Webhook 推送所有该机器人相关的消�
   "target": { "gid": 2 } //发送给谁，gid代表是发送给频道，uid代表是发送给个人，此时的数据结构举例：{"uid":1}
 }
 ```
+
+#### 文件消息
+
+消息类型 `text/plain`和`text/markdown`同归属于文本消息，数据结构比较简单明了，无需赘述。在此特别说明下`vocechat/file`文件消息：
+
+- 此时`content`字段值，是指资源的`file_path`，需做一次转换，才能拿到完整的资源地址，转换规则：`{PROTOCOL}://{SERVER_HOST}/api/resource/file?file_path={encodeURI(content)}`
+  - `PROTOCOL`:`http` 或者 `https`，根据自己部署实例的实际情况而定
+  - `SERVER_HOST`即自己部署实例的主机名（如有特殊端口号，比如`3000`，不要忘记加上）
+  - `file_path`参数需要做一次URI转义
+- `properties`有具体的文件类型信息，以及其它一些元信息，比如文件名，文件大小，如果是个图片消息，还会有一些宽高等
 
 :::tip
 以下的数据结构和上面的大同小异，只注释关键区别部分
