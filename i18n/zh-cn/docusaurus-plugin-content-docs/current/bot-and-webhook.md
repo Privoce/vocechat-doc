@@ -239,6 +239,22 @@ VoceChat 会实时向已设置的 Webhook 推送所有该机器人相关的消�
 
 消息类型 `text/plain`和`text/markdown`同归属于文本消息，数据结构比较简单明了，无需赘述。在此特别说明下`vocechat/file`文件消息：
 
+```json
+{
+  "created_at": 1672048481664, 
+  "detail": {
+    "content": "2023/1/26/cbb7ba67-10d8-4aad-b7c3-b8a7b3ecfc15", //资源的file_path
+    "content_type": "vocechat/file", //消息类型，text/plain：纯文本消息，text/markdown：markdown消息，vocechat/file：文件类消息
+    "expires_in": null, 
+    "properties": {content_type:"image/png",height:332,width:445,name:"xxx.png",size:234235},//有关该文件的元信息 
+    "type": "normal"
+  },
+  "from_uid": 7910, 
+  "mid": 2978, 
+  "target": { "gid": 2 }
+}
+```
+
 - 此时`content`字段值，是指资源的`file_path`，需做一次转换，才能拿到完整的资源地址，转换规则：`{PROTOCOL}://{SERVER_HOST}/api/resource/file?file_path={encodeURI(content)}`
   - `PROTOCOL`:`http` 或者 `https`，根据自己部署实例的实际情况而定
   - `SERVER_HOST`即自己部署实例的主机名（如有特殊端口号，比如`3000`，不要忘记加上）
