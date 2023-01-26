@@ -17,7 +17,7 @@ VoceChat是一个完全由用户自部署使用的产品，部署成功，除了
 
 ## 文件消息（包括图片）的发送，涉及哪些API，如何完成消息发送？{#file_msg}
 
-与文本消息不同，VoceChat(包括机器人)发送文件消息，需要多个API配合完成，在此按照使用顺序介绍下：
+与文本消息不同，VoceChat发送文件消息，包括机器人场景，需要多个API配合完成，在此按照使用顺序介绍下：
 
 :::tip 注意
 下面提到的API均可在已部署的[swagger文档](/api-doc)中找到，另，涉及的API均有登录校验，即需要通过header：`x-api-key`将登录token带过去，下面不再赘述。
@@ -25,7 +25,7 @@ VoceChat是一个完全由用户自部署使用的产品，部署成功，除了
 
 ### 第一步：准备工作
 
-此时用到的API：`/resource/file/prepare`。
+此时用到的API：`/api/resource/file/prepare`**(如果是机器人，API：`/api/bot/file/prepare`)**。
 调用该API的目的是告诉后端要上传文件了，POST过去两个信息：
 - `content_type`：文件类型，值和http里的header：`content-type`一致，具体请参考：[MIME](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types)
 - `filename`：文件名，带扩展名的文件名，比如：file.txt,abc.png
@@ -33,7 +33,7 @@ VoceChat是一个完全由用户自部署使用的产品，部署成功，除了
 该API会响应一个随机字符串，即`file_id`，用于后续的API。
 
 ### 第二步：上传文件
-此时用到的API：`/resource/file/upload`。
+此时用到的API：`/api/resource/file/upload`**(如果是机器人，API：`/api/bot/file/upload`)**。
 该API默认是分片上传文件，客户端需自行完成文件分片事宜（大小需根据自己的网络服务器配置而定，建议分片大小设置为200KB）。所以根据文件大小，很可能会多次循环调用，每次需要POST过去三个信息：
 
 - `file_id`：即第一步拿到的`file_id`
@@ -65,7 +65,7 @@ VoceChat是一个完全由用户自部署使用的产品，部署成功，除了
 
 此时用到的API取决于发消息的上下文：频道或者私聊。不过不同上下文只是path路径不同，传参和响应格式是一样的，所以我们此处仅使用发送私聊消息举例：
 
-用到的API：`/user/{uid}/send`。使用方式：
+用到的API：`/api/user/{uid}/send`。使用方式：
 - 设置header：`content-type:vocechat/file`
 - API 路径里的`uid`即为正在私聊的用户id
 - POST内容
