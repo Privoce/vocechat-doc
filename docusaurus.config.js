@@ -29,9 +29,14 @@ const config = {
 
   presets: [
     [
-      "classic",
-      /** @type {import('@docusaurus/preset-classic').Options} */
+      "docusaurus-preset-openapi",
+      /** @type {import('docusaurus-preset-openapi').Options} */
+      // /** @type {import('@docusaurus/preset-classic').Options} */
       ({
+        api: {
+          path: "spec.json",
+          routeBasePath: "/api",
+        },
         docs: {
           routeBasePath: "/",
           sidebarPath: require.resolve("./sidebars.js"),
@@ -47,6 +52,36 @@ const config = {
         },
       }),
     ],
+    // [
+    //   "docusaurus-preset-openapi",
+    //   /** @type {import('docusaurus-preset-openapi').Options} */
+    //   {
+    //     api: {
+    //       path: "https://dev.voce.chat/api/spec",
+    //       routeBasePath: "/api",
+    //     },
+    //     // docs: {
+    //     //   sidebarPath: require.resolve("./sidebars.js"),
+    //     //   routeBasePath: "/",
+    //     // },
+    //     // theme: {
+    //     //   customCss: require.resolve("./src/css/custom.css"),
+    //     // },
+    //   },
+    // ],
+    // Redocusaurus config
+    // [
+    //   "redocusaurus",
+    //   {
+    //     // Plugin Options for loading OpenAPI files
+    //     specs: [
+    //       {
+    //         spec: "https://dev.voce.chat/api/spec",
+    //         route: "/api/",
+    //       },
+    //     ],
+    //   },
+    // ],
   ],
 
   themeConfig:
@@ -72,6 +107,11 @@ const config = {
         items: [
           {
             type: "localeDropdown",
+            position: "left",
+          },
+          {
+            label: "APIs",
+            to: "/api",
             position: "left",
           },
           // {
@@ -123,7 +163,7 @@ const config = {
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
-        additionalLanguages: ["nginx", "java", "php"],
+        additionalLanguages: ["nginx", "java", "scala", "php"],
       },
       algolia: {
         // The application ID provided by Algolia

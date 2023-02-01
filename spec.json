@@ -1,0 +1,7910 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Voce Chat",
+    "version": "0.3.3"
+  },
+  "servers": [
+    {
+      "url": "https://dev.voce.chat/api"
+    },
+    {
+      "url": "https://privoce.voce.chat/api"
+    }
+  ],
+  "tags": [
+    {
+      "name": "AdminAgora",
+      "description": "Agora management operations"
+    },
+    {
+      "name": "AdminFirebase",
+      "description": "Firebase management operations"
+    },
+    {
+      "name": "AdminGithubAuth",
+      "description": "Google auth management operations"
+    },
+    {
+      "name": "AdminGoogleAuth",
+      "description": "Google auth management operations"
+    },
+    {
+      "name": "AdminLogin",
+      "description": "Login management operations"
+    },
+    {
+      "name": "AdminSmtp",
+      "description": "Smtp management operations"
+    },
+    {
+      "name": "AdminSystem",
+      "description": "System management operations"
+    },
+    {
+      "name": "AdminUser",
+      "description": "User management operations"
+    },
+    {
+      "name": "Bot",
+      "description": "Bot operations"
+    },
+    {
+      "name": "Favorite",
+      "description": "Favorite archive operations"
+    },
+    {
+      "name": "Group",
+      "description": "Group operations"
+    },
+    {
+      "name": "License",
+      "description": "License operations"
+    },
+    {
+      "name": "Message",
+      "description": "Message operations"
+    },
+    {
+      "name": "Resource",
+      "description": "Resource operations"
+    },
+    {
+      "name": "Token",
+      "description": "Token operations"
+    },
+    {
+      "name": "User",
+      "description": "User operations"
+    }
+  ],
+  "paths": {
+    "/token/openid/authorize": {
+      "post": {
+        "tags": [
+          "Token"
+        ],
+        "summary": "OpenId authorize",
+        "requestBody": {
+          "content": {
+            "application/json; charset=utf-8": {
+              "schema": {
+                "$ref": "#/components/schemas/OpenIdAuthorizeRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/OpenIdAuthorizeResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/token/metamask/nonce": {
+      "get": {
+        "tags": [
+          "Token"
+        ],
+        "summary": "Get the nonce for MetaMask login",
+        "parameters": [
+          {
+            "name": "public_address",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "required": true,
+            "deprecated": false,
+            "explode": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/token/create_third_party_key": {
+      "post": {
+        "tags": [
+          "Token"
+        ],
+        "summary": "Create a key for third-party user login.",
+        "parameters": [
+          {
+            "name": "X-SECRET",
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "required": true,
+            "deprecated": false,
+            "explode": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json; charset=utf-8": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateThirdPartyKeyRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/token/login_guest": {
+      "get": {
+        "tags": [
+          "Token"
+        ],
+        "summary": "Login as guest",
+        "responses": {
+          "200": {
+            "description": "Login success",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoginResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Login method does not supported"
+          },
+          "401": {
+            "description": "Invalid account or password"
+          },
+          "404": {
+            "description": "User does not exists"
+          },
+          "423": {
+            "description": "User has been frozen"
+          },
+          "409": {
+            "description": "Email collision"
+          },
+          "410": {
+            "description": "Account not associated"
+          }
+        }
+      }
+    },
+    "/token/login": {
+      "post": {
+        "tags": [
+          "Token"
+        ],
+        "summary": "Login",
+        "requestBody": {
+          "content": {
+            "application/json; charset=utf-8": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Login success",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoginResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Login method does not supported"
+          },
+          "401": {
+            "description": "Invalid account or password"
+          },
+          "404": {
+            "description": "User does not exists"
+          },
+          "423": {
+            "description": "User has been frozen"
+          },
+          "409": {
+            "description": "Email collision"
+          },
+          "410": {
+            "description": "Account not associated"
+          }
+        }
+      }
+    },
+    "/token/bind": {
+      "post": {
+        "tags": [
+          "Token"
+        ],
+        "summary": "Bind credential",
+        "requestBody": {
+          "content": {
+            "application/json; charset=utf-8": {
+              "schema": {
+                "$ref": "#/components/schemas/BindRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Login success"
+          },
+          "403": {
+            "description": "Login method does not supported"
+          },
+          "401": {
+            "description": "Invalid credential"
+          },
+          "409": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "Token": []
+          }
+        ]
+      }
+    },
+    "/token/credentials": {
+      "get": {
+        "tags": [
+          "Token"
+        ],
+        "summary": "Get the credentials of current user",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/CredentialsResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Token": []
+          }
+        ]
+      }
+    },
+    "/token/renew": {
+      "post": {
+        "tags": [
+          "Token"
+        ],
+        "summary": "Renew the refresh token",
+        "requestBody": {
+          "content": {
+            "application/json; charset=utf-8": {
+              "schema": {
+                "$ref": "#/components/schemas/RenewTokenRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Renew success",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/RenewTokenResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Illegal token"
+          }
+        }
+      }
+    },
+    "/token/logout": {
+      "get": {
+        "tags": [
+          "Token"
+        ],
+        "summary": "Logout",
+        "responses": {
+          "200": {
+            "description": "Logout success"
+          },
+          "401": {
+            "description": "Illegal token"
+          }
+        },
+        "security": [
+          {
+            "Token": []
+          }
+        ]
+      }
+    },
+    "/token/device_token": {
+      "put": {
+        "tags": [
+          "Token"
+        ],
+        "summary": "Update FCM device token",
+        "requestBody": {
+          "content": {
+            "application/json; charset=utf-8": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateDeviceTokenRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "Token": []
+          }
+        ]
+      }
+    },
+    "/user/check_magic_token": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Check the invite magic token is valid",
+        "requestBody": {
+          "content": {
+            "application/json; charset=utf-8": {
+              "schema": {
+                "$ref": "#/components/schemas/CheckMagicTokenRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/register": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Register a new user with the magic token",
+        "requestBody": {
+          "content": {
+            "application/json; charset=utf-8": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoginResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserConflict"
+                }
+              }
+            }
+          },
+          "412": {
+            "description": "Magic token has been expired."
+          },
+          "413": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/user/check_email": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Check the specified email address is available.",
+        "parameters": [
+          {
+            "name": "email",
+            "schema": {
+              "type": "string",
+              "format": "email"
+            },
+            "in": "query",
+            "required": true,
+            "deprecated": false,
+            "explode": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/send_reg_magic_link": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Send register magic link to email\nreturn the new magic token",
+        "requestBody": {
+          "content": {
+            "application/json; charset=utf-8": {
+              "schema": {
+                "$ref": "#/components/schemas/SendRegMagicTokenRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/SendRegMagicTokenResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/send_login_magic_link": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Send login magic link\nlogin magic link only can be used once.",
+        "parameters": [
+          {
+            "name": "email",
+            "schema": {
+              "type": "string",
+              "format": "email"
+            },
+            "in": "query",
+            "required": true,
+            "deprecated": false,
+            "explode": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "text/plain; charset=utf-8": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/me": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Get the current user information",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserInfo"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Token": []
+          }
+        ]
+      }
+    },
+    "/user/{uid}": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Get the specified user information",
+        "parameters": [
+          {
+            "name": "uid",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "in": "path",
+            "required": true,
+            "deprecated": false,
+            "explode": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserInfo"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/change_password": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json; charset=utf-8": {
+              "schema": {
+                "$ref": "#/components/schemas/ChangePasswordRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "Token": []
+          }
+        ]
+      }
+    },
+    "/user": {
+      "put": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Update the current user information",
+        "requestBody": {
+          "content": {
+            "application/json; charset=utf-8": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateUserInfoRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserInfo"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "Invalid webhook url"
+          },
+          "409": {
+            "description": "User conflict",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserConflict"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Token": []
+          }
+        ]
+      },
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Get all users",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/UserInfo"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/avatar": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Upload avatar",
+        "requestBody": {
+          "content": {
+            "image/png": {
+              "schema": {
+                "type": "string",
+                "format": "binary"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "413": {
+            "description": "Payload too large"
+          }
+        },
+        "security": [
+          {
+            "Token": []
+          }
+        ]
+      }
+    },
+    "/user/{uid}/send": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Send message to the specified user",
+        "parameters": [
+          {
+            "name": "uid",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "in": "path",
+            "required": true,
+            "deprecated": false,
+            "explode": true
+          },
+          {
+            "name": "X-Properties",
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "required": false,
+            "deprecated": false,
+            "explode": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "text/plain; charset=utf-8": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "text/markdown": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "vocechat/file": {
+              "schema": {
+                "$ref": "#/components/schemas/FileInfo"
+              }
+            },
+            "vocechat/archive": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Token": []
+          }
+        ]
+      }
+    },
+    "/user/{uid}/history": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Get history messages",
+        "parameters": [
+          {
+            "name": "uid",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "in": "path",
+            "required": true,
+            "deprecated": false,
+            "explode": true
+          },
+          {
+            "name": "before",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "in": "query",
+            "required": false,
+            "deprecated": false,
+            "explode": true
+          },
+          {
+            "name": "limit",
+            "schema": {
+              "type": "integer",
+              "format": "uint64",
+              "default": 300
+            },
+            "in": "query",
+            "required": false,
+            "deprecated": false,
+            "explode": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ChatMessage"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Token": []
+          }
+        ]
+      }
+    },
+    "/user/events": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Subscribe events",
+        "parameters": [
+          {
+            "name": "after_mid",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "in": "query",
+            "required": false,
+            "deprecated": false,
+            "explode": true
+          },
+          {
+            "name": "users_version",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "in": "query",
+            "required": false,
+            "deprecated": false,
+            "explode": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "text/event-stream": {
+                "schema": {
+                  "type": "array",
+                  "format": "event-stream",
+                  "items": {
+                    "$ref": "#/components/schemas/Message"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "TokenInQuery": []
+          }
+        ]
+      }
+    },
+    "/user/devices": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Get all devices of the current user",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Token": []
+          }
+        ]
+      }
+    },
+    "/user/devices/{device}": {
+      "delete": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Delete current user's specified device",
+        "parameters": [
+          {
+            "name": "device",
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "required": true,
+            "deprecated": false,
+            "explode": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "Token": []
+          }
+        ]
+      }
+    },
+    "/user/mute": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Change the mute settings",
+        "requestBody": {
+          "content": {
+            "application/json; charset=utf-8": {
+              "schema": {
+                "$ref": "#/components/schemas/MuteRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "Token": []
+          }
+        ]
+      }
+    },
+    "/user/burn-after-reading": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Change the burn after reading settings",
+        "requestBody": {
+          "content": {
+            "application/json; charset=utf-8": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateBurnAfterReadingRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "Token": []
+          }
+        ]
+      }
+    },
+    "/user/read-index": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Update read index",
+        "requestBody": {
+          "content": {
+            "application/json; charset=utf-8": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateReadIndexRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "Token": []
+          }
+        ]
+      }
+    },
+    "/user/delete": {
+      "delete": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Delete current user",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "Token": []
+          }
+        ]
+      }
+    },
+    "/user/update_fcm_token": {
+      "put": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Register a new user with the magic token",
+        "parameters": [
+          {
+            "name": "device",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "required": true,
+            "deprecated": false,
+            "explode": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "text/plain; charset=utf-8": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "Token": []
+          }
+        ]
+      }
+    },
+    "/group": {
+      "post": {
+        "tags": [
+          "Group"
+        ],
+        "summary": "Create a new group",
+        "requestBody": {
+          "content": {
+            "application/json; charset=utf-8": {
+              "schema": {
+                "$ref": "#/components/schemas/Group"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateGroupResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Token": []
+          }
+        ]
+      },
+      "get": {
+        "tags": [
+          "Group"
+        ],
+        "summary": "Get all groups related to the current user.",
+        "parameters": [
+          {
+            "name": "public_only",
+            "schema": {
+              "type": "boolean"
+            },
+            "in": "query",
+            "required": false,
+            "deprecated": false,
+            "explode": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Group"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Token": []
+          }
+        ]
+      }
+    },
+    "/group/{gid}/avatar": {
+      "post": {
+        "tags": [
+          "Group"
+        ],
+        "summary": "Upload group avatar",
+        "parameters": [
+          {
+            "name": "gid",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "in": "path",
+            "required": true,
+            "deprecated": false,
+            "explode": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "image/png": {
+              "schema": {
+                "type": "string",
+                "format": "binary"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "413": {
+            "description": "Payload too large"
+          }
+        },
+        "security": [
+          {
+            "Token": []
+          }
+        ]
+      }
+    },
+    "/group/{gid}": {
+      "delete": {
+        "tags": [
+          "Group"
+        ],
+        "summary": "Delete a exists group",
+        "parameters": [
+          {
+            "name": "gid",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "in": "path",
+            "required": true,
+            "deprecated": false,
+            "explode": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "Token": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "Group"
+        ],
+        "summary": "Update a exists group",
+        "parameters": [
+          {
+            "name": "gid",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "in": "path",
+            "required": true,
+            "deprecated": false,
+            "explode": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json; charset=utf-8": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateGroupRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "Token": []
+          }
+        ]
+      },
+      "get": {
+        "tags": [
+          "Group"
+        ],
+        "summary": "Get a group by id",
+        "parameters": [
+          {
+            "name": "gid",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "in": "path",
+            "required": true,
+            "deprecated": false,
+            "explode": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/Group"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/group/{gid}/change_type": {
+      "post": {
+        "tags": [
+          "Group"
+        ],
+        "parameters": [
+          {
+            "name": "gid",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "in": "path",
+            "required": true,
+            "deprecated": false,
+            "explode": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json; charset=utf-8": {
+              "schema": {
+                "$ref": "#/components/schemas/ChangeGroupTypeRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "Token": []
+          }
+        ]
+      }
+    },
+    "/group/{gid}/leave": {
+      "get": {
+        "tags": [
+          "Group"
+        ],
+        "summary": "Let the current user leave the specified group.",
+        "parameters": [
+          {
+            "name": "gid",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "in": "path",
+            "required": true,
+            "deprecated": false,
+            "explode": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "Token": []
+          }
+        ]
+      }
+    },
+    "/group/{gid}/members/add": {
+      "post": {
+        "tags": [
+          "Group"
+        ],
+        "summary": "Add some new members to the specified group",
+        "parameters": [
+          {
+            "name": "gid",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "in": "path",
+            "required": true,
+            "deprecated": false,
+            "explode": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json; charset=utf-8": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "Token": []
+          }
+        ]
+      }
+    },
+    "/group/{gid}/members/remove": {
+      "post": {
+        "tags": [
+          "Group"
+        ],
+        "summary": "Remove some members from the specified group",
+        "parameters": [
+          {
+            "name": "gid",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "in": "path",
+            "required": true,
+            "deprecated": false,
+            "explode": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json; charset=utf-8": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "Token": []
+          }
+        ]
+      }
+    },
+    "/group/{gid}/send": {
+      "post": {
+        "tags": [
+          "Group"
+        ],
+        "summary": "Send message to the specified group",
+        "parameters": [
+          {
+            "name": "gid",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "in": "path",
+            "required": true,
+            "deprecated": false,
+            "explode": true
+          },
+          {
+            "name": "X-Properties",
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "required": false,
+            "deprecated": false,
+            "explode": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "text/plain; charset=utf-8": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "text/markdown": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "vocechat/file": {
+              "schema": {
+                "$ref": "#/components/schemas/FileInfo"
+              }
+            },
+            "vocechat/archive": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Token": []
+          }
+        ]
+      }
+    },
+    "/group/create_reg_magic_link": {
+      "get": {
+        "tags": [
+          "Group"
+        ],
+        "summary": "Create a register magic link to invit user to join group\nformat: https://domain.com/?magic_token=xxx#/register",
+        "parameters": [
+          {
+            "name": "gid",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "in": "query",
+            "required": false,
+            "deprecated": false,
+            "explode": true
+          },
+          {
+            "name": "expired_in",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "in": "query",
+            "required": false,
+            "deprecated": false,
+            "explode": true
+          },
+          {
+            "name": "max_times",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "in": "query",
+            "required": false,
+            "deprecated": false,
+            "explode": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "text/plain; charset=utf-8": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Token": []
+          }
+        ]
+      }
+    },
+    "/group/{gid}/history": {
+      "get": {
+        "tags": [
+          "Group"
+        ],
+        "summary": "Get history messages",
+        "parameters": [
+          {
+            "name": "gid",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "in": "path",
+            "required": true,
+            "deprecated": false,
+            "explode": true
+          },
+          {
+            "name": "before",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "in": "query",
+            "required": false,
+            "deprecated": false,
+            "explode": true
+          },
+          {
+            "name": "limit",
+            "schema": {
+              "type": "integer",
+              "format": "uint64",
+              "default": 300
+            },
+            "in": "query",
+            "required": false,
+            "deprecated": false,
+            "explode": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ChatMessage"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Token": []
+          }
+        ]
+      }
+    },
+    "/group/{gid}/agora_token": {
+      "get": {
+        "tags": [
+          "Group"
+        ],
+        "summary": "Generates a Agora token",
+        "parameters": [
+          {
+            "name": "gid",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "in": "path",
+            "required": true,
+            "deprecated": false,
+            "explode": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgoraTokenResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Token": []
+          }
+        ]
+      }
+    },
+    "/group/{gid}/pin": {
+      "post": {
+        "tags": [
+          "Group"
+        ],
+        "summary": "Pin a message",
+        "parameters": [
+          {
+            "name": "gid",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "in": "path",
+            "required": true,
+            "deprecated": false,
+            "explode": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json; charset=utf-8": {
+              "schema": {
+                "$ref": "#/components/schemas/PinMessageRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "Token": []
+          }
+        ]
+      }
+    },
+    "/group/{gid}/unpin": {
+      "post": {
+        "tags": [
+          "Group"
+        ],
+        "summary": "Unpin a message",
+        "parameters": [
+          {
+            "name": "gid",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "in": "path",
+            "required": true,
+            "deprecated": false,
+            "explode": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json; charset=utf-8": {
+              "schema": {
+                "$ref": "#/components/schemas/UnpinMessageRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "Token": []
+          }
+        ]
+      }
+    },
+    "/admin/user": {
+      "post": {
+        "tags": [
+          "AdminUser"
+        ],
+        "summary": "Create a user",
+        "requestBody": {
+          "content": {
+            "application/json; charset=utf-8": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUserRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "Invalid webhook url"
+          },
+          "409": {
+            "description": "User conflict",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserConflict"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Token": []
+          }
+        ]
+      },
+      "get": {
+        "tags": [
+          "AdminUser"
+        ],
+        "summary": "Get all users",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/User"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Token": []
+          }
+        ]
+      }
+    },
+    "/admin/user/{uid}": {
+      "get": {
+        "tags": [
+          "AdminUser"
+        ],
+        "summary": "Get the user by id",
+        "parameters": [
+          {
+            "name": "uid",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "in": "path",
+            "required": true,
+            "deprecated": false,
+            "explode": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Token": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "AdminUser"
+        ],
+        "summary": "Delete the user by id",
+        "parameters": [
+          {
+            "name": "uid",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "in": "path",
+            "required": true,
+            "deprecated": false,
+            "explode": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "Token": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "AdminUser"
+        ],
+        "summary": "Update user by id",
+        "parameters": [
+          {
+            "name": "uid",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "in": "path",
+            "required": true,
+            "deprecated": false,
+            "explode": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json; charset=utf-8": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateUserRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "Invalid webhook url"
+          },
+          "409": {
+            "description": "User conflict",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserConflict"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Token": []
+          }
+        ]
+      }
+    },
+    "/admin/user/{uid}/avatar": {
+      "post": {
+        "tags": [
+          "AdminUser"
+        ],
+        "summary": "Upload avatar",
+        "parameters": [
+          {
+            "name": "uid",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "in": "path",
+            "required": true,
+            "deprecated": false,
+            "explode": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "image/png": {
+              "schema": {
+                "type": "string",
+                "format": "binary"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "413": {
+            "description": "Payload too large"
+          }
+        },
+        "security": [
+          {
+            "Token": []
+          }
+        ]
+      }
+    },
+    "/admin/user/bot-api-key/{uid}": {
+      "post": {
+        "tags": [
+          "AdminUser"
+        ],
+        "summary": "Create a bot api-key",
+        "parameters": [
+          {
+            "name": "uid",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "in": "path",
+            "required": true,
+            "deprecated": false,
+            "explode": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json; charset=utf-8": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateBotApiKeyRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Key name conflict"
+          }
+        },
+        "security": [
+          {
+            "Token": []
+          }
+        ]
+      },
+      "get": {
+        "tags": [
+          "AdminUser"
+        ],
+        "summary": "List bot api-key",
+        "parameters": [
+          {
+            "name": "uid",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "in": "path",
+            "required": true,
+            "deprecated": false,
+            "explode": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/BotKey"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Token": []
+          }
+        ]
+      }
+    },
+    "/admin/user/bot-api-key/{uid}/{kid}": {
+      "delete": {
+        "tags": [
+          "AdminUser"
+        ],
+        "summary": "Delete a bot api-key",
+        "parameters": [
+          {
+            "name": "uid",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "in": "path",
+            "required": true,
+            "deprecated": false,
+            "explode": true
+          },
+          {
+            "name": "kid",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "in": "path",
+            "required": true,
+            "deprecated": false,
+            "explode": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          },
+          "404": {
+            "description": "Key not found"
+          }
+        },
+        "security": [
+          {
+            "Token": []
+          }
+        ]
+      }
+    },
+    "/resource/organization/logo": {
+      "get": {
+        "tags": [
+          "Resource"
+        ],
+        "summary": "Get the organization logo",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            },
+            "headers": {
+              "etag": {
+                "description": "The ETag (or entity tag) HTTP response header is an identifier for a specific version of a resource. It lets caches be more efficient and save bandwidth, as a web server does not need to resend a full response if the content was not changed. Additionally, etags help to prevent simultaneous updates of a resource from overwriting each other (\"mid-air collisions\").",
+                "deprecated": false,
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "last-modified": {
+                "description": "The Last-Modified response HTTP header contains a date and time when the origin server believes the resource was last modified. It is used as a validator to determine if the resource is the same as the previously stored one. Less accurate than an ETag header, it is a fallback mechanism. Conditional requests containing If-Modified-Since or If-Unmodified-Since headers make use of this field.",
+                "deprecated": false,
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "content-type": {
+                "description": "The Content-Type representation header is used to indicate the original media type of the resource (prior to any content encoding applied for sending).",
+                "deprecated": false,
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "304": {
+            "description": "Not modified"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "404": {
+            "description": "Resource was not found"
+          },
+          "412": {
+            "description": "Precondition failed"
+          },
+          "416": {
+            "description": "The Content-Range response HTTP header indicates where in a full body message a partial message belongs."
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/resource/avatar": {
+      "get": {
+        "tags": [
+          "Resource"
+        ],
+        "summary": "Get user avatar by id",
+        "parameters": [
+          {
+            "name": "uid",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "in": "query",
+            "required": true,
+            "deprecated": false,
+            "explode": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            },
+            "headers": {
+              "etag": {
+                "description": "The ETag (or entity tag) HTTP response header is an identifier for a specific version of a resource. It lets caches be more efficient and save bandwidth, as a web server does not need to resend a full response if the content was not changed. Additionally, etags help to prevent simultaneous updates of a resource from overwriting each other (\"mid-air collisions\").",
+                "deprecated": false,
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "last-modified": {
+                "description": "The Last-Modified response HTTP header contains a date and time when the origin server believes the resource was last modified. It is used as a validator to determine if the resource is the same as the previously stored one. Less accurate than an ETag header, it is a fallback mechanism. Conditional requests containing If-Modified-Since or If-Unmodified-Since headers make use of this field.",
+                "deprecated": false,
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "content-type": {
+                "description": "The Content-Type representation header is used to indicate the original media type of the resource (prior to any content encoding applied for sending).",
+                "deprecated": false,
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "304": {
+            "description": "Not modified"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "404": {
+            "description": "Resource was not found"
+          },
+          "412": {
+            "description": "Precondition failed"
+          },
+          "416": {
+            "description": "The Content-Range response HTTP header indicates where in a full body message a partial message belongs."
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/resource/group_avatar": {
+      "get": {
+        "tags": [
+          "Resource"
+        ],
+        "summary": "Get user avatar by id",
+        "parameters": [
+          {
+            "name": "gid",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "in": "query",
+            "required": true,
+            "deprecated": false,
+            "explode": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            },
+            "headers": {
+              "etag": {
+                "description": "The ETag (or entity tag) HTTP response header is an identifier for a specific version of a resource. It lets caches be more efficient and save bandwidth, as a web server does not need to resend a full response if the content was not changed. Additionally, etags help to prevent simultaneous updates of a resource from overwriting each other (\"mid-air collisions\").",
+                "deprecated": false,
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "last-modified": {
+                "description": "The Last-Modified response HTTP header contains a date and time when the origin server believes the resource was last modified. It is used as a validator to determine if the resource is the same as the previously stored one. Less accurate than an ETag header, it is a fallback mechanism. Conditional requests containing If-Modified-Since or If-Unmodified-Since headers make use of this field.",
+                "deprecated": false,
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "content-type": {
+                "description": "The Content-Type representation header is used to indicate the original media type of the resource (prior to any content encoding applied for sending).",
+                "deprecated": false,
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "304": {
+            "description": "Not modified"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "404": {
+            "description": "Resource was not found"
+          },
+          "412": {
+            "description": "Precondition failed"
+          },
+          "416": {
+            "description": "The Content-Range response HTTP header indicates where in a full body message a partial message belongs."
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/resource/file/prepare": {
+      "post": {
+        "tags": [
+          "Resource"
+        ],
+        "summary": "Prepare for uploading file",
+        "requestBody": {
+          "content": {
+            "application/json; charset=utf-8": {
+              "schema": {
+                "$ref": "#/components/schemas/PrepareUploadFileRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Token": []
+          }
+        ]
+      }
+    },
+    "/resource/file/upload": {
+      "post": {
+        "tags": [
+          "Resource"
+        ],
+        "summary": "Upload file",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "chunk_data"
+                ],
+                "properties": {
+                  "file_id": {
+                    "type": "string",
+                    "description": "file_id: uuid that return by prepare uploading file API",
+                    "default": ""
+                  },
+                  "chunk_data": {
+                    "type": "string",
+                    "format": "binary"
+                  },
+                  "chunk_is_last": {
+                    "type": "boolean",
+                    "default": false
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/UploadFileResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Token": []
+          }
+        ]
+      }
+    },
+    "/resource/file": {
+      "get": {
+        "tags": [
+          "Resource"
+        ],
+        "summary": "Download file",
+        "parameters": [
+          {
+            "name": "file_path",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "required": true,
+            "deprecated": false,
+            "explode": true
+          },
+          {
+            "name": "thumbnail",
+            "schema": {
+              "type": "boolean",
+              "default": false
+            },
+            "in": "query",
+            "required": false,
+            "deprecated": false,
+            "explode": true
+          },
+          {
+            "name": "download",
+            "schema": {
+              "type": "boolean",
+              "default": false
+            },
+            "in": "query",
+            "required": false,
+            "deprecated": false,
+            "explode": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            },
+            "headers": {
+              "etag": {
+                "description": "The ETag (or entity tag) HTTP response header is an identifier for a specific version of a resource. It lets caches be more efficient and save bandwidth, as a web server does not need to resend a full response if the content was not changed. Additionally, etags help to prevent simultaneous updates of a resource from overwriting each other (\"mid-air collisions\").",
+                "deprecated": false,
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "last-modified": {
+                "description": "The Last-Modified response HTTP header contains a date and time when the origin server believes the resource was last modified. It is used as a validator to determine if the resource is the same as the previously stored one. Less accurate than an ETag header, it is a fallback mechanism. Conditional requests containing If-Modified-Since or If-Unmodified-Since headers make use of this field.",
+                "deprecated": false,
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "content-type": {
+                "description": "The Content-Type representation header is used to indicate the original media type of the resource (prior to any content encoding applied for sending).",
+                "deprecated": false,
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "304": {
+            "description": "Not modified"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "404": {
+            "description": "Resource was not found"
+          },
+          "412": {
+            "description": "Precondition failed"
+          },
+          "416": {
+            "description": "The Content-Range response HTTP header indicates where in a full body message a partial message belongs."
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/resource/archive": {
+      "post": {
+        "tags": [
+          "Resource"
+        ],
+        "summary": "Create messages archive",
+        "requestBody": {
+          "content": {
+            "application/json; charset=utf-8": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateArchiveMsgRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Token": []
+          }
+        ]
+      },
+      "get": {
+        "tags": [
+          "Resource"
+        ],
+        "summary": "Get archive info",
+        "parameters": [
+          {
+            "name": "file_path",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "required": true,
+            "deprecated": false,
+            "explode": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/Archive"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/resource/archive/attachment": {
+      "get": {
+        "tags": [
+          "Resource"
+        ],
+        "summary": "Get archive attachment",
+        "parameters": [
+          {
+            "name": "file_path",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "required": true,
+            "deprecated": false,
+            "explode": true
+          },
+          {
+            "name": "attachment_id",
+            "schema": {
+              "type": "integer",
+              "format": "uint64"
+            },
+            "in": "query",
+            "required": true,
+            "deprecated": false,
+            "explode": true
+          },
+          {
+            "name": "download",
+            "schema": {
+              "type": "boolean",
+              "default": false
+            },
+            "in": "query",
+            "required": false,
+            "deprecated": false,
+            "explode": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/resource/open_graphic_parse": {
+      "get": {
+        "tags": [
+          "Resource"
+        ],
+        "summary": "Parse URL with Open Graphic Protocol",
+        "parameters": [
+          {
+            "name": "url",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "required": true,
+            "deprecated": false,
+            "explode": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/Object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/message/{mid}/edit": {
+      "put": {
+        "tags": [
+          "Message"
+        ],
+        "summary": "Edit message",
+        "parameters": [
+          {
+            "name": "mid",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "in": "path",
+            "required": true,
+            "deprecated": false,
+            "explode": true
+          },
+          {
+            "name": "X-Properties",
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "required": false,
+            "deprecated": false,
+            "explode": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "text/plain; charset=utf-8": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "text/markdown": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "vocechat/file": {
+              "schema": {
+                "$ref": "#/components/schemas/FileInfo"
+              }
+            },
+            "vocechat/archive": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Target user does not exist"
+          },
+          "403": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "Token": []
+          }
+        ]
+      }
+    },
+    "/message/{mid}/like": {
+      "put": {
+        "tags": [
+          "Message"
+        ],
+        "summary": "Edit message",
+        "parameters": [
+          {
+            "name": "mid",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "in": "path",
+            "required": true,
+            "deprecated": false,
+            "explode": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json; charset=utf-8": {
+              "schema": {
+                "$ref": "#/components/schemas/LikeMessageRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Target user does not exist"
+          },
+          "403": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "Token": []
+          }
+        ]
+      }
+    },
+    "/message/{mid}": {
+      "delete": {
+        "tags": [
+          "Message"
+        ],
+        "summary": "Delete message",
+        "parameters": [
+          {
+            "name": "mid",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "in": "path",
+            "required": true,
+            "deprecated": false,
+            "explode": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Target user does not exist"
+          },
+          "403": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "Token": []
+          }
+        ]
+      }
+    },
+    "/message/{mid}/reply": {
+      "post": {
+        "tags": [
+          "Message"
+        ],
+        "summary": "Reply message",
+        "parameters": [
+          {
+            "name": "mid",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "in": "path",
+            "required": true,
+            "deprecated": false,
+            "explode": true
+          },
+          {
+            "name": "X-Properties",
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "required": false,
+            "deprecated": false,
+            "explode": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "text/plain; charset=utf-8": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "text/markdown": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "vocechat/file": {
+              "schema": {
+                "$ref": "#/components/schemas/FileInfo"
+              }
+            },
+            "vocechat/archive": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Target user does not exist"
+          },
+          "403": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "Token": []
+          }
+        ]
+      }
+    },
+    "/favorite": {
+      "post": {
+        "tags": [
+          "Favorite"
+        ],
+        "summary": "Create favorite archive",
+        "requestBody": {
+          "content": {
+            "application/json; charset=utf-8": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateFavoriteRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/FavoriteArchive"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too many favorite archives"
+          }
+        },
+        "security": [
+          {
+            "Token": []
+          }
+        ]
+      },
+      "get": {
+        "tags": [
+          "Favorite"
+        ],
+        "summary": "List all favorite archives",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/FavoriteArchive"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Token": []
+          }
+        ]
+      }
+    },
+    "/favorite/{id}": {
+      "delete": {
+        "tags": [
+          "Favorite"
+        ],
+        "summary": "Delete a favorite archive",
+        "parameters": [
+          {
+            "name": "id",
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "required": true,
+            "deprecated": false,
+            "explode": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "Token": []
+          }
+        ]
+      },
+      "get": {
+        "tags": [
+          "Favorite"
+        ],
+        "summary": "Get favorite archive info",
+        "parameters": [
+          {
+            "name": "id",
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "required": true,
+            "deprecated": false,
+            "explode": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/Archive"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Token": []
+          }
+        ]
+      }
+    },
+    "/favorite/attachment/{uid}/{id}/{attachment_id}": {
+      "get": {
+        "tags": [
+          "Favorite"
+        ],
+        "summary": "Get attachment in the archive",
+        "parameters": [
+          {
+            "name": "uid",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "in": "path",
+            "required": true,
+            "deprecated": false,
+            "explode": true
+          },
+          {
+            "name": "id",
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "required": true,
+            "deprecated": false,
+            "explode": true
+          },
+          {
+            "name": "attachment_id",
+            "schema": {
+              "type": "integer",
+              "format": "uint64"
+            },
+            "in": "path",
+            "required": true,
+            "deprecated": false,
+            "explode": true
+          },
+          {
+            "name": "download",
+            "schema": {
+              "type": "boolean",
+              "default": false
+            },
+            "in": "query",
+            "required": false,
+            "deprecated": false,
+            "explode": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/license/check": {
+      "post": {
+        "tags": [
+          "License"
+        ],
+        "summary": "Check the license is valid",
+        "requestBody": {
+          "content": {
+            "application/json; charset=utf-8": {
+              "schema": {
+                "$ref": "#/components/schemas/CheckLicenseRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/LicenseReply"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/license": {
+      "put": {
+        "tags": [
+          "License"
+        ],
+        "summary": "Save the license",
+        "requestBody": {
+          "content": {
+            "application/json; charset=utf-8": {
+              "schema": {
+                "$ref": "#/components/schemas/SaveLicenseRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Token": []
+          }
+        ]
+      },
+      "get": {
+        "tags": [
+          "License"
+        ],
+        "summary": "Get the license",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/LicenseReply"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/system/version": {
+      "get": {
+        "tags": [
+          "AdminSystem"
+        ],
+        "summary": "Get the server version",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "text/plain; charset=utf-8": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/system/create_admin": {
+      "post": {
+        "tags": [
+          "AdminSystem"
+        ],
+        "summary": "Create administrator user",
+        "requestBody": {
+          "content": {
+            "application/json; charset=utf-8": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateAdminRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserInfo"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/system/initialized": {
+      "get": {
+        "tags": [
+          "AdminSystem"
+        ],
+        "summary": "Returns `true` means that the server has been initialized",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/system/metrics": {
+      "get": {
+        "tags": [
+          "AdminSystem"
+        ],
+        "summary": "Get the system metrics",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/Metrics"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Token": []
+          }
+        ]
+      }
+    },
+    "/admin/system/organization": {
+      "get": {
+        "tags": [
+          "AdminSystem"
+        ],
+        "summary": "Get the organization info",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrganizationConfig"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "AdminSystem"
+        ],
+        "summary": "Set the organization info",
+        "requestBody": {
+          "content": {
+            "application/json; charset=utf-8": {
+              "schema": {
+                "$ref": "#/components/schemas/OrganizationConfig"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "Token": []
+          }
+        ]
+      }
+    },
+    "/admin/system/organization/logo": {
+      "post": {
+        "tags": [
+          "AdminSystem"
+        ],
+        "summary": "Upload the organization logo",
+        "requestBody": {
+          "content": {
+            "image/png": {
+              "schema": {
+                "type": "string",
+                "format": "binary"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "Token": []
+          }
+        ]
+      }
+    },
+    "/admin/system/send_mail": {
+      "post": {
+        "tags": [
+          "AdminSystem"
+        ],
+        "summary": "Send email(only for test)",
+        "requestBody": {
+          "content": {
+            "application/json; charset=utf-8": {
+              "schema": {
+                "$ref": "#/components/schemas/SendMailRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "Token": []
+          }
+        ]
+      }
+    },
+    "/admin/system/third_party_secret": {
+      "get": {
+        "tags": [
+          "AdminSystem"
+        ],
+        "summary": "Get the secret for third-party authentication",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "text/plain; charset=utf-8": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Token": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "AdminSystem"
+        ],
+        "summary": "Update third-party secret",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "text/plain; charset=utf-8": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Token": []
+          }
+        ]
+      }
+    },
+    "/admin/system/frontend_url": {
+      "get": {
+        "tags": [
+          "AdminSystem"
+        ],
+        "summary": "Get the frontend url",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "text/plain; charset=utf-8": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Token": []
+          }
+        ]
+      }
+    },
+    "/admin/system/update_frontend_url": {
+      "post": {
+        "tags": [
+          "AdminSystem"
+        ],
+        "summary": "Update the frontend url",
+        "requestBody": {
+          "content": {
+            "text/plain; charset=utf-8": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "Token": []
+          }
+        ]
+      }
+    },
+    "/admin/agora/config": {
+      "post": {
+        "tags": [
+          "AdminAgora"
+        ],
+        "summary": "Set Agora config",
+        "requestBody": {
+          "content": {
+            "application/json; charset=utf-8": {
+              "schema": {
+                "$ref": "#/components/schemas/AgoraConfigObject"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "Token": []
+          }
+        ]
+      },
+      "get": {
+        "tags": [
+          "AdminAgora"
+        ],
+        "summary": "Get Agora config",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgoraConfigObject"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Token": []
+          }
+        ]
+      }
+    },
+    "/admin/agora/usages": {
+      "get": {
+        "tags": [
+          "AdminAgora"
+        ],
+        "summary": "Get Agora usage",
+        "parameters": [
+          {
+            "name": "from_date",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "description": "Start date(YYYY-MM-DD)",
+            "required": true,
+            "deprecated": false,
+            "explode": true
+          },
+          {
+            "name": "to_date",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "description": "End date(YYYY-MM-DD)",
+            "required": true,
+            "deprecated": false,
+            "explode": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgoraUsagesResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Token": []
+          }
+        ]
+      }
+    },
+    "/admin/fcm/config": {
+      "post": {
+        "tags": [
+          "AdminFirebase"
+        ],
+        "summary": "Set Firebase config",
+        "requestBody": {
+          "content": {
+            "application/json; charset=utf-8": {
+              "schema": {
+                "$ref": "#/components/schemas/FcmConfigObject"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "Token": []
+          }
+        ]
+      },
+      "get": {
+        "tags": [
+          "AdminFirebase"
+        ],
+        "summary": "Get Firebase config",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/FcmConfigObject"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Token": []
+          }
+        ]
+      }
+    },
+    "/admin/smtp/config": {
+      "post": {
+        "tags": [
+          "AdminSmtp"
+        ],
+        "summary": "Set SMTP config",
+        "requestBody": {
+          "content": {
+            "application/json; charset=utf-8": {
+              "schema": {
+                "$ref": "#/components/schemas/SmtpConfigObject"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "Token": []
+          }
+        ]
+      },
+      "get": {
+        "tags": [
+          "AdminSmtp"
+        ],
+        "summary": "Get SMTP config",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/SmtpConfigObject"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Token": []
+          }
+        ]
+      }
+    },
+    "/admin/smtp/enabled": {
+      "get": {
+        "tags": [
+          "AdminSmtp"
+        ],
+        "summary": "Get SMTP config is enabled",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/login/config": {
+      "post": {
+        "tags": [
+          "AdminLogin"
+        ],
+        "summary": "Set login config",
+        "requestBody": {
+          "content": {
+            "application/json; charset=utf-8": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginConfig"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "Token": []
+          }
+        ]
+      },
+      "get": {
+        "tags": [
+          "AdminLogin"
+        ],
+        "summary": "Get login config",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoginConfig"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/google_auth/config": {
+      "post": {
+        "tags": [
+          "AdminGoogleAuth"
+        ],
+        "summary": "Set Google auth config",
+        "requestBody": {
+          "content": {
+            "application/json; charset=utf-8": {
+              "schema": {
+                "$ref": "#/components/schemas/GoogleAuthConfig"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "Token": []
+          }
+        ]
+      },
+      "get": {
+        "tags": [
+          "AdminGoogleAuth"
+        ],
+        "summary": "Get Google auth config",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/GoogleAuthConfig"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/github_auth/config": {
+      "post": {
+        "tags": [
+          "AdminGithubAuth"
+        ],
+        "summary": "Set Github auth config",
+        "requestBody": {
+          "content": {
+            "application/json; charset=utf-8": {
+              "schema": {
+                "$ref": "#/components/schemas/GithubAuthConfig"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "Token": []
+          }
+        ]
+      },
+      "get": {
+        "tags": [
+          "AdminGithubAuth"
+        ],
+        "summary": "Get Github auth config",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/GithubAuthConfig"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/bot": {
+      "get": {
+        "tags": [
+          "Bot"
+        ],
+        "summary": "Get all groups related to the current user.",
+        "parameters": [
+          {
+            "name": "x-api-key",
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "required": true,
+            "deprecated": false,
+            "explode": true
+          },
+          {
+            "name": "public_only",
+            "schema": {
+              "type": "boolean"
+            },
+            "in": "query",
+            "required": false,
+            "deprecated": false,
+            "explode": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Group"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/bot/send_to_user/{uid}": {
+      "post": {
+        "tags": [
+          "Bot"
+        ],
+        "summary": "Send message to the specified user",
+        "parameters": [
+          {
+            "name": "x-api-key",
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "required": true,
+            "deprecated": false,
+            "explode": true
+          },
+          {
+            "name": "uid",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "in": "path",
+            "required": true,
+            "deprecated": false,
+            "explode": true
+          },
+          {
+            "name": "X-Properties",
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "required": false,
+            "deprecated": false,
+            "explode": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "text/plain; charset=utf-8": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "text/markdown": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "vocechat/file": {
+              "schema": {
+                "$ref": "#/components/schemas/FileInfo"
+              }
+            },
+            "vocechat/archive": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/bot/send_to_group/{gid}": {
+      "post": {
+        "tags": [
+          "Bot"
+        ],
+        "summary": "Send message to the specified group",
+        "parameters": [
+          {
+            "name": "x-api-key",
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "required": true,
+            "deprecated": false,
+            "explode": true
+          },
+          {
+            "name": "gid",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "in": "path",
+            "required": true,
+            "deprecated": false,
+            "explode": true
+          },
+          {
+            "name": "X-Properties",
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "required": false,
+            "deprecated": false,
+            "explode": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "text/plain; charset=utf-8": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "text/markdown": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "vocechat/file": {
+              "schema": {
+                "$ref": "#/components/schemas/FileInfo"
+              }
+            },
+            "vocechat/archive": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/bot/user/{uid}": {
+      "get": {
+        "tags": [
+          "Bot"
+        ],
+        "summary": "Get user info by id",
+        "parameters": [
+          {
+            "name": "x-api-key",
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "required": true,
+            "deprecated": false,
+            "explode": true
+          },
+          {
+            "name": "uid",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "in": "query",
+            "required": true,
+            "deprecated": false,
+            "explode": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserInfo"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/bot/group/{gid}": {
+      "get": {
+        "tags": [
+          "Bot"
+        ],
+        "summary": "Get group info by id",
+        "parameters": [
+          {
+            "name": "x-api-key",
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "required": true,
+            "deprecated": false,
+            "explode": true
+          },
+          {
+            "name": "gid",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "in": "query",
+            "required": true,
+            "deprecated": false,
+            "explode": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/Group"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/bot/file/prepare": {
+      "post": {
+        "tags": [
+          "Bot"
+        ],
+        "summary": "Prepare for uploading file",
+        "parameters": [
+          {
+            "name": "x-api-key",
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "required": true,
+            "deprecated": false,
+            "explode": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json; charset=utf-8": {
+              "schema": {
+                "$ref": "#/components/schemas/PrepareUploadFileRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/bot/file/upload": {
+      "post": {
+        "tags": [
+          "Bot"
+        ],
+        "summary": "Upload file",
+        "parameters": [
+          {
+            "name": "x-api-key",
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "required": true,
+            "deprecated": false,
+            "explode": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "chunk_data"
+                ],
+                "properties": {
+                  "file_id": {
+                    "type": "string",
+                    "description": "file_id: uuid that return by prepare uploading file API",
+                    "default": ""
+                  },
+                  "chunk_data": {
+                    "type": "string",
+                    "format": "binary"
+                  },
+                  "chunk_is_last": {
+                    "type": "boolean",
+                    "default": false
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/UploadFileResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AgoraConfigObject": {
+        "type": "object",
+        "description": "Agora config",
+        "required": [
+          "enabled",
+          "project_id",
+          "app_id",
+          "app_certificate",
+          "rtm_key",
+          "rtm_secret"
+        ],
+        "properties": {
+          "enabled": {
+            "type": "boolean"
+          },
+          "url": {
+            "type": "string",
+            "default": "https://api.agora.io"
+          },
+          "project_id": {
+            "type": "string"
+          },
+          "app_id": {
+            "type": "string"
+          },
+          "app_certificate": {
+            "type": "string"
+          },
+          "rtm_key": {
+            "type": "string"
+          },
+          "rtm_secret": {
+            "type": "string"
+          }
+        }
+      },
+      "AgoraTokenResponse": {
+        "type": "object",
+        "description": "Agora token response",
+        "required": [
+          "agora_token",
+          "app_id",
+          "uid",
+          "channel_name",
+          "expired_in"
+        ],
+        "properties": {
+          "agora_token": {
+            "type": "string"
+          },
+          "app_id": {
+            "type": "string"
+          },
+          "uid": {
+            "type": "integer",
+            "format": "uint32"
+          },
+          "channel_name": {
+            "type": "string"
+          },
+          "expired_in": {
+            "type": "integer",
+            "format": "int64",
+            "description": "The agora token expired in seconds"
+          }
+        }
+      },
+      "AgoraUsage": {
+        "type": "object",
+        "description": "Agora usage",
+        "required": [
+          "duration_audio_all",
+          "duration_video_hd",
+          "duration_video_hdp"
+        ],
+        "properties": {
+          "duration_audio_all": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "duration_video_hd": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "duration_video_hdp": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "AgoraUsageItem": {
+        "type": "object",
+        "description": "Agora usage item",
+        "required": [
+          "date",
+          "usage"
+        ],
+        "properties": {
+          "date": {
+            "type": "integer",
+            "format": "timestamp"
+          },
+          "usage": {
+            "$ref": "#/components/schemas/AgoraUsage"
+          }
+        }
+      },
+      "AgoraUsagesResponse": {
+        "type": "object",
+        "description": "Agora usage response",
+        "required": [
+          "usages"
+        ],
+        "properties": {
+          "usages": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AgoraUsageItem"
+            }
+          }
+        }
+      },
+      "Archive": {
+        "type": "object",
+        "required": [
+          "users",
+          "messages",
+          "num_attachments"
+        ],
+        "properties": {
+          "users": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ArchiveUser"
+            }
+          },
+          "messages": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ArchiveMessage"
+            }
+          },
+          "num_attachments": {
+            "type": "integer",
+            "format": "uint64"
+          }
+        }
+      },
+      "ArchiveMessage": {
+        "type": "object",
+        "required": [
+          "from_user",
+          "created_at",
+          "mid",
+          "source",
+          "content_type"
+        ],
+        "properties": {
+          "from_user": {
+            "type": "integer",
+            "format": "uint64"
+          },
+          "created_at": {
+            "type": "integer",
+            "format": "timestamp"
+          },
+          "mid": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "source": {
+            "$ref": "#/components/schemas/MessageTarget"
+          },
+          "properties": {
+            "type": "object",
+            "additionalProperties": {}
+          },
+          "content_type": {
+            "type": "string"
+          },
+          "content": {
+            "type": "string"
+          },
+          "file_id": {
+            "type": "integer",
+            "format": "uint64"
+          },
+          "thumbnail_id": {
+            "type": "integer",
+            "format": "uint64"
+          }
+        }
+      },
+      "ArchiveUser": {
+        "type": "object",
+        "required": [
+          "name"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "avatar": {
+            "type": "integer",
+            "format": "uint64"
+          }
+        }
+      },
+      "Audio": {
+        "type": "object",
+        "required": [
+          "url"
+        ],
+        "properties": {
+          "type": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "secure_url": {
+            "type": "string"
+          }
+        }
+      },
+      "BindCredential": {
+        "type": "object",
+        "description": "Bind credential",
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/BindCredential_LoginCredentialGoogleIdToken"
+          },
+          {
+            "$ref": "#/components/schemas/BindCredential_LoginCredentialGithubCode"
+          },
+          {
+            "$ref": "#/components/schemas/BindCredential_LoginCredentialOpenIdConnect"
+          },
+          {
+            "$ref": "#/components/schemas/BindCredential_LoginCredentialMetaMask"
+          }
+        ],
+        "discriminator": {
+          "propertyName": "type",
+          "mapping": {
+            "google": "#/components/schemas/BindCredential_LoginCredentialGoogleIdToken",
+            "github": "#/components/schemas/BindCredential_LoginCredentialGithubCode",
+            "oidc": "#/components/schemas/BindCredential_LoginCredentialOpenIdConnect",
+            "metamask": "#/components/schemas/BindCredential_LoginCredentialMetaMask"
+          }
+        }
+      },
+      "BindCredential_LoginCredentialGithubCode": {
+        "allOf": [
+          {
+            "type": "object",
+            "required": [
+              "type"
+            ],
+            "properties": {
+              "type": {
+                "type": "string",
+                "example": "github"
+              }
+            }
+          },
+          {
+            "$ref": "#/components/schemas/LoginCredentialGithubCode"
+          }
+        ]
+      },
+      "BindCredential_LoginCredentialGoogleIdToken": {
+        "allOf": [
+          {
+            "type": "object",
+            "required": [
+              "type"
+            ],
+            "properties": {
+              "type": {
+                "type": "string",
+                "example": "google"
+              }
+            }
+          },
+          {
+            "$ref": "#/components/schemas/LoginCredentialGoogleIdToken"
+          }
+        ]
+      },
+      "BindCredential_LoginCredentialMetaMask": {
+        "allOf": [
+          {
+            "type": "object",
+            "required": [
+              "type"
+            ],
+            "properties": {
+              "type": {
+                "type": "string",
+                "example": "metamask"
+              }
+            }
+          },
+          {
+            "$ref": "#/components/schemas/LoginCredentialMetaMask"
+          }
+        ]
+      },
+      "BindCredential_LoginCredentialOpenIdConnect": {
+        "allOf": [
+          {
+            "type": "object",
+            "required": [
+              "type"
+            ],
+            "properties": {
+              "type": {
+                "type": "string",
+                "example": "oidc"
+              }
+            }
+          },
+          {
+            "$ref": "#/components/schemas/LoginCredentialOpenIdConnect"
+          }
+        ]
+      },
+      "BindRequest": {
+        "type": "object",
+        "description": "Bind request",
+        "required": [
+          "credential"
+        ],
+        "properties": {
+          "credential": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/BindCredential"
+              },
+              {
+                "description": "Credential"
+              }
+            ]
+          }
+        }
+      },
+      "BotKey": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "key",
+          "created_at"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "name": {
+            "type": "string"
+          },
+          "key": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "integer",
+            "format": "timestamp"
+          },
+          "last_used": {
+            "type": "integer",
+            "format": "timestamp"
+          }
+        }
+      },
+      "BurnAfterReadingGroup": {
+        "type": "object",
+        "description": "Burn after reading to group",
+        "required": [
+          "gid",
+          "expires_in"
+        ],
+        "properties": {
+          "gid": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Group id"
+          },
+          "expires_in": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Expires in seconds"
+          }
+        }
+      },
+      "BurnAfterReadingUser": {
+        "type": "object",
+        "description": "Burn after reading to user",
+        "required": [
+          "uid",
+          "expires_in"
+        ],
+        "properties": {
+          "uid": {
+            "type": "integer",
+            "format": "int64",
+            "description": "User id"
+          },
+          "expires_in": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Expires in seconds"
+          }
+        }
+      },
+      "ChangeGroupTypeRequest": {
+        "type": "object",
+        "description": "Change group type request",
+        "required": [
+          "is_public"
+        ],
+        "properties": {
+          "is_public": {
+            "type": "boolean"
+          },
+          "members": {
+            "type": "array",
+            "default": [],
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        }
+      },
+      "ChangePasswordRequest": {
+        "type": "object",
+        "description": "Change password request",
+        "required": [
+          "old_password",
+          "new_password"
+        ],
+        "properties": {
+          "old_password": {
+            "type": "string"
+          },
+          "new_password": {
+            "type": "string"
+          }
+        }
+      },
+      "ChatMessage": {
+        "type": "object",
+        "description": "Chat message",
+        "required": [
+          "mid",
+          "from_uid",
+          "created_at",
+          "target",
+          "detail"
+        ],
+        "properties": {
+          "mid": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Message id"
+          },
+          "from_uid": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Sender id"
+          },
+          "created_at": {
+            "type": "integer",
+            "format": "timestamp",
+            "description": "The create time of the message."
+          },
+          "target": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/MessageTarget"
+              },
+              {
+                "description": "Message target"
+              }
+            ]
+          },
+          "detail": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/MessageDetail"
+              },
+              {
+                "description": "Message detail"
+              }
+            ]
+          }
+        }
+      },
+      "CheckLicenseRequest": {
+        "type": "object",
+        "required": [
+          "license"
+        ],
+        "properties": {
+          "license": {
+            "type": "string"
+          }
+        }
+      },
+      "CheckMagicTokenRequest": {
+        "type": "object",
+        "required": [
+          "magic_token"
+        ],
+        "properties": {
+          "magic_token": {
+            "type": "string"
+          }
+        }
+      },
+      "CreateAdminRequest": {
+        "type": "object",
+        "required": [
+          "email",
+          "name",
+          "password",
+          "gender"
+        ],
+        "properties": {
+          "email": {
+            "type": "string",
+            "format": "email"
+          },
+          "name": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "gender": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "CreateArchiveMsgRequest": {
+        "type": "object",
+        "required": [
+          "mid_list"
+        ],
+        "properties": {
+          "mid_list": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        }
+      },
+      "CreateBotApiKeyRequest": {
+        "type": "object",
+        "description": "Create bot api key request",
+        "required": [
+          "name"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "CreateFavoriteRequest": {
+        "type": "object",
+        "required": [
+          "mid_list"
+        ],
+        "properties": {
+          "mid_list": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        }
+      },
+      "CreateGroupResponse": {
+        "type": "object",
+        "description": "Create group response",
+        "required": [
+          "gid",
+          "created_at"
+        ],
+        "properties": {
+          "gid": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "created_at": {
+            "type": "integer",
+            "format": "timestamp"
+          }
+        }
+      },
+      "CreateThirdPartyKeyRequest": {
+        "type": "object",
+        "required": [
+          "userid",
+          "username"
+        ],
+        "properties": {
+          "userid": {
+            "type": "string"
+          },
+          "username": {
+            "type": "string"
+          }
+        }
+      },
+      "CreateUserConflictReason": {
+        "type": "string",
+        "enum": [
+          "name_conflict",
+          "email_conflict"
+        ]
+      },
+      "CreateUserRequest": {
+        "type": "object",
+        "description": "Create user request",
+        "required": [
+          "email",
+          "password",
+          "name",
+          "gender",
+          "is_admin"
+        ],
+        "properties": {
+          "email": {
+            "type": "string",
+            "format": "email"
+          },
+          "password": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string",
+            "maxLength": 32
+          },
+          "gender": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "is_admin": {
+            "type": "boolean"
+          },
+          "language": {
+            "type": "string",
+            "format": "language",
+            "default": "en-US"
+          },
+          "webhook_url": {
+            "type": "string"
+          },
+          "is_bot": {
+            "type": "boolean",
+            "default": false
+          }
+        }
+      },
+      "CredentialsResponse": {
+        "type": "object",
+        "description": "Credentials response",
+        "required": [
+          "password",
+          "oidc"
+        ],
+        "properties": {
+          "password": {
+            "type": "boolean"
+          },
+          "google": {
+            "type": "string"
+          },
+          "metamask": {
+            "type": "string"
+          },
+          "oidc": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "FavoriteArchive": {
+        "type": "object",
+        "required": [
+          "id",
+          "created_at"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "integer",
+            "format": "timestamp"
+          }
+        }
+      },
+      "FcmConfigObject": {
+        "type": "object",
+        "description": "Firebase config",
+        "required": [
+          "enabled",
+          "use_official",
+          "project_id",
+          "private_key",
+          "client_email"
+        ],
+        "properties": {
+          "enabled": {
+            "type": "boolean"
+          },
+          "use_official": {
+            "type": "boolean"
+          },
+          "token_url": {
+            "type": "string",
+            "default": "https://oauth2.googleapis.com/token"
+          },
+          "project_id": {
+            "type": "string"
+          },
+          "private_key": {
+            "type": "string"
+          },
+          "client_email": {
+            "type": "string"
+          }
+        }
+      },
+      "FileInfo": {
+        "type": "object",
+        "required": [
+          "path"
+        ],
+        "properties": {
+          "path": {
+            "type": "string"
+          }
+        }
+      },
+      "GithubAuthConfig": {
+        "type": "object",
+        "description": "Github authentication config",
+        "required": [
+          "client_id",
+          "client_secret"
+        ],
+        "properties": {
+          "client_id": {
+            "type": "string"
+          },
+          "client_secret": {
+            "type": "string"
+          }
+        }
+      },
+      "GoogleAuthConfig": {
+        "type": "object",
+        "description": "Google authentication config",
+        "required": [
+          "client_id"
+        ],
+        "properties": {
+          "client_id": {
+            "type": "string"
+          }
+        }
+      },
+      "Group": {
+        "type": "object",
+        "description": "Group info",
+        "required": [
+          "gid",
+          "name",
+          "avatar_updated_at",
+          "pinned_messages"
+        ],
+        "properties": {
+          "gid": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Group id",
+            "readOnly": true
+          },
+          "owner": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Group owner id",
+            "readOnly": true
+          },
+          "name": {
+            "type": "string",
+            "description": "Group name"
+          },
+          "description": {
+            "type": "string",
+            "description": "Group description"
+          },
+          "members": {
+            "type": "array",
+            "description": "Members id",
+            "default": [],
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          "is_public": {
+            "type": "boolean",
+            "description": "Is public group",
+            "default": false
+          },
+          "avatar_updated_at": {
+            "type": "integer",
+            "format": "timestamp",
+            "readOnly": true
+          },
+          "pinned_messages": {
+            "type": "array",
+            "description": "Pinned messages",
+            "items": {
+              "$ref": "#/components/schemas/PinnedMessage"
+            },
+            "readOnly": true
+          }
+        }
+      },
+      "GroupChangedMessage": {
+        "type": "object",
+        "description": "Group info changed message",
+        "required": [
+          "gid"
+        ],
+        "properties": {
+          "gid": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Group id"
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "owner": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "avatar_updated_at": {
+            "type": "integer",
+            "format": "timestamp"
+          },
+          "is_public": {
+            "type": "boolean"
+          }
+        }
+      },
+      "HeartbeatMessage": {
+        "type": "object",
+        "description": "Heartbeat message",
+        "required": [
+          "time"
+        ],
+        "properties": {
+          "time": {
+            "type": "integer",
+            "format": "timestamp"
+          }
+        }
+      },
+      "Image": {
+        "type": "object",
+        "description": "more media types: https://en.wikipedia.org/wiki/Media_type",
+        "required": [
+          "url"
+        ],
+        "properties": {
+          "type": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "secure_url": {
+            "type": "string"
+          },
+          "width": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "height": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "alt": {
+            "type": "string"
+          }
+        }
+      },
+      "ImageProperties": {
+        "type": "object",
+        "description": "Image properties",
+        "required": [
+          "width",
+          "height"
+        ],
+        "properties": {
+          "width": {
+            "type": "integer",
+            "format": "uint32"
+          },
+          "height": {
+            "type": "integer",
+            "format": "uint32"
+          }
+        }
+      },
+      "JoinedGroupMessage": {
+        "type": "object",
+        "description": "Joined group message",
+        "required": [
+          "group"
+        ],
+        "properties": {
+          "group": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Group"
+              },
+              {
+                "description": "Group"
+              }
+            ]
+          }
+        }
+      },
+      "KickFromGroupMessage": {
+        "type": "object",
+        "description": "Kick from group message",
+        "required": [
+          "gid",
+          "reason"
+        ],
+        "properties": {
+          "gid": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Group id"
+          },
+          "reason": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/KickFromGroupReason"
+              },
+              {
+                "description": "Reason"
+              }
+            ]
+          }
+        }
+      },
+      "KickFromGroupReason": {
+        "type": "string",
+        "description": "User leaved group reason",
+        "enum": [
+          "kick",
+          "group_deleted"
+        ]
+      },
+      "KickMessage": {
+        "type": "object",
+        "description": "Kick message",
+        "required": [
+          "reason"
+        ],
+        "properties": {
+          "reason": {
+            "$ref": "#/components/schemas/KickReason"
+          }
+        }
+      },
+      "KickReason": {
+        "type": "string",
+        "description": "Kick reason",
+        "enum": [
+          "login_from_other_device",
+          "delete_user",
+          "delete_device",
+          "logout",
+          "frozen"
+        ]
+      },
+      "LicenseReply": {
+        "type": "object",
+        "required": [
+          "domains",
+          "user_limit",
+          "created_at",
+          "expired_at",
+          "sign",
+          "base58"
+        ],
+        "properties": {
+          "domains": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "user_limit": {
+            "type": "integer",
+            "format": "uint32"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "expired_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "sign": {
+            "type": "boolean"
+          },
+          "base58": {
+            "type": "string"
+          }
+        }
+      },
+      "LikeMessageRequest": {
+        "type": "object",
+        "required": [
+          "action"
+        ],
+        "properties": {
+          "action": {
+            "type": "string"
+          }
+        }
+      },
+      "LoginConfig": {
+        "type": "object",
+        "description": "Login config",
+        "required": [
+          "who_can_sign_up",
+          "guest",
+          "password",
+          "magic_link",
+          "google",
+          "github",
+          "oidc",
+          "metamask",
+          "third_party"
+        ],
+        "properties": {
+          "who_can_sign_up": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/WhoCanSignUp"
+              },
+              {
+                "description": "Who can sign up"
+              }
+            ]
+          },
+          "guest": {
+            "type": "boolean",
+            "description": "Login as guest"
+          },
+          "password": {
+            "type": "boolean",
+            "description": "Login with password"
+          },
+          "magic_link": {
+            "type": "boolean",
+            "description": "Login with magic link"
+          },
+          "google": {
+            "type": "boolean",
+            "description": "Login with Google"
+          },
+          "github": {
+            "type": "boolean",
+            "description": "Login with Github"
+          },
+          "oidc": {
+            "type": "array",
+            "description": "Login with OpenID Connect",
+            "items": {
+              "$ref": "#/components/schemas/OIDCConfig"
+            }
+          },
+          "metamask": {
+            "type": "boolean",
+            "description": "Login with Metamask"
+          },
+          "third_party": {
+            "type": "boolean",
+            "description": "Login with third party"
+          }
+        }
+      },
+      "LoginCredential": {
+        "type": "object",
+        "description": "Login credential",
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/LoginCredential_LoginCredentialPassword"
+          },
+          {
+            "$ref": "#/components/schemas/LoginCredential_LoginCredentialMagicLink"
+          },
+          {
+            "$ref": "#/components/schemas/LoginCredential_LoginCredentialGoogleIdToken"
+          },
+          {
+            "$ref": "#/components/schemas/LoginCredential_LoginCredentialGithubCode"
+          },
+          {
+            "$ref": "#/components/schemas/LoginCredential_LoginCredentialOpenIdConnect"
+          },
+          {
+            "$ref": "#/components/schemas/LoginCredential_LoginCredentialMetaMask"
+          },
+          {
+            "$ref": "#/components/schemas/LoginCredential_LoginCredentialThirdParty"
+          }
+        ],
+        "discriminator": {
+          "propertyName": "type",
+          "mapping": {
+            "password": "#/components/schemas/LoginCredential_LoginCredentialPassword",
+            "magiclink": "#/components/schemas/LoginCredential_LoginCredentialMagicLink",
+            "google": "#/components/schemas/LoginCredential_LoginCredentialGoogleIdToken",
+            "github": "#/components/schemas/LoginCredential_LoginCredentialGithubCode",
+            "oidc": "#/components/schemas/LoginCredential_LoginCredentialOpenIdConnect",
+            "metamask": "#/components/schemas/LoginCredential_LoginCredentialMetaMask",
+            "thirdparty": "#/components/schemas/LoginCredential_LoginCredentialThirdParty"
+          }
+        }
+      },
+      "LoginCredentialGithubCode": {
+        "type": "object",
+        "required": [
+          "code"
+        ],
+        "properties": {
+          "code": {
+            "type": "string",
+            "description": "Github code"
+          },
+          "magic_token": {
+            "type": "string",
+            "default": ""
+          }
+        }
+      },
+      "LoginCredentialGoogleIdToken": {
+        "type": "object",
+        "required": [
+          "id_token"
+        ],
+        "properties": {
+          "id_token": {
+            "type": "string",
+            "description": "Google id token"
+          },
+          "magic_token": {
+            "type": "string",
+            "default": ""
+          }
+        }
+      },
+      "LoginCredentialMagicLink": {
+        "type": "object",
+        "required": [
+          "magic_token"
+        ],
+        "properties": {
+          "magic_token": {
+            "type": "string",
+            "description": "Login magic token"
+          },
+          "extra_name": {
+            "type": "string",
+            "description": "Register directly through login magic link",
+            "default": ""
+          }
+        }
+      },
+      "LoginCredentialMetaMask": {
+        "type": "object",
+        "required": [
+          "public_address",
+          "nonce",
+          "signature"
+        ],
+        "properties": {
+          "public_address": {
+            "type": "string"
+          },
+          "nonce": {
+            "type": "string"
+          },
+          "signature": {
+            "type": "string"
+          },
+          "magic_token": {
+            "type": "string",
+            "default": ""
+          }
+        }
+      },
+      "LoginCredentialOpenIdConnect": {
+        "type": "object",
+        "required": [
+          "code",
+          "state"
+        ],
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "state": {
+            "type": "string"
+          },
+          "magic_token": {
+            "type": "string",
+            "default": ""
+          }
+        }
+      },
+      "LoginCredentialPassword": {
+        "type": "object",
+        "required": [
+          "email",
+          "password"
+        ],
+        "properties": {
+          "email": {
+            "type": "string",
+            "description": "Email"
+          },
+          "password": {
+            "type": "string",
+            "description": "Password"
+          }
+        }
+      },
+      "LoginCredentialThirdParty": {
+        "type": "object",
+        "required": [
+          "key"
+        ],
+        "properties": {
+          "key": {
+            "type": "string"
+          }
+        }
+      },
+      "LoginCredential_LoginCredentialGithubCode": {
+        "allOf": [
+          {
+            "type": "object",
+            "required": [
+              "type"
+            ],
+            "properties": {
+              "type": {
+                "type": "string",
+                "example": "github"
+              }
+            }
+          },
+          {
+            "$ref": "#/components/schemas/LoginCredentialGithubCode"
+          }
+        ]
+      },
+      "LoginCredential_LoginCredentialGoogleIdToken": {
+        "allOf": [
+          {
+            "type": "object",
+            "required": [
+              "type"
+            ],
+            "properties": {
+              "type": {
+                "type": "string",
+                "example": "google"
+              }
+            }
+          },
+          {
+            "$ref": "#/components/schemas/LoginCredentialGoogleIdToken"
+          }
+        ]
+      },
+      "LoginCredential_LoginCredentialMagicLink": {
+        "allOf": [
+          {
+            "type": "object",
+            "required": [
+              "type"
+            ],
+            "properties": {
+              "type": {
+                "type": "string",
+                "example": "magiclink"
+              }
+            }
+          },
+          {
+            "$ref": "#/components/schemas/LoginCredentialMagicLink"
+          }
+        ]
+      },
+      "LoginCredential_LoginCredentialMetaMask": {
+        "allOf": [
+          {
+            "type": "object",
+            "required": [
+              "type"
+            ],
+            "properties": {
+              "type": {
+                "type": "string",
+                "example": "metamask"
+              }
+            }
+          },
+          {
+            "$ref": "#/components/schemas/LoginCredentialMetaMask"
+          }
+        ]
+      },
+      "LoginCredential_LoginCredentialOpenIdConnect": {
+        "allOf": [
+          {
+            "type": "object",
+            "required": [
+              "type"
+            ],
+            "properties": {
+              "type": {
+                "type": "string",
+                "example": "oidc"
+              }
+            }
+          },
+          {
+            "$ref": "#/components/schemas/LoginCredentialOpenIdConnect"
+          }
+        ]
+      },
+      "LoginCredential_LoginCredentialPassword": {
+        "allOf": [
+          {
+            "type": "object",
+            "required": [
+              "type"
+            ],
+            "properties": {
+              "type": {
+                "type": "string",
+                "example": "password"
+              }
+            }
+          },
+          {
+            "$ref": "#/components/schemas/LoginCredentialPassword"
+          }
+        ]
+      },
+      "LoginCredential_LoginCredentialThirdParty": {
+        "allOf": [
+          {
+            "type": "object",
+            "required": [
+              "type"
+            ],
+            "properties": {
+              "type": {
+                "type": "string",
+                "example": "thirdparty"
+              }
+            }
+          },
+          {
+            "$ref": "#/components/schemas/LoginCredentialThirdParty"
+          }
+        ]
+      },
+      "LoginRequest": {
+        "type": "object",
+        "description": "Login request",
+        "required": [
+          "credential"
+        ],
+        "properties": {
+          "credential": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/LoginCredential"
+              },
+              {
+                "description": "Credential"
+              }
+            ]
+          },
+          "device": {
+            "type": "string",
+            "description": "Device id",
+            "default": "unknown"
+          },
+          "device_token": {
+            "type": "string",
+            "description": "FCM device token"
+          }
+        },
+        "example": {
+          "credential": {
+            "email": "admin@voce.chat",
+            "password": "123456",
+            "type": "password"
+          },
+          "device": "web",
+          "device_token": null
+        }
+      },
+      "LoginResponse": {
+        "type": "object",
+        "description": "Token response",
+        "required": [
+          "server_id",
+          "token",
+          "refresh_token",
+          "expired_in",
+          "user"
+        ],
+        "properties": {
+          "server_id": {
+            "type": "string",
+            "description": "Server id"
+          },
+          "token": {
+            "type": "string",
+            "description": "Access token"
+          },
+          "refresh_token": {
+            "type": "string",
+            "description": "Refresh token"
+          },
+          "expired_in": {
+            "type": "integer",
+            "format": "int64",
+            "description": "The access token expired in seconds"
+          },
+          "user": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/UserInfo"
+              },
+              {
+                "description": "User info"
+              }
+            ]
+          }
+        }
+      },
+      "Message": {
+        "type": "object",
+        "description": "Message",
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/Message_SessionReadyMessage"
+          },
+          {
+            "$ref": "#/components/schemas/Message_UsersSnapshotMessage"
+          },
+          {
+            "$ref": "#/components/schemas/Message_UsersUpdateLogMessage"
+          },
+          {
+            "$ref": "#/components/schemas/Message_UsersStateMessage"
+          },
+          {
+            "$ref": "#/components/schemas/Message_UserStateChangedMessage"
+          },
+          {
+            "$ref": "#/components/schemas/Message_UserSettingsMessage"
+          },
+          {
+            "$ref": "#/components/schemas/Message_UserSettingsChangedMessage"
+          },
+          {
+            "$ref": "#/components/schemas/Message_RelatedGroupsMessage"
+          },
+          {
+            "$ref": "#/components/schemas/Message_ChatMessage"
+          },
+          {
+            "$ref": "#/components/schemas/Message_KickMessage"
+          },
+          {
+            "$ref": "#/components/schemas/Message_UserJoinedGroupMessage"
+          },
+          {
+            "$ref": "#/components/schemas/Message_UserLeavedGroupMessage"
+          },
+          {
+            "$ref": "#/components/schemas/Message_JoinedGroupMessage"
+          },
+          {
+            "$ref": "#/components/schemas/Message_KickFromGroupMessage"
+          },
+          {
+            "$ref": "#/components/schemas/Message_GroupChangedMessage"
+          },
+          {
+            "$ref": "#/components/schemas/Message_PinnedMessageUpdated"
+          },
+          {
+            "$ref": "#/components/schemas/Message_HeartbeatMessage"
+          }
+        ],
+        "discriminator": {
+          "propertyName": "type",
+          "mapping": {
+            "ready": "#/components/schemas/Message_SessionReadyMessage",
+            "users_snapshot": "#/components/schemas/Message_UsersSnapshotMessage",
+            "users_log": "#/components/schemas/Message_UsersUpdateLogMessage",
+            "users_state": "#/components/schemas/Message_UsersStateMessage",
+            "users_state_changed": "#/components/schemas/Message_UserStateChangedMessage",
+            "user_settings": "#/components/schemas/Message_UserSettingsMessage",
+            "user_settings_changed": "#/components/schemas/Message_UserSettingsChangedMessage",
+            "related_groups": "#/components/schemas/Message_RelatedGroupsMessage",
+            "chat": "#/components/schemas/Message_ChatMessage",
+            "kick": "#/components/schemas/Message_KickMessage",
+            "user_joined_group": "#/components/schemas/Message_UserJoinedGroupMessage",
+            "user_leaved_group": "#/components/schemas/Message_UserLeavedGroupMessage",
+            "joined_group": "#/components/schemas/Message_JoinedGroupMessage",
+            "kick_from_group": "#/components/schemas/Message_KickFromGroupMessage",
+            "group_changed": "#/components/schemas/Message_GroupChangedMessage",
+            "pinned_message_updated": "#/components/schemas/Message_PinnedMessageUpdated",
+            "heartbeat": "#/components/schemas/Message_HeartbeatMessage"
+          }
+        }
+      },
+      "MessageDetail": {
+        "type": "object",
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/MessageDetail_MessageNormal"
+          },
+          {
+            "$ref": "#/components/schemas/MessageDetail_MessageReaction"
+          },
+          {
+            "$ref": "#/components/schemas/MessageDetail_MessageReply"
+          }
+        ],
+        "discriminator": {
+          "propertyName": "type",
+          "mapping": {
+            "normal": "#/components/schemas/MessageDetail_MessageNormal",
+            "reaction": "#/components/schemas/MessageDetail_MessageReaction",
+            "reply": "#/components/schemas/MessageDetail_MessageReply"
+          }
+        }
+      },
+      "MessageDetail_MessageNormal": {
+        "allOf": [
+          {
+            "type": "object",
+            "required": [
+              "type"
+            ],
+            "properties": {
+              "type": {
+                "type": "string",
+                "example": "normal"
+              }
+            }
+          },
+          {
+            "$ref": "#/components/schemas/MessageNormal"
+          }
+        ]
+      },
+      "MessageDetail_MessageReaction": {
+        "allOf": [
+          {
+            "type": "object",
+            "required": [
+              "type"
+            ],
+            "properties": {
+              "type": {
+                "type": "string",
+                "example": "reaction"
+              }
+            }
+          },
+          {
+            "$ref": "#/components/schemas/MessageReaction"
+          }
+        ]
+      },
+      "MessageDetail_MessageReply": {
+        "allOf": [
+          {
+            "type": "object",
+            "required": [
+              "type"
+            ],
+            "properties": {
+              "type": {
+                "type": "string",
+                "example": "reply"
+              }
+            }
+          },
+          {
+            "$ref": "#/components/schemas/MessageReply"
+          }
+        ]
+      },
+      "MessageNormal": {
+        "type": "object",
+        "description": "Normal message\n\ncontent_type match properties as following:\n##### application/octet-stream\n- id: String(UUID)\n- name: String\n- size: i64\n- hash: String(SHA-256)",
+        "required": [
+          "content_type",
+          "content"
+        ],
+        "properties": {
+          "properties": {
+            "type": "object",
+            "description": "Extended attributes",
+            "additionalProperties": {}
+          },
+          "content_type": {
+            "type": "string",
+            "description": "Content type"
+          },
+          "content": {
+            "type": "string",
+            "description": "Content"
+          },
+          "expires_in": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Expires in seconds"
+          }
+        }
+      },
+      "MessageReaction": {
+        "type": "object",
+        "description": "Normal reaction",
+        "required": [
+          "mid",
+          "detail"
+        ],
+        "properties": {
+          "mid": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "detail": {
+            "$ref": "#/components/schemas/MessageReactionDetail"
+          }
+        }
+      },
+      "MessageReactionDelete": {
+        "type": "object",
+        "description": "Message reaction delete"
+      },
+      "MessageReactionDetail": {
+        "type": "object",
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/MessageReactionDetail_MessageReactionEdit"
+          },
+          {
+            "$ref": "#/components/schemas/MessageReactionDetail_MessageReactionLike"
+          },
+          {
+            "$ref": "#/components/schemas/MessageReactionDetail_MessageReactionDelete"
+          }
+        ],
+        "discriminator": {
+          "propertyName": "type",
+          "mapping": {
+            "edit": "#/components/schemas/MessageReactionDetail_MessageReactionEdit",
+            "like": "#/components/schemas/MessageReactionDetail_MessageReactionLike",
+            "delete": "#/components/schemas/MessageReactionDetail_MessageReactionDelete"
+          }
+        }
+      },
+      "MessageReactionDetail_MessageReactionDelete": {
+        "allOf": [
+          {
+            "type": "object",
+            "required": [
+              "type"
+            ],
+            "properties": {
+              "type": {
+                "type": "string",
+                "example": "delete"
+              }
+            }
+          },
+          {
+            "$ref": "#/components/schemas/MessageReactionDelete"
+          }
+        ]
+      },
+      "MessageReactionDetail_MessageReactionEdit": {
+        "allOf": [
+          {
+            "type": "object",
+            "required": [
+              "type"
+            ],
+            "properties": {
+              "type": {
+                "type": "string",
+                "example": "edit"
+              }
+            }
+          },
+          {
+            "$ref": "#/components/schemas/MessageReactionEdit"
+          }
+        ]
+      },
+      "MessageReactionDetail_MessageReactionLike": {
+        "allOf": [
+          {
+            "type": "object",
+            "required": [
+              "type"
+            ],
+            "properties": {
+              "type": {
+                "type": "string",
+                "example": "like"
+              }
+            }
+          },
+          {
+            "$ref": "#/components/schemas/MessageReactionLike"
+          }
+        ]
+      },
+      "MessageReactionEdit": {
+        "type": "object",
+        "description": "Message reaction edit",
+        "required": [
+          "content_type",
+          "content"
+        ],
+        "properties": {
+          "properties": {
+            "type": "object",
+            "description": "Extended attributes",
+            "additionalProperties": {}
+          },
+          "content_type": {
+            "type": "string",
+            "description": "Content type"
+          },
+          "content": {
+            "type": "string",
+            "description": "Content"
+          }
+        }
+      },
+      "MessageReactionLike": {
+        "type": "object",
+        "description": "Message reaction like",
+        "required": [
+          "action"
+        ],
+        "properties": {
+          "action": {
+            "type": "string"
+          }
+        }
+      },
+      "MessageReply": {
+        "type": "object",
+        "required": [
+          "mid",
+          "content_type",
+          "content"
+        ],
+        "properties": {
+          "mid": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "properties": {
+            "type": "object",
+            "description": "Extended attributes",
+            "additionalProperties": {}
+          },
+          "content_type": {
+            "type": "string",
+            "description": "Content type"
+          },
+          "content": {
+            "type": "string",
+            "description": "Content"
+          }
+        }
+      },
+      "MessageTarget": {
+        "type": "object",
+        "description": "Message target",
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/MessageTargetUser"
+          },
+          {
+            "$ref": "#/components/schemas/MessageTargetGroup"
+          }
+        ]
+      },
+      "MessageTargetGroup": {
+        "type": "object",
+        "description": "Message target group",
+        "required": [
+          "gid"
+        ],
+        "properties": {
+          "gid": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "MessageTargetUser": {
+        "type": "object",
+        "description": "Message target user",
+        "required": [
+          "uid"
+        ],
+        "properties": {
+          "uid": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "Message_ChatMessage": {
+        "allOf": [
+          {
+            "type": "object",
+            "required": [
+              "type"
+            ],
+            "properties": {
+              "type": {
+                "type": "string",
+                "example": "chat"
+              }
+            }
+          },
+          {
+            "$ref": "#/components/schemas/ChatMessage"
+          }
+        ]
+      },
+      "Message_GroupChangedMessage": {
+        "allOf": [
+          {
+            "type": "object",
+            "required": [
+              "type"
+            ],
+            "properties": {
+              "type": {
+                "type": "string",
+                "example": "group_changed"
+              }
+            }
+          },
+          {
+            "$ref": "#/components/schemas/GroupChangedMessage"
+          }
+        ]
+      },
+      "Message_HeartbeatMessage": {
+        "allOf": [
+          {
+            "type": "object",
+            "required": [
+              "type"
+            ],
+            "properties": {
+              "type": {
+                "type": "string",
+                "example": "heartbeat"
+              }
+            }
+          },
+          {
+            "$ref": "#/components/schemas/HeartbeatMessage"
+          }
+        ]
+      },
+      "Message_JoinedGroupMessage": {
+        "allOf": [
+          {
+            "type": "object",
+            "required": [
+              "type"
+            ],
+            "properties": {
+              "type": {
+                "type": "string",
+                "example": "joined_group"
+              }
+            }
+          },
+          {
+            "$ref": "#/components/schemas/JoinedGroupMessage"
+          }
+        ]
+      },
+      "Message_KickFromGroupMessage": {
+        "allOf": [
+          {
+            "type": "object",
+            "required": [
+              "type"
+            ],
+            "properties": {
+              "type": {
+                "type": "string",
+                "example": "kick_from_group"
+              }
+            }
+          },
+          {
+            "$ref": "#/components/schemas/KickFromGroupMessage"
+          }
+        ]
+      },
+      "Message_KickMessage": {
+        "allOf": [
+          {
+            "type": "object",
+            "required": [
+              "type"
+            ],
+            "properties": {
+              "type": {
+                "type": "string",
+                "example": "kick"
+              }
+            }
+          },
+          {
+            "$ref": "#/components/schemas/KickMessage"
+          }
+        ]
+      },
+      "Message_PinnedMessageUpdated": {
+        "allOf": [
+          {
+            "type": "object",
+            "required": [
+              "type"
+            ],
+            "properties": {
+              "type": {
+                "type": "string",
+                "example": "pinned_message_updated"
+              }
+            }
+          },
+          {
+            "$ref": "#/components/schemas/PinnedMessageUpdated"
+          }
+        ]
+      },
+      "Message_RelatedGroupsMessage": {
+        "allOf": [
+          {
+            "type": "object",
+            "required": [
+              "type"
+            ],
+            "properties": {
+              "type": {
+                "type": "string",
+                "example": "related_groups"
+              }
+            }
+          },
+          {
+            "$ref": "#/components/schemas/RelatedGroupsMessage"
+          }
+        ]
+      },
+      "Message_SessionReadyMessage": {
+        "allOf": [
+          {
+            "type": "object",
+            "required": [
+              "type"
+            ],
+            "properties": {
+              "type": {
+                "type": "string",
+                "example": "ready"
+              }
+            }
+          },
+          {
+            "$ref": "#/components/schemas/SessionReadyMessage"
+          }
+        ]
+      },
+      "Message_UserJoinedGroupMessage": {
+        "allOf": [
+          {
+            "type": "object",
+            "required": [
+              "type"
+            ],
+            "properties": {
+              "type": {
+                "type": "string",
+                "example": "user_joined_group"
+              }
+            }
+          },
+          {
+            "$ref": "#/components/schemas/UserJoinedGroupMessage"
+          }
+        ]
+      },
+      "Message_UserLeavedGroupMessage": {
+        "allOf": [
+          {
+            "type": "object",
+            "required": [
+              "type"
+            ],
+            "properties": {
+              "type": {
+                "type": "string",
+                "example": "user_leaved_group"
+              }
+            }
+          },
+          {
+            "$ref": "#/components/schemas/UserLeavedGroupMessage"
+          }
+        ]
+      },
+      "Message_UserSettingsChangedMessage": {
+        "allOf": [
+          {
+            "type": "object",
+            "required": [
+              "type"
+            ],
+            "properties": {
+              "type": {
+                "type": "string",
+                "example": "user_settings_changed"
+              }
+            }
+          },
+          {
+            "$ref": "#/components/schemas/UserSettingsChangedMessage"
+          }
+        ]
+      },
+      "Message_UserSettingsMessage": {
+        "allOf": [
+          {
+            "type": "object",
+            "required": [
+              "type"
+            ],
+            "properties": {
+              "type": {
+                "type": "string",
+                "example": "user_settings"
+              }
+            }
+          },
+          {
+            "$ref": "#/components/schemas/UserSettingsMessage"
+          }
+        ]
+      },
+      "Message_UserStateChangedMessage": {
+        "allOf": [
+          {
+            "type": "object",
+            "required": [
+              "type"
+            ],
+            "properties": {
+              "type": {
+                "type": "string",
+                "example": "users_state_changed"
+              }
+            }
+          },
+          {
+            "$ref": "#/components/schemas/UserStateChangedMessage"
+          }
+        ]
+      },
+      "Message_UsersSnapshotMessage": {
+        "allOf": [
+          {
+            "type": "object",
+            "required": [
+              "type"
+            ],
+            "properties": {
+              "type": {
+                "type": "string",
+                "example": "users_snapshot"
+              }
+            }
+          },
+          {
+            "$ref": "#/components/schemas/UsersSnapshotMessage"
+          }
+        ]
+      },
+      "Message_UsersStateMessage": {
+        "allOf": [
+          {
+            "type": "object",
+            "required": [
+              "type"
+            ],
+            "properties": {
+              "type": {
+                "type": "string",
+                "example": "users_state"
+              }
+            }
+          },
+          {
+            "$ref": "#/components/schemas/UsersStateMessage"
+          }
+        ]
+      },
+      "Message_UsersUpdateLogMessage": {
+        "allOf": [
+          {
+            "type": "object",
+            "required": [
+              "type"
+            ],
+            "properties": {
+              "type": {
+                "type": "string",
+                "example": "users_log"
+              }
+            }
+          },
+          {
+            "$ref": "#/components/schemas/UsersUpdateLogMessage"
+          }
+        ]
+      },
+      "Metrics": {
+        "type": "object",
+        "description": "Server metrics",
+        "required": [
+          "user_count",
+          "group_count",
+          "online_user_count",
+          "version"
+        ],
+        "properties": {
+          "user_count": {
+            "type": "integer",
+            "format": "uint64"
+          },
+          "group_count": {
+            "type": "integer",
+            "format": "uint64"
+          },
+          "online_user_count": {
+            "type": "integer",
+            "format": "uint64"
+          },
+          "version": {
+            "type": "string"
+          }
+        }
+      },
+      "MuteGroup": {
+        "type": "object",
+        "description": "Mute group",
+        "required": [
+          "gid"
+        ],
+        "properties": {
+          "gid": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Group id"
+          },
+          "expired_at": {
+            "type": "integer",
+            "format": "timestamp",
+            "description": "Expired at"
+          }
+        }
+      },
+      "MuteRequest": {
+        "type": "object",
+        "description": "Mute request",
+        "properties": {
+          "add_users": {
+            "type": "array",
+            "default": [],
+            "items": {
+              "$ref": "#/components/schemas/MuteRequestUser"
+            }
+          },
+          "add_groups": {
+            "type": "array",
+            "default": [],
+            "items": {
+              "$ref": "#/components/schemas/MuteRequestGroup"
+            }
+          },
+          "remove_users": {
+            "type": "array",
+            "default": [],
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          "remove_groups": {
+            "type": "array",
+            "default": [],
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        }
+      },
+      "MuteRequestGroup": {
+        "type": "object",
+        "description": "Mute request group",
+        "required": [
+          "gid"
+        ],
+        "properties": {
+          "gid": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Group id"
+          },
+          "expired_in": {
+            "type": "integer",
+            "format": "uint32",
+            "description": "Seconds"
+          }
+        }
+      },
+      "MuteRequestUser": {
+        "type": "object",
+        "description": "Mute request user",
+        "required": [
+          "uid"
+        ],
+        "properties": {
+          "uid": {
+            "type": "integer",
+            "format": "int64",
+            "description": "User id"
+          },
+          "expired_in": {
+            "type": "integer",
+            "format": "uint32",
+            "description": "Seconds"
+          }
+        }
+      },
+      "MuteUser": {
+        "type": "object",
+        "description": "Mute user",
+        "required": [
+          "uid"
+        ],
+        "properties": {
+          "uid": {
+            "type": "integer",
+            "format": "int64",
+            "description": "User id"
+          },
+          "expired_at": {
+            "type": "integer",
+            "format": "timestamp",
+            "description": "Expired at"
+          }
+        }
+      },
+      "OIDCConfig": {
+        "type": "object",
+        "required": [
+          "enable",
+          "favicon",
+          "domain"
+        ],
+        "properties": {
+          "enable": {
+            "type": "boolean"
+          },
+          "favicon": {
+            "type": "string"
+          },
+          "domain": {
+            "type": "string"
+          }
+        }
+      },
+      "Object": {
+        "type": "object",
+        "required": [
+          "type",
+          "title",
+          "url",
+          "images",
+          "audios",
+          "videos"
+        ],
+        "properties": {
+          "type": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "images": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Image"
+            }
+          },
+          "audios": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Audio"
+            }
+          },
+          "videos": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Video"
+            }
+          },
+          "favicon_url": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "locale": {
+            "type": "string"
+          },
+          "locale_alternate": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "site_name": {
+            "type": "string"
+          }
+        }
+      },
+      "OpenIdAuthorizeRequest": {
+        "type": "object",
+        "required": [
+          "issuer",
+          "redirect_uri"
+        ],
+        "properties": {
+          "issuer": {
+            "type": "string"
+          },
+          "redirect_uri": {
+            "type": "string"
+          }
+        }
+      },
+      "OpenIdAuthorizeResponse": {
+        "type": "object",
+        "required": [
+          "url"
+        ],
+        "properties": {
+          "url": {
+            "type": "string"
+          }
+        }
+      },
+      "OrganizationConfig": {
+        "type": "object",
+        "description": "Organization info",
+        "required": [
+          "name"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        }
+      },
+      "PinMessageRequest": {
+        "type": "object",
+        "description": "Pin message request",
+        "required": [
+          "mid"
+        ],
+        "properties": {
+          "mid": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "PinnedMessage": {
+        "type": "object",
+        "description": "Pinned message",
+        "required": [
+          "mid",
+          "created_by",
+          "created_at",
+          "content_type",
+          "content"
+        ],
+        "properties": {
+          "mid": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "created_by": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "created_at": {
+            "type": "integer",
+            "format": "timestamp"
+          },
+          "properties": {
+            "type": "object",
+            "description": "Extended attributes",
+            "additionalProperties": {}
+          },
+          "content_type": {
+            "type": "string",
+            "description": "Content type"
+          },
+          "content": {
+            "type": "string",
+            "description": "Content"
+          }
+        }
+      },
+      "PinnedMessageUpdated": {
+        "type": "object",
+        "description": "Pinned message updated",
+        "required": [
+          "gid",
+          "mid"
+        ],
+        "properties": {
+          "gid": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "mid": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "msg": {
+            "$ref": "#/components/schemas/PinnedMessage"
+          }
+        }
+      },
+      "PrepareUploadFileRequest": {
+        "type": "object",
+        "description": "Prepare upload file request",
+        "properties": {
+          "content_type": {
+            "type": "string"
+          },
+          "filename": {
+            "type": "string"
+          }
+        }
+      },
+      "ReadIndexGroup": {
+        "type": "object",
+        "description": "Read index to group",
+        "required": [
+          "gid",
+          "mid"
+        ],
+        "properties": {
+          "gid": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Group id"
+          },
+          "mid": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Message id"
+          }
+        }
+      },
+      "ReadIndexUser": {
+        "type": "object",
+        "description": "Read index to user",
+        "required": [
+          "uid",
+          "mid"
+        ],
+        "properties": {
+          "uid": {
+            "type": "integer",
+            "format": "int64",
+            "description": "User id"
+          },
+          "mid": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Message id"
+          }
+        }
+      },
+      "RegisterRequest": {
+        "type": "object",
+        "properties": {
+          "magic_token": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string",
+            "format": "email"
+          },
+          "password": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string",
+            "maxLength": 32
+          },
+          "gender": {
+            "type": "integer",
+            "format": "int32",
+            "default": 0
+          },
+          "language": {
+            "type": "string",
+            "format": "language",
+            "default": "en-US"
+          },
+          "device": {
+            "type": "string",
+            "description": "Device id",
+            "default": "unknown"
+          },
+          "device_token": {
+            "type": "string",
+            "description": "FCM device token"
+          }
+        }
+      },
+      "RelatedGroupsMessage": {
+        "type": "object",
+        "description": "Related groups message",
+        "required": [
+          "groups"
+        ],
+        "properties": {
+          "groups": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Group"
+            }
+          }
+        }
+      },
+      "RenewTokenRequest": {
+        "type": "object",
+        "description": "Renew token request",
+        "required": [
+          "token",
+          "refresh_token"
+        ],
+        "properties": {
+          "token": {
+            "type": "string"
+          },
+          "refresh_token": {
+            "type": "string"
+          }
+        }
+      },
+      "RenewTokenResponse": {
+        "type": "object",
+        "description": "Renew token response",
+        "required": [
+          "token",
+          "refresh_token",
+          "expired_in"
+        ],
+        "properties": {
+          "token": {
+            "type": "string",
+            "description": "Access token"
+          },
+          "refresh_token": {
+            "type": "string",
+            "description": "Refresh token"
+          },
+          "expired_in": {
+            "type": "integer",
+            "format": "int64",
+            "description": "The access token expired in seconds"
+          }
+        }
+      },
+      "SaveLicenseRequest": {
+        "type": "object",
+        "required": [
+          "license"
+        ],
+        "properties": {
+          "license": {
+            "type": "string"
+          }
+        }
+      },
+      "SendMailRequest": {
+        "type": "object",
+        "required": [
+          "to",
+          "subject",
+          "content"
+        ],
+        "properties": {
+          "to": {
+            "type": "string"
+          },
+          "subject": {
+            "type": "string"
+          },
+          "content": {
+            "type": "string"
+          }
+        }
+      },
+      "SendRegMagicTokenRequest": {
+        "type": "object",
+        "description": "Change password request",
+        "required": [
+          "magic_token",
+          "email",
+          "password"
+        ],
+        "properties": {
+          "magic_token": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string",
+            "format": "email"
+          },
+          "password": {
+            "type": "string"
+          }
+        }
+      },
+      "SendRegMagicTokenResponse": {
+        "type": "object",
+        "required": [
+          "new_magic_token",
+          "mail_is_sent"
+        ],
+        "properties": {
+          "new_magic_token": {
+            "type": "string"
+          },
+          "mail_is_sent": {
+            "type": "boolean"
+          }
+        }
+      },
+      "SessionReadyMessage": {
+        "type": "object",
+        "description": "Session ready message"
+      },
+      "SmtpConfigObject": {
+        "type": "object",
+        "description": "SMTP config",
+        "required": [
+          "enabled",
+          "host",
+          "from",
+          "username",
+          "password"
+        ],
+        "properties": {
+          "enabled": {
+            "type": "boolean"
+          },
+          "host": {
+            "type": "string"
+          },
+          "port": {
+            "type": "integer",
+            "format": "uint16"
+          },
+          "from": {
+            "type": "string"
+          },
+          "username": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        }
+      },
+      "UnpinMessageRequest": {
+        "type": "object",
+        "description": "Unpin message request",
+        "required": [
+          "mid"
+        ],
+        "properties": {
+          "mid": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "UpdateAction": {
+        "type": "string",
+        "description": "Update action type",
+        "enum": [
+          "create",
+          "update",
+          "delete"
+        ]
+      },
+      "UpdateBurnAfterReadingRequest": {
+        "type": "object",
+        "description": "Update read after reading request",
+        "properties": {
+          "users": {
+            "type": "array",
+            "default": [],
+            "items": {
+              "$ref": "#/components/schemas/UpdateBurnAfterReadingRequestUser"
+            }
+          },
+          "groups": {
+            "type": "array",
+            "default": [],
+            "items": {
+              "$ref": "#/components/schemas/UpdateBurnAfterReadingRequestGroup"
+            }
+          }
+        }
+      },
+      "UpdateBurnAfterReadingRequestGroup": {
+        "type": "object",
+        "description": "Update read index request group",
+        "required": [
+          "gid",
+          "expires_in"
+        ],
+        "properties": {
+          "gid": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Group id"
+          },
+          "expires_in": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Expires in seconds"
+          }
+        }
+      },
+      "UpdateBurnAfterReadingRequestUser": {
+        "type": "object",
+        "description": "Update read index request user",
+        "required": [
+          "uid",
+          "expires_in"
+        ],
+        "properties": {
+          "uid": {
+            "type": "integer",
+            "format": "int64",
+            "description": "User id"
+          },
+          "expires_in": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Expires in seconds"
+          }
+        }
+      },
+      "UpdateDeviceTokenRequest": {
+        "type": "object",
+        "description": "Update device token request",
+        "properties": {
+          "device_token": {
+            "type": "string"
+          }
+        }
+      },
+      "UpdateGroupRequest": {
+        "type": "object",
+        "description": "Update group request",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "owner": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "UpdateReadIndexRequest": {
+        "type": "object",
+        "description": "Update read index request",
+        "properties": {
+          "users": {
+            "type": "array",
+            "default": [],
+            "items": {
+              "$ref": "#/components/schemas/UpdateReadIndexRequestUser"
+            }
+          },
+          "groups": {
+            "type": "array",
+            "default": [],
+            "items": {
+              "$ref": "#/components/schemas/UpdateReadIndexRequestGroup"
+            }
+          }
+        }
+      },
+      "UpdateReadIndexRequestGroup": {
+        "type": "object",
+        "description": "Update read index request group",
+        "required": [
+          "gid",
+          "mid"
+        ],
+        "properties": {
+          "gid": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Group id"
+          },
+          "mid": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Message id"
+          }
+        }
+      },
+      "UpdateReadIndexRequestUser": {
+        "type": "object",
+        "description": "Update read index request user",
+        "required": [
+          "uid",
+          "mid"
+        ],
+        "properties": {
+          "uid": {
+            "type": "integer",
+            "format": "int64",
+            "description": "User id"
+          },
+          "mid": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Message id"
+          }
+        }
+      },
+      "UpdateUserInfoRequest": {
+        "type": "object",
+        "description": "Update user info request",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "gender": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "language": {
+            "type": "string",
+            "format": "language"
+          }
+        }
+      },
+      "UpdateUserRequest": {
+        "type": "object",
+        "description": "Update user request",
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string",
+            "maxLength": 32
+          },
+          "gender": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "is_admin": {
+            "type": "boolean"
+          },
+          "language": {
+            "type": "string",
+            "format": "language"
+          },
+          "status": {
+            "$ref": "#/components/schemas/UserStatus"
+          },
+          "webhook_url": {
+            "type": "string"
+          }
+        }
+      },
+      "UploadFileResponse": {
+        "type": "object",
+        "description": "Download file request",
+        "required": [
+          "path",
+          "size",
+          "hash"
+        ],
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "size": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "hash": {
+            "type": "string"
+          },
+          "image_properties": {
+            "$ref": "#/components/schemas/ImageProperties"
+          }
+        }
+      },
+      "User": {
+        "type": "object",
+        "description": "User info for admin",
+        "required": [
+          "uid",
+          "password",
+          "name",
+          "gender",
+          "is_admin",
+          "language",
+          "create_by",
+          "in_online",
+          "online_devices",
+          "created_at",
+          "updated_at",
+          "avatar_updated_at",
+          "status",
+          "is_bot"
+        ],
+        "properties": {
+          "uid": {
+            "type": "integer",
+            "format": "int64",
+            "description": "User id"
+          },
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "gender": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "is_admin": {
+            "type": "boolean"
+          },
+          "language": {
+            "type": "string",
+            "format": "language"
+          },
+          "create_by": {
+            "type": "string"
+          },
+          "in_online": {
+            "type": "boolean"
+          },
+          "online_devices": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UserDevice"
+            }
+          },
+          "created_at": {
+            "type": "integer",
+            "format": "timestamp"
+          },
+          "updated_at": {
+            "type": "integer",
+            "format": "timestamp"
+          },
+          "avatar_updated_at": {
+            "type": "integer",
+            "format": "timestamp"
+          },
+          "status": {
+            "$ref": "#/components/schemas/UserStatus"
+          },
+          "webhook_url": {
+            "type": "string"
+          },
+          "is_bot": {
+            "type": "boolean"
+          }
+        }
+      },
+      "UserConflict": {
+        "type": "object",
+        "required": [
+          "reason"
+        ],
+        "properties": {
+          "reason": {
+            "$ref": "#/components/schemas/CreateUserConflictReason"
+          }
+        }
+      },
+      "UserDevice": {
+        "type": "object",
+        "description": "User device",
+        "required": [
+          "device",
+          "is_online"
+        ],
+        "properties": {
+          "device": {
+            "type": "string"
+          },
+          "device_token": {
+            "type": "string"
+          },
+          "is_online": {
+            "type": "boolean"
+          }
+        }
+      },
+      "UserInfo": {
+        "type": "object",
+        "description": "User info",
+        "required": [
+          "uid",
+          "name",
+          "gender",
+          "language",
+          "is_admin",
+          "is_bot",
+          "avatar_updated_at",
+          "create_by"
+        ],
+        "properties": {
+          "uid": {
+            "type": "integer",
+            "format": "int64",
+            "readOnly": true
+          },
+          "email": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "gender": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "language": {
+            "type": "string",
+            "format": "language"
+          },
+          "is_admin": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "is_bot": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "avatar_updated_at": {
+            "type": "integer",
+            "format": "timestamp",
+            "readOnly": true
+          },
+          "create_by": {
+            "type": "string",
+            "readOnly": true
+          }
+        }
+      },
+      "UserJoinedGroupMessage": {
+        "type": "object",
+        "description": "Other users joined group message",
+        "required": [
+          "gid",
+          "uid"
+        ],
+        "properties": {
+          "gid": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Group id"
+          },
+          "uid": {
+            "type": "array",
+            "description": "Users id",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        }
+      },
+      "UserLeavedGroupMessage": {
+        "type": "object",
+        "description": "Other users leaved group message",
+        "required": [
+          "gid",
+          "uid"
+        ],
+        "properties": {
+          "gid": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Group id"
+          },
+          "uid": {
+            "type": "array",
+            "description": "Users id",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        }
+      },
+      "UserSettingsChangedMessage": {
+        "type": "object",
+        "description": "User setting changed message",
+        "required": [
+          "from_device",
+          "add_mute_users",
+          "remove_mute_users",
+          "add_mute_groups",
+          "remove_mute_groups",
+          "read_index_users",
+          "read_index_groups",
+          "burn_after_reading_users",
+          "burn_after_reading_groups"
+        ],
+        "properties": {
+          "from_device": {
+            "type": "string"
+          },
+          "add_mute_users": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MuteUser"
+            }
+          },
+          "remove_mute_users": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          "add_mute_groups": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MuteGroup"
+            }
+          },
+          "remove_mute_groups": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          "read_index_users": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ReadIndexUser"
+            }
+          },
+          "read_index_groups": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ReadIndexGroup"
+            }
+          },
+          "burn_after_reading_users": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BurnAfterReadingUser"
+            }
+          },
+          "burn_after_reading_groups": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BurnAfterReadingGroup"
+            }
+          }
+        }
+      },
+      "UserSettingsMessage": {
+        "type": "object",
+        "description": "User settings message",
+        "required": [
+          "mute_users",
+          "mute_groups",
+          "read_index_users",
+          "read_index_groups",
+          "burn_after_reading_users",
+          "burn_after_reading_groups"
+        ],
+        "properties": {
+          "mute_users": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MuteUser"
+            }
+          },
+          "mute_groups": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MuteGroup"
+            }
+          },
+          "read_index_users": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ReadIndexUser"
+            }
+          },
+          "read_index_groups": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ReadIndexGroup"
+            }
+          },
+          "burn_after_reading_users": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BurnAfterReadingUser"
+            }
+          },
+          "burn_after_reading_groups": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BurnAfterReadingGroup"
+            }
+          }
+        }
+      },
+      "UserState": {
+        "type": "object",
+        "description": "User state",
+        "required": [
+          "uid",
+          "online"
+        ],
+        "properties": {
+          "uid": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "online": {
+            "type": "boolean"
+          }
+        }
+      },
+      "UserStateChangedMessage": {
+        "type": "object",
+        "required": [
+          "uid"
+        ],
+        "properties": {
+          "uid": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "online": {
+            "type": "boolean"
+          }
+        }
+      },
+      "UserStatus": {
+        "type": "string",
+        "enum": [
+          "normal",
+          "frozen"
+        ]
+      },
+      "UserUpdateLog": {
+        "type": "object",
+        "description": "User update log",
+        "required": [
+          "log_id",
+          "action",
+          "uid"
+        ],
+        "properties": {
+          "log_id": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Log id(version)"
+          },
+          "action": {
+            "$ref": "#/components/schemas/UpdateAction"
+          },
+          "uid": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "email": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "gender": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "language": {
+            "type": "string",
+            "format": "language"
+          },
+          "is_admin": {
+            "type": "boolean"
+          },
+          "is_bot": {
+            "type": "boolean"
+          },
+          "avatar_updated_at": {
+            "type": "integer",
+            "format": "timestamp"
+          }
+        }
+      },
+      "UsersSnapshotMessage": {
+        "type": "object",
+        "description": "User snapshot message",
+        "required": [
+          "users",
+          "version"
+        ],
+        "properties": {
+          "users": {
+            "type": "array",
+            "description": "A snapshot of all user information.",
+            "items": {
+              "$ref": "#/components/schemas/UserInfo"
+            }
+          },
+          "version": {
+            "type": "integer",
+            "format": "int64",
+            "description": "User information version."
+          }
+        }
+      },
+      "UsersStateMessage": {
+        "type": "object",
+        "description": "User state message",
+        "required": [
+          "users"
+        ],
+        "properties": {
+          "users": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UserState"
+            }
+          }
+        }
+      },
+      "UsersUpdateLogMessage": {
+        "type": "object",
+        "description": "User update log message",
+        "required": [
+          "logs"
+        ],
+        "properties": {
+          "logs": {
+            "type": "array",
+            "description": "Logs",
+            "items": {
+              "$ref": "#/components/schemas/UserUpdateLog"
+            }
+          }
+        }
+      },
+      "Video": {
+        "type": "object",
+        "required": [
+          "url"
+        ],
+        "properties": {
+          "type": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "secure_url": {
+            "type": "string"
+          },
+          "width": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "height": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "WhoCanSignUp": {
+        "type": "string",
+        "enum": [
+          "EveryOne",
+          "InvitationOnly"
+        ]
+      }
+    },
+    "securitySchemes": {
+      "Token": {
+        "type": "apiKey",
+        "description": "ApiKey authorization",
+        "name": "X-API-Key",
+        "in": "header"
+      },
+      "TokenInQuery": {
+        "type": "apiKey",
+        "description": "ApiKey authorization",
+        "name": "api-key",
+        "in": "query"
+      }
+    }
+  }
+}
