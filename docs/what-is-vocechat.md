@@ -78,7 +78,7 @@ Vocechat is an open-source product with a free community version and only charge
         <td>Time</td>
     </tr>
     <tr align="center">
-        <th align="left">Vocechat</th>
+        <th align="left">VoceChat</th>
         <td>✅</td>
         <td>✅</td>
         <td>✅</td>
@@ -96,7 +96,7 @@ Vocechat is an open-source product with a free community version and only charge
         <td>✅</td>
         <td>✅</td>
         <td>✅</td>
-        <td align="left">Rust, Flutter, React</td>
+        <td align="left">Rust, Flutter, Typescript</td>
         <td>2022</td>
     </tr>
     <tr align="center">
