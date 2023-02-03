@@ -6,11 +6,11 @@ title: What is VoceChat
 
 # VoceChat Brief
 
-`Vocechat` is a secure chat software that supports independent deployment.
+`VoceChat` is a secure chat software that supports independent deployment.
 The data is completely controlled by the user.
 It supports the whole process of encrypted transmission and can be burned immediately after reading.
 The function is inspired by products and specifications such as `Slack`, `Discord`, `RocketChat`, `Matrix` and `Solid`.
-The Vocechat server is the smallest, stablest and most efficient independent chat server on today's market.
+VoceChat server is the smallest, stablest and most efficient independent chat server on today's market.
 
 We believe that the way to live up to the true meaning of the decentralization ideal of Web 3.0 is through de-platformization.
 Through personalized computing and personalized storage, individuals and organizations can have their own platforms on their own cloud server.
@@ -39,8 +39,11 @@ Vocechat is an open-source product with a free community version and only charge
 - [x] Forward / 2022-Q1
 - [x] Favorate / 2022-Q1
 - [x] Burn after reading / 2022-Q2
-- [ ] Voice / 2022-Q3
-- [ ] Video / 2022-Q3
+- [x] Voice / 2022-Q3 (Enterprise Version, with Agora.io)
+- [x] Video / 2022-Q3 (Enterprise Version, with Agora.io)
+- [x] Webhook+Bot / 2022-Q4
+- [ ] Personal AI Bot (Paid Version, with OpenAI)
+- [ ] Discord & Slack bridges for data backup(Paid Version, with bridger.chat)
 
 ### Comparison of similar products
 
