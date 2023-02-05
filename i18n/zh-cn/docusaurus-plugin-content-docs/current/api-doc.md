@@ -1,6 +1,6 @@
 ---
-sidebar_position: 3.1
-title: API文档
+sidebar_position: 11
+title: Swagger API文档
 ---
 
 :::tip

@@ -1,6 +1,6 @@
 ---
-sidebar_position: 3.1
-title: API (Swagger)
+sidebar_position: 11
+title: How to use API in Swagger
 ---
 
 :::tip
