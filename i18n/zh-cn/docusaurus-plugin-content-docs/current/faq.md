@@ -76,6 +76,11 @@ VoceChat是一个完全由用户自部署使用的产品，部署成功，除了
   ```
   此处的`path`即为第二步拿到的`path`
 
+## 提示：File size too large {#file_size_too_large}
+
+超出了单个请求最大负载，请检查您的反向代理设置，比如Nginx，更改下`client_max_body_size`配置项，建议：`client_max_body_size: 10M`
 ## 部署成功了，也完成了初始化，但是界面显示一直加载中 {#loading_after_deployed}
 
-请确认您的API有没有使用CDN，如果有，请去除，或者针对`/api`路径做排除。
+请确认您的API有没有使用CDN，或者被代理，如果有，请去除，或者针对`/api`路径做排除。
+
+
