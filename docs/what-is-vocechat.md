@@ -21,7 +21,7 @@ Therefore, Vocechat is created and positioned as a social collaboration program 
 
 | Name     | Stack   | URL                                                                   | Open-sourced | Comment                                             |
 | -------- | ------- | --------------------------------------------------------------------- | ------------ | --------------------------------------------------- |
-| Server:  | Rust    | [vocechat-server](https://hub.docker.com/r/privoce/vocechat-server-rust) | Yes          | Server Supports Linux, Windows, Arm32/64 |
+| Server:  | Rust    | [vocechat-server](https://github.com/Privoce/vocechat-server-rust) | Yes          | Server Supports Linux, Windows, Arm32/64 |
 | Server Image:  | Docker, Shell    | [docker image](https://hub.docker.com/r/privoce/vocechat-server/tags) | Non-commercial          | Supports platforms: Linux, Arm64 |
 | Client:  | Flutter | [vocechat-client](https://github.com/Privoce/vocechat-client)         | Yes          | Client supports Android and IOS platforms           |
 | Web:     | React   | [vocechat-web](https://github.com/privoce/vocechat-web)               | Yes          | Web App, integrated management                      |
