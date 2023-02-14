@@ -25,8 +25,8 @@ Vocechat is an open-source product with a free community version and only charge
 
 | Name     | Stack   | URL                                                                   | Open-sourced | Comment                                             |
 | -------- | ------- | --------------------------------------------------------------------- | ------------ | --------------------------------------------------- |
-| Server:  | Rust    | [vocechat-server](https://hub.docker.com/r/privoce/vocechat-server-rust) | Yes          | Server Supports platforms: Linux, Windows, Arm32/64 |
-| Server Image:  | Rust    | [docker image](https://hub.docker.com/r/privoce/vocechat-server/tags) | Non-commercial          | Server Supports platforms: Linux, Arm64 |
+| Server:  | Rust    | [vocechat-server](https://hub.docker.com/r/privoce/vocechat-server-rust) | Yes          | Server Supports Linux, Windows, Arm32/64 |
+| Server Image:  | Docker, Shell    | [docker image](https://hub.docker.com/r/privoce/vocechat-server/tags) | Non-commercial          | Supports platforms: Linux, Arm64 |
 | Client:  | Flutter | [vocechat-client](https://github.com/Privoce/vocechat-client)         | Yes          | Client supports Android and IOS platforms           |
 | Web:     | React   | [vocechat-web](https://github.com/privoce/vocechat-web)               | Yes          | Web App, integrated management                      |
 | Enterprise SDK: | API+SDK   | [contact us](https://voce.chat) | No           | Chat and video SDK that can be intergrated into your product easily, the SDK will be privately hosted at the server your designate.      |
