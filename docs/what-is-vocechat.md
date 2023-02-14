@@ -16,10 +16,6 @@ We believe that the way to live up to the true meaning of the decentralization i
 Through personalized computing and personalized storage, individuals and organizations can have their own platforms on their own cloud server.
 Therefore, Vocechat is created and positioned as a social collaboration program that can be easily deployed on the private cloud by any parties.
 
-The team is internationalized and cooperates remotely.
-The contributors come from the United States, China, Brazil and other regions.
-The core members include 'MIT' alumni, 'Stanford' entrepreneurial organization members, top Rust developers and open-source veterans.
-Vocechat is an open-source product with a free community version and only charges for business usages. You are welcome to star, raise issues, and contribute in any form.
 
 ### Project composition:
 
