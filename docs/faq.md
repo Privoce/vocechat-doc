@@ -15,6 +15,17 @@ VoceChat has no backdoor, no data collection, everything is hosted on your own s
 
 We have a default official setting of the Firebase, which is used to send notification. If Google service cannot be reached by your server or device, then you may not receive notification as expected.
 
+## 我的邀请链接域名异常 {#fe_url}
+
+由于VoceChat无法提前自动获取前端访问地址，所以需要手动设置前端域名，如果你未设置前端访问地址，邀请链接的域名默认将是个无意义的IP地址：`1.2.3.4`，该域名可自行更新，设置入口有多处：
+
+- 在部署时可以通过参数 `--frontend_url`传参设置
+- 部署成功，首次初始化时，可以在邀请环节手动设置
+![在初始化步骤邀请环节设置](image/fe.url.setting.invite.png)
+- 部署成功，正常访问后，使用管理员账号，可以在设置页手动设置
+![在设置页面设置](image/fe.url.setting.admin.png)
+
+
 ## How to send files with VoceChat API？
 
 VoceChat sending files requires uploading the file(s) first:
