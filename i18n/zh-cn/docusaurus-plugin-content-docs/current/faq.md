@@ -37,12 +37,14 @@ VoceChat是一个完全由用户自部署使用的产品，部署成功，除了
 
 此时用到的API：`/api/resource/file/prepare`**(如果是机器人，API：`/api/bot/file/prepare`)**。
 调用该API的目的是告诉后端要上传文件了，POST过去两个信息：
+
 - `content_type`：文件类型，值和http里的header：`content-type`一致，具体请参考：[MIME](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types)
 - `filename`：文件名，带扩展名的文件名，比如：file.txt,abc.png
 
 该API会响应一个随机字符串，即`file_id`，用于后续的API。
 
 ### 第二步：上传文件
+
 此时用到的API：`/api/resource/file/upload`**(如果是机器人，API：`/api/bot/file/upload`)**。
 该API默认是分片上传文件，客户端需自行完成文件分片事宜（大小需根据自己的网络服务器配置而定，建议分片大小设置为200KB）。所以根据文件大小，很可能会多次循环调用，每次需要POST过去三个信息：
 
@@ -55,6 +57,7 @@ VoceChat是一个完全由用户自部署使用的产品，部署成功，除了
 :::
 
 最后一个分片上传完，拿到API的响应：
+
 ``` json
 {
   "path": "string",
@@ -66,6 +69,7 @@ VoceChat是一个完全由用户自部署使用的产品，部署成功，除了
   }
 }
 ```
+
 :::tip 注意
 如果是图片，会有`image_properties`相关信息
 :::
@@ -76,21 +80,32 @@ VoceChat是一个完全由用户自部署使用的产品，部署成功，除了
 此时用到的API取决于发消息的上下文：频道或者私聊。不过不同上下文只是path路径不同，传参和响应格式是一样的，所以我们此处仅使用发送私聊消息举例：
 
 用到的API：`/api/user/{uid}/send`。使用方式：
+
 - 设置header：`content-type:vocechat/file`
 - API 路径里的`uid`即为正在私聊的用户id
 - POST内容
+
   ``` json
   {
     "path": "string"
   }
   ```
+
   此处的`path`即为第二步拿到的`path`
 
 ## 提示：File size too large {#file_size_too_large}
 
 超出了单个请求最大负载，请检查您的反向代理设置，比如Nginx，更改下`client_max_body_size`配置项，建议：`client_max_body_size: 10M`
+
+## 为何我使用iframe嵌入vocechat，没有自适应布局 {#iframe_no_responsive}
+
+请检查宿主页有没有设置正确的`meta:viewport`标签:
+`<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">`
+
+## 为何我部署的vocechat会有明显的UI错乱 {#ui_effect_by_ext}
+
+首先排除浏览器扩展（插件）的影响，禁用掉所有的扩展，或者使用隐身模式打开新窗口使用vocechat，如果UI不再错乱，则确定是扩展污染了vocechat页面，如果问题依旧，请联系我们。
+
 ## 部署成功了，也完成了初始化，但是界面显示一直加载中 {#loading_after_deployed}
 
 请确认您的API有没有使用CDN，或者被代理，如果有，请去除，或者针对`/api`路径做排除；另，在一些使用内网穿透的场景下，也会遇到此问题。
-
-
