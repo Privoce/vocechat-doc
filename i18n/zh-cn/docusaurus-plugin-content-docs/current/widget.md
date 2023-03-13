@@ -9,13 +9,10 @@ title: 网页聊天挂件
 使用挂件之前，请确保具备以下条件：
 
 - 完成 vocechat 的部署（部署流程请参考：[安装部署 VoceChat](/install)）
-- 域名支持 https
+- 域名支持 https (如果挂载的宿主网页没有使用https，可以使用http)
 - 完成 vocechat 的初始化流程
 - 允许公共注册 （Setting --> Overview）
   ![开启公共注册](image/setting.reg.everyone.png)
-- 开启并配置好至少一个第三方登录
-  - [Google 登录配置](/setting/third_login/login-google)
-  - [Github 登录配置](/setting/third_login/login-github)
 
 ## 使用 widget
 
@@ -31,17 +28,18 @@ title: 网页聊天挂件
   data-open-height="680"
   src="https://vocechat.yourdomain.com/widget.js"
   async
-/>
+></script>
 ```
 
 配置项说明:
 
-<table >
+<table>
 <thead >
   <tr><th scope="col">配置键</th><th scope="col"  >默认值</th><th scope="col"  >备注</th></tr>
 </thead>
 <tbody>
   <tr ><td >host-id</td><td >1</td><td >指定访客和谁聊天</td></tr>
+  <tr ><td >theme-color</td><td >#1fe1f9</td><td >挂件主题色</td></tr>
   <tr ><td >close-width</td><td >52(px)</td><td >挂件关闭态的宽度</td></tr>
   <tr ><td >close-height</td><td >52(px)</td><td >挂件关闭态的高度</td></tr>
   <tr ><td >open-width</td><td >380(px)</td><td >挂件打开态的宽度</td></tr>
@@ -51,6 +49,11 @@ title: 网页聊天挂件
   <tr><td colspan="3">* 所有的配置项目都是可选的，并以<i >data-</i>开头</td></tr>
 </tfoot>
 </table>
+
+## 分享链接，直接对话
+
+Widget支持嵌入的同时，也支持直接链接访问，还是以部署实例域名为`https://vocechat.yourdomain.com`为例，该Widget直接访问的地址为：
+`https://vocechat.yourdomain.com/widget.html?hostId=1`。
 
 ## 线上实例
 
