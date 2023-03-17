@@ -53,7 +53,7 @@ title: 网页聊天挂件
 ## 分享链接，直接对话
 
 Widget支持嵌入的同时，也支持直接链接访问，还是以部署实例域名为`https://vocechat.yourdomain.com`为例，该Widget直接访问的地址为：
-`https://vocechat.yourdomain.com/widget.html?hostId=1`。
+`https://vocechat.yourdomain.com/widget.html?host=1`。
 
 ## 线上实例
 
