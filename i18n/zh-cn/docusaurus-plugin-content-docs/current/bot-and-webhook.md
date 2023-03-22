@@ -199,7 +199,7 @@ API：`/api/bot/send_to_group/{gid}`，`gid`为频道 ID，使用方式和私聊
 ## 设置 Webhook
 
 :::warning 重要提示
-Webhook 地址会预校验：`HTTP GET`请求响应`200`则通过校验。后续 VoceChat 会以`HTTP POST`方式向该地址推送聊天数据
+Webhook 地址会预校验：`HTTP GET`请求响应状态码`200`则通过校验。后续 VoceChat 会以`HTTP POST`方式向该地址推送聊天数据
 :::
 
 ![set webhook](image/bot.webhook.png)
