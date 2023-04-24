@@ -11,7 +11,8 @@ GitHub account required
 ## Access the URL below, and complete the required form:
 
 [https://github.com/settings/applications/new](https://github.com/settings/applications/new)
-![img.jpg](image/login-github-0.png)
+![login-github-en](https://user-images.githubusercontent.com/12148615/234047241-4e891e3c-e58c-4eca-9e22-aa2fa1a57832.png)
+
 
 :::tip
 GitHub OAuth callback URI:`https://vocechat.yourdomain.com/github/cb`, only replace the domain with your VoceChat domain.
