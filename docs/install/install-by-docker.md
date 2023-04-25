@@ -76,7 +76,7 @@ Don't forget to set up your DNS :)
 
 #### Set up https
 
-How it works：Let nginx listen to port 443, the https SSL certificate is set to nginx so that port 443 is with https, and the reverse proxy will direct request to `vocechat-server:3009`。
+How it works：Let nginx listen to port 443, the https SSL certificate is set to nginx so that port 443 is with https, and the reverse proxy will direct request to `vocechat-server:3009`.
 
 ```
 ┌─────────┐                  ┌─────────┐        ┌─────────┐
@@ -86,7 +86,7 @@ How it works：Let nginx listen to port 443, the https SSL certificate is set to
 └─────────┘                  └─────────┘        └─────────┘
 ```
 
-There are two major ways of adding https SSL--use your own, or use our auto-generation (it's free!)[certbot](https://certbot.eff.org/instructions), with the help of certbot, we can automatically generate the SSL and Nginx config files, and your https will be ready。
+There are two major ways of adding https SSL--use your own, or use our auto-generation (it's free!)[certbot](https://certbot.eff.org/instructions), with the help of certbot, we can automatically generate the SSL and Nginx config files, and your https will be ready.
 
 ##### Certbot Details
 
@@ -148,7 +148,7 @@ If you server is new and only for vocechat (nothing using https port 443), feel 
 vocechat-server will use certbot to apply for a free https SSL for you! ( See[CertBot](https://certbot.eff.org/pages/about)）, and to reiterate the prerequisites：
 
 - your server's 443 is not in use.
-- You already have a domain name pointing to your IP address。
+- You already have a domain name pointing to your IP address.
 
 ```bash
 mkdir -p ~/.vocechat-server/data
@@ -169,7 +169,7 @@ Explanation of the parameters:
 - `network.domain:` domain name
 - `network.type:` TLS should be `acme_tls_alpn_01`, see more details here `config/config.toml` .
 - `network.tls.acme.cache_path:` the path to store the certificate.
-- `network.tls.acme.directory_url:` (not shown but you can change it) the default orgnization that checks your SSL certificate，the default is: `https://acme-v02.api.letsencrypt.org/directory`。
+- `network.tls.acme.directory_url:` (not shown but you can change it) the default orgnization that checks your SSL certificate，the default is: `https://acme-v02.api.letsencrypt.org/directory`.
 
 Visit:`https://vocechat.yourdomain.com/` to start using vocechat!
 
