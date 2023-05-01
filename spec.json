@@ -2382,7 +2382,7 @@
         "tags": [
           "Resource"
         ],
-        "summary": "Get user avatar by id",
+        "summary": "Get group avatar by id",
         "parameters": [
           {
             "name": "gid",
