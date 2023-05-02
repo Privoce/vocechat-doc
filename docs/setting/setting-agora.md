@@ -39,5 +39,5 @@ There's an icon at the right column of each chat window:
 
 ## Attention
 
-- Agora.io is a 3rd party WebRTV service that has no ties with VoceChat, we found their service stable and has a generous free tier.
-- 167 hours/month free tier is the total usage: if 10 users are using your server for video/audio calls, on average each user can only use 16.7 hours for free.
+- Agora.io is a third party WebRTC service, we found their service stable and has a generous free tier.
+- Agora's 167 hours/month free tier is based on the total usage: if 10 users are using your server for video/audio calls, on average each user can only use 16.7 hours for free.
