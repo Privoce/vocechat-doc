@@ -6,6 +6,18 @@ export default function FooterWrapper(props) {
     // 加载vocechat widget
     const script = document.createElement("script");
     script.setAttribute("data-theme-color", "#333");
+    if (navigator.language === "zh-CN") {
+      script.setAttribute(
+        "data-welcome",
+        "欢迎来到VoceChat官方文档站点，如果您有任何问题，请联系我们。"
+      );
+    } else {
+      script.setAttribute(
+        "data-welcome",
+        "Welcome to VoceChat official document site, if you have any questions, please contact us."
+      );
+    }
+
     script.src = "https://privoce.voce.chat/widget.js";
     script.async = true;
 
