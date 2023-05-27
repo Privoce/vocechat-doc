@@ -26,6 +26,7 @@ title: 网页聊天挂件
   data-close-height="52"
   data-open-width="380"
   data-open-height="680"
+  data-welcome="自定义欢迎语"
   src="https://vocechat.yourdomain.com/widget.js"
   async
 ></script>
@@ -44,6 +45,7 @@ title: 网页聊天挂件
   <tr ><td >close-height</td><td >52(px)</td><td >挂件关闭态的高度</td></tr>
   <tr ><td >open-width</td><td >380(px)</td><td >挂件打开态的宽度</td></tr>
   <tr ><td >open-height</td><td >680(px)</td><td >挂件打开态的高度</td></tr>
+  <tr ><td >welcome</td><td >你好，很高兴认识你</td><td >自定义欢迎语</td></tr>
 </tbody>
 <tfoot >
   <tr><td colspan="3">* 所有的配置项目都是可选的，并以<i >data-</i>开头</td></tr>
