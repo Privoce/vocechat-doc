@@ -184,11 +184,16 @@ x-api-key: xxxxxxxxxxxx
 :::
 API：`/api/bot/send_to_group/{gid}`，`gid`为频道 ID，使用方式和私聊场景大同小异，只是在 API PATH 上有区别，其他一样。
 
+### 回复特定消息
+
+API：`/api/bot/reply/{mid}`，`mid`为被回复的消息ID，使用方式和私聊场景大同小异，只是在 API PATH 上有区别，其他一样。
+
 ### 其他相关 API
 
 - `/api/bot`：获取与机器人相关的所有频道列表
 - `/api/bot/file/prepare`：上传文件前的准备 API，其返回值在后续调用上传API的时候会用到
 - `/api/bot/file/upload`：上传文件 API，用于后续发送文件类消息
+- `/api/bot/user/{uid}`：获取具体的用户信息
 - `/api/bot/user/{uid}`：获取具体的用户信息
 - `/api/bot/group/{gid}`：获取具体的频道信息
 

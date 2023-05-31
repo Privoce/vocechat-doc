@@ -1,0 +1,8 @@
+{
+    "position": 2.2,
+    "label": "机器人",
+    "collapsed": false,
+    "customProps": {
+        "description": "This description can be used in the swizzled DocCard"
+    }
+}
