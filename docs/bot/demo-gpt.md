@@ -4,6 +4,7 @@ title: Bot example：GPT
 ---
 
 <img width="539" alt="Screen Shot 2023-06-18 at 10 56 27" src="https://github.com/Privoce/vocechat-doc/assets/12148615/4d0c3bd7-641e-46fb-ae34-c8e8058a91b5">
+
 ## Prerequisite
 
 - OpenAI API Key
