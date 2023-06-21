@@ -38,4 +38,5 @@ After hosting your backend successfully, now you have a GPT bot API address, sup
 
 Let's at(@) the bot at a channel or send it a DM!
 
-![create bot](image/bot.gpt.chat.png)
+<img width="539" alt="Screen Shot 2023-06-18 at 10 56 27" src="https://github.com/Privoce/vocechat-doc/assets/12148615/4d0c3bd7-641e-46fb-ae34-c8e8058a91b5">
+
