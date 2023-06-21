@@ -2,6 +2,7 @@
 sidebar_position: 3.3
 title: Bot example：GPT
 ---
+<img width="1419" alt="Screen Shot 2023-06-21 at 01 02 37" src="https://github.com/Privoce/vocechat-doc/assets/12148615/ec347705-d3b7-45b9-aced-9b3d640ed997">
 
 ## Prerequisite
 
@@ -11,7 +12,7 @@ title: Bot example：GPT
 
 ## Creat a new VoceChat bot at Bot&Webhook page
 
-![create bot](image/bot.create.gpt.png)
+
 
 - Ignore the webhook entry for now (we will get back to this at the end)
 - We will use the Bot ID so mark it down
@@ -37,6 +38,8 @@ After hosting your backend successfully, now you have a GPT bot API address, sup
 ## Ready!
 
 Let's at(@) the bot at a channel or send it a DM!
+<img width="1097" alt="Screen Shot 2023-06-21 at 00 57 12" src="https://github.com/Privoce/vocechat-doc/assets/12148615/ccd85630-1a24-4cce-9568-035ae22d27e5">
+<img width="601" alt="Screen Shot 2023-06-18 at 10 57 35" src="https://github.com/Privoce/vocechat-doc/assets/12148615/386accec-89a3-48a3-aa6e-95e7631a119a">
 
 <img width="539" alt="Screen Shot 2023-06-18 at 10 56 27" src="https://github.com/Privoce/vocechat-doc/assets/12148615/4d0c3bd7-641e-46fb-ae34-c8e8058a91b5">
 
