@@ -6,6 +6,16 @@ title: 机器人与Webhook
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+## 机器人：互联网的未来
+
+机器人（Bot）是新一代的互联网应用（App），我们可以用熟悉的对话聊天方式与机器人交互，机器人的玩法随着技术的成熟愈发多样，如“修图”，“查询数据”，“客服（自动回复）”，“控制智能家电”，“AI伴侣”，“收费”等。VoceChat的机器人与Webhook方便了机器人的开发与使用。下面是几个用户利用VoceChat开发的机器人例子：
+ 
+<img width="302" alt="Screen Shot 2023-07-03 at 13 58 46" src="https://github.com/Privoce/vocechat-doc/assets/12148615/6fc8ddc9-72b7-4dca-b426-43876bb0ea4a">
+<img width="297" alt="Screen Shot 2023-07-03 at 13 59 06" src="https://github.com/Privoce/vocechat-doc/assets/12148615/caeecb9e-9d80-4dbc-8a7d-33cc19b896e4">
+
+以上案例均来自[SilenceChat](https://chat.silencetime.com/), 官网：[https://ai.silencetime.com/](https://ai.silencetime.com/)
+
+
 
 ## 什么是 VoceChat 机器人
 
