@@ -7,6 +7,7 @@ title: 机器人举例：ChatGPT机器人
 
 - 有OpenAI API Key
 - 已部署成功Vocechat
+- 如需本地测试，请安装Node.js环境
 
 
 ## 新建一个Vocechat机器人
