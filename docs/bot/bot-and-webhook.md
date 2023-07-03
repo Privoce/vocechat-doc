@@ -3,6 +3,16 @@ sidebar_position: 3.2
 title: Bot and Webhook
 ---
 
+## Bot, the future of interactions
+
+Bot is the new app. Any feature that can be delivered through a bot will eventually become a bot, e.g., newsletter, newsfeed, contact us,  your home device controlling system, virtual partner, etc. Morevoer, agent bot will be able to let different bots collaborate with each other. VoceChat bot + webhook aims to help developers to develop and publish bots as convenient as possible. Here are some bots build by VoceChat users. 
+
+<img width="303" alt="Screen Shot 2023-07-03 at 14 20 21" src="https://github.com/Privoce/vocechat-doc/assets/12148615/61866d28-c45d-4e3f-b1b0-3034ddca7a4a">
+<img width="304" alt="Screen Shot 2023-07-03 at 14 20 46" src="https://github.com/Privoce/vocechat-doc/assets/12148615/1c01bdbd-cea7-4474-83fb-af0875eaab1d">
+
+Try the bots above at [SilenceChat](https://chat.silencetime.com/) built by our friend Oliver, website：[https://ai.silencetime.com/](https://ai.silencetime.com/)
+
+
 ## What is a VoceChat Bot User
 
 VoceChat bot user can be created by the server admin and used to send messages to a designated member or channel. After creation, there will be an `API Key`which is required when you send a message (the messaging process is explained in detail below).
