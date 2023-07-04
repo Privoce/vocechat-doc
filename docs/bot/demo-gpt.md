@@ -2,18 +2,21 @@
 sidebar_position: 3.3
 title: Bot example：GPT
 ---
+## Example
 
-<img width="539" alt="Screen Shot 2023-06-18 at 10 56 27" src="https://github.com/Privoce/vocechat-doc/assets/12148615/4d0c3bd7-641e-46fb-ae34-c8e8058a91b5">
+![gptbot](https://github.com/Privoce/vocechat-doc/assets/12148615/63e33b83-7f0d-4129-988f-a70e0cda16c2)
+
+Try the GPT4 bot above at [SilenceChat](https://chat.silencetime.com/) built by our friend Oliver, website：[https://ai.silencetime.com/](https://ai.silencetime.com/)
 
 ## Prerequisite
 
 - OpenAI API Key
 - A running VoceChat server
+- Node.js pre-installed
 
 
 ## Creat a new VoceChat bot at Bot&Webhook page
-<img width="1419" alt="Screen Shot 2023-06-21 at 01 02 37" src="https://github.com/Privoce/vocechat-doc/assets/12148615/ec347705-d3b7-45b9-aced-9b3d640ed997">
-
+![Creat-bot](https://github.com/Privoce/vocechat-doc/assets/12148615/ec347705-d3b7-45b9-aced-9b3d640ed997)
 
 - Ignore the webhook entry for now (we will get back to this at the end)
 - We will use the Bot ID so mark it down
@@ -39,8 +42,5 @@ After hosting your backend successfully, now you have a GPT bot API address, sup
 ## Ready!
 
 Let's at(@) the bot at a channel or send it a DM!
-
-
-<img width="601" alt="Screen Shot 2023-06-18 at 10 57 35" src="https://github.com/Privoce/vocechat-doc/assets/12148615/386accec-89a3-48a3-aa6e-95e7631a119a">
-
+![Generating-image](https://github.com/Privoce/vocechat-doc/assets/12148615/386accec-89a3-48a3-aa6e-95e7631a119a)
 
