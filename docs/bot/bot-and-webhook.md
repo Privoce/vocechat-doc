@@ -7,8 +7,14 @@ title: Bot and Webhook
 
 Bot is the new app. Any feature that can be delivered through a bot will eventually become a bot, e.g., newsletter, newsfeed, contact us,  your home device controlling system, virtual partner, etc. Morevoer, agent bot will be able to let different bots collaborate with each other. VoceChat bot + webhook aims to help developers to develop and publish bots as convenient as possible. Here are some bots build by VoceChat users. 
 
-<img width="303" alt="Screen Shot 2023-07-03 at 14 20 21" src="https://github.com/Privoce/vocechat-doc/assets/12148615/61866d28-c45d-4e3f-b1b0-3034ddca7a4a">
-<img width="304" alt="Screen Shot 2023-07-03 at 14 20 46" src="https://github.com/Privoce/vocechat-doc/assets/12148615/1c01bdbd-cea7-4474-83fb-af0875eaab1d">
+![backgroundremovalbot](https://github.com/Privoce/vocechat-doc/assets/12148615/ca256b17-e7b7-456d-a9c6-a3646d726da1)
+![gptbot](https://github.com/Privoce/vocechat-doc/assets/12148615/63e33b83-7f0d-4129-988f-a70e0cda16c2)
+
+
+
+
+
+
 
 Try the bots above at [SilenceChat](https://chat.silencetime.com/) built by our friend Oliver, website：[https://ai.silencetime.com/](https://ai.silencetime.com/)
 
