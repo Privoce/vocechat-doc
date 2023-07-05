@@ -3,19 +3,29 @@ sidebar_position: 3.2
 title: 机器人与Webhook
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
 
 ## 机器人：互联网的未来
 
-机器人（Bot）是新一代的互联网应用（App），我们可以用熟悉的对话聊天方式与机器人交互，机器人的玩法随着技术的成熟愈发多样，如“修图”，“查询数据”，“客服（自动回复）”，“控制智能家电”，“AI伴侣”，“收费”等，并且不同功能的机器人又能被总管机器人（例如AgentGPT、Longchain等）调用协同工作。VoceChat的机器人与Webhook方便了机器人的开发与使用。下面是用户利用VoceChat开发的机器人例子：
-![背景移除|100*100](https://github.com/Privoce/vocechat-doc/assets/12148615/fc115233-d12f-4c0e-adff-c246daaf4f15) 
-![GPT4](https://github.com/Privoce/vocechat-doc/assets/12148615/6719dfe2-7f9e-409d-9dd0-980e8c242cfc)
+机器人（Bot）是新一代的互联网应用（App），我们可以用熟悉的对话聊天方式与机器人交互，机器人的玩法随着技术的成熟愈发多样，如“修图”，“查询数据”，“客服（自动回复）”，“控制智能家电”，“AI 伴侣”，“收费”等，并且不同功能的机器人又能被总管机器人（例如 AgentGPT、Longchain 等）调用协同工作。VoceChat 的机器人与 Webhook 方便了机器人的开发与使用。下面是用户利用 VoceChat 开发的机器人例子：
 
+import InlineImages from "@site/src/components/InlineImages";
+
+<InlineImages
+  images={[
+    {
+      src: "https://github.com/Privoce/vocechat-doc/assets/12148615/fc115233-d12f-4c0e-adff-c246daaf4f15",
+      title: "背景移除",
+    },
+    {
+      src: "https://github.com/Privoce/vocechat-doc/assets/12148615/6719dfe2-7f9e-409d-9dd0-980e8c242cfc",
+      title: "GPT4",
+    },
+  ]}
+/>
 
 以上案例均来自[SilenceChat](https://chat.silencetime.com/), 官网：[https://ai.silencetime.com/](https://ai.silencetime.com/)
-
-
 
 ## 什么是 VoceChat 机器人
 
@@ -84,7 +94,7 @@ VoceChat 目前定义了三种消息类型：**文本消息**，**Markdown 消�
   }
   ```
 
-:::tip 
+:::tip
 文件消息比较特殊，需要先调用上传文件的 API，使用上传成功拿到的资源 path 填充到 body 里，然后当做消息发出去，具体流程，请参阅[常见问题：如何发送文件消息](/faq#file_msg)
 :::
 
@@ -92,7 +102,7 @@ VoceChat 目前定义了三种消息类型：**文本消息**，**Markdown 消�
 
 API：`/api/bot/send_to_user/{uid}`，`uid`为用户 ID
 
-HTTP请求举例：向`uid:1`发送纯文本消息：`hello`，http 请求结构（此处只列举出关键描述）：
+HTTP 请求举例：向`uid:1`发送纯文本消息：`hello`，http 请求结构（此处只列举出关键描述）：
 
 ```
 POST https://replace.yours.domain/api/bot/send_to_user/1
@@ -104,27 +114,31 @@ hello
 
 具体编程语言举例：
 :::tip 温馨提示
-无论哪种编程语言，本质上都是为了构建上面举例的HTTP请求
+无论哪种编程语言，本质上都是为了构建上面举例的 HTTP 请求
 :::
+
 <Tabs groupId="langs">
   <TabItem value="js" label="Node.js" default>
 
-   ```js
-    //我们使用最常用的axios发请求，向uid为1的用户发送纯文本消息：hello
-    import axios from 'axios';
+```js
+//我们使用最常用的axios发请求，向uid为1的用户发送纯文本消息：hello
+import axios from "axios";
 
-    axios.post(`https://replace.your.domain/api/bot/send_to_user/1`,`hello`,{
-      headers:{
-        // highlight-next-line
-        'content-type':"text/plain",
-        'x-api-key':"xxxxxxxxxxxx"
-      }
-    }).then(resp=>{
-      console.log("发送成功，消息ID：",resp.data)
-    }).catch(err=>{
-      console.error("发送失败：",err.message)
-    })
-   ```
+axios
+  .post(`https://replace.your.domain/api/bot/send_to_user/1`, `hello`, {
+    headers: {
+      // highlight-next-line
+      "content-type": "text/plain",
+      "x-api-key": "xxxxxxxxxxxx",
+    },
+  })
+  .then((resp) => {
+    console.log("发送成功，消息ID：", resp.data);
+  })
+  .catch((err) => {
+    console.error("发送失败：", err.message);
+  });
+```
 
   </TabItem>
   <TabItem value="java" label="Java">
@@ -140,7 +154,7 @@ hello
   
 </Tabs>
 
-HTTP请求举例：向`uid:1`发送 markdown 消息：加粗的`hello`，http 请求结构（此处只列举出关键描述）：
+HTTP 请求举例：向`uid:1`发送 markdown 消息：加粗的`hello`，http 请求结构（此处只列举出关键描述）：
 
 ```
 POST /api/bot/send_to_user/1
@@ -155,22 +169,25 @@ x-api-key: xxxxxxxxxxxx
 <Tabs groupId="langs">
   <TabItem value="js" label="Node.js" default>
 
-   ```js
-    //我们使用最常用的axios发请求，向uid为1的用户发送markdown消息：加粗的hello
-    import axios from 'axios';
+```js
+//我们使用最常用的axios发请求，向uid为1的用户发送markdown消息：加粗的hello
+import axios from "axios";
 
-    axios.post(`https://replace.your.domain/api/bot/send_to_user/1`,`**hello**`,{
-      headers:{
-        // highlight-next-line
-        'content-type':"text/markdown",
-        'x-api-key':"xxxxxxxxxxxx"
-      }
-    }).then(resp=>{
-      console.log("发送成功，消息ID：",resp.data)
-    }).catch(err=>{
-      console.error("发送失败：",err.message)
-    })
-   ```
+axios
+  .post(`https://replace.your.domain/api/bot/send_to_user/1`, `**hello**`, {
+    headers: {
+      // highlight-next-line
+      "content-type": "text/markdown",
+      "x-api-key": "xxxxxxxxxxxx",
+    },
+  })
+  .then((resp) => {
+    console.log("发送成功，消息ID：", resp.data);
+  })
+  .catch((err) => {
+    console.error("发送失败：", err.message);
+  });
+```
 
   </TabItem>
   <TabItem value="java" label="Java">
@@ -196,19 +213,19 @@ API：`/api/bot/send_to_group/{gid}`，`gid`为频道 ID，使用方式和私聊
 
 ### 回复特定消息
 
-API：`/api/bot/reply/{mid}`，`mid`为被回复的消息ID，使用方式和私聊场景大同小异，只是在 API PATH 上有区别，其他一样。
+API：`/api/bot/reply/{mid}`，`mid`为被回复的消息 ID，使用方式和私聊场景大同小异，只是在 API PATH 上有区别，其他一样。
 
 ### 其他相关 API
 
 - `/api/bot`：获取与机器人相关的所有频道列表
-- `/api/bot/file/prepare`：上传文件前的准备 API，其返回值在后续调用上传API的时候会用到
+- `/api/bot/file/prepare`：上传文件前的准备 API，其返回值在后续调用上传 API 的时候会用到
 - `/api/bot/file/upload`：上传文件 API，用于后续发送文件类消息
 - `/api/bot/user/{uid}`：获取具体的用户信息
 - `/api/bot/user/{uid}`：获取具体的用户信息
 - `/api/bot/group/{gid}`：获取具体的频道信息
 
 :::tip
-机器人文件上传相关API的使用，请参考[FAQ](/faq#file_msg)
+机器人文件上传相关 API 的使用，请参考[FAQ](/faq#file_msg)
 :::
 
 ## 设置 Webhook
@@ -256,16 +273,22 @@ VoceChat 会实时向已设置的 Webhook 推送所有该机器人相关的消�
 
 ```json
 {
-  "created_at": 1672048481664, 
+  "created_at": 1672048481664,
   "detail": {
     "content": "2023/1/26/cbb7ba67-10d8-4aad-b7c3-b8a7b3ecfc15", //资源的file_path
     "content_type": "vocechat/file", //消息类型，text/plain：纯文本消息，text/markdown：markdown消息，vocechat/file：文件类消息
-    "expires_in": null, 
-    "properties": {content_type:"image/png",height:332,width:445,name:"xxx.png",size:234235},//有关该文件的元信息 
+    "expires_in": null,
+    "properties": {
+      "content_type": "image/png",
+      "height": 332,
+      "width": 445,
+      "name": "xxx.png",
+      "size": 234235
+    }, //有关该文件的元信息
     "type": "normal"
   },
-  "from_uid": 7910, 
-  "mid": 2978, 
+  "from_uid": 7910,
+  "mid": 2978,
   "target": { "gid": 2 }
 }
 ```
@@ -273,7 +296,7 @@ VoceChat 会实时向已设置的 Webhook 推送所有该机器人相关的消�
 - 此时`content`字段值，是指资源的`file_path`，需做一次转换，才能拿到完整的资源地址，转换规则：`{PROTOCOL}://{SERVER_HOST}/api/resource/file?file_path={encodeURI(content)}`
   - `PROTOCOL`:`http` 或者 `https`，根据自己部署实例的实际情况而定
   - `SERVER_HOST`即自己部署实例的主机名（如有特殊端口号，比如`3000`，不要忘记加上）
-  - `file_path`参数需要做一次URI转义
+  - `file_path`参数需要做一次 URI 转义
 - `properties`有具体的文件类型信息，以及其它一些元信息，比如文件名，文件大小，如果是个图片消息，还会有一些宽高等
 
 :::tip
