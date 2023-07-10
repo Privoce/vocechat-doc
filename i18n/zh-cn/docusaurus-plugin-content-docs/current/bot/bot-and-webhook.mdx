@@ -102,6 +102,10 @@ VoceChat 目前定义了三种消息类型：**文本消息**，**Markdown 消�
 
 API：`/api/bot/send_to_user/{uid}`，`uid`为用户 ID
 
+:::tip 温馨提示
+`uid`可以从对话的 URL 里获取，比如`http://replace.your.domain/#/chat/dm/1`，最后数字即为`uid`；或者在用户信息页面找到： <br/>![UID](image/bot.uid.png)
+:::
+
 HTTP 请求举例：向`uid:1`发送纯文本消息：`hello`，http 请求结构（此处只列举出关键描述）：
 
 ```
@@ -207,7 +211,8 @@ axios
 ### 向特定频道发消息，对应群聊场景
 
 :::tip
-特定频道必须是该机器人所在的频道
+特定频道必须是该机器人所在的频道；<br/>
+`gid`可以在 Channel URL 里获取，比如`http://replace.your.domain/#/chat/channel/102`，最后数字即为`gid`；或者在频道设置页找到： <br/>![GID](image/bot.gid.png)
 :::
 API：`/api/bot/send_to_group/{gid}`，`gid`为频道 ID，使用方式和私聊场景大同小异，只是在 API PATH 上有区别，其他一样。
 
