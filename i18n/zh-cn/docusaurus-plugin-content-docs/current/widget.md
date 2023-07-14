@@ -26,6 +26,7 @@ title: 网页聊天挂件
   data-close-height="52"
   data-open-width="380"
   data-open-height="680"
+  data-position="right"
   data-welcome="自定义欢迎语"
   src="https://vocechat.yourdomain.com/widget.js"
   async
@@ -45,12 +46,24 @@ title: 网页聊天挂件
   <tr ><td >close-height</td><td >52(px)</td><td >挂件关闭态的高度</td></tr>
   <tr ><td >open-width</td><td >380(px)</td><td >挂件打开态的宽度</td></tr>
   <tr ><td >open-height</td><td >680(px)</td><td >挂件打开态的高度</td></tr>
+  <tr ><td >position</td><td >right</td><td >挂件的位置，居左(left)或居右(right)</td></tr>
   <tr ><td >welcome</td><td >你好，很高兴认识你</td><td >自定义欢迎语</td></tr>
 </tbody>
 <tfoot >
-  <tr><td colspan="3">* 所有的配置项目都是可选的，并以<i >data-</i>开头</td></tr>
+  <tr><td colSpan="3">* 所有的配置项目都是可选的，并以<i >data-</i>开头</td></tr>
 </tfoot>
 </table>
+
+如果你想更精确控制挂件的样式，可以借助widget元素的ID，自行写CSS样式，加到自己的html或者css文件中，如下示例：
+
+```html
+<style>
+  #VOCECHAT_WIDGET {
+    left:10px  /* left position */
+    bottom: 5px /* bottom position */
+  }
+</style>
+```
 
 ## 分享链接，直接对话
 
