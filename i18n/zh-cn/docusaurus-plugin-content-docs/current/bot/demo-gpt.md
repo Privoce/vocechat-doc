@@ -20,7 +20,7 @@ title: 机器人举例：ChatGPT机器人
 
 ## 借助Vercel，部署自己的ChatGPT API
 
-具体流程请移步：https://github.com/Privoce/vocechat-chatbot-ui#readme
+具体流程请移步：https://github.com/Privoce/vocechat-chatbot-vercel#readme
 
 简述一下环境变量的配置：
 
@@ -33,7 +33,7 @@ title: 机器人举例：ChatGPT机器人
 
 ## 回填webhook
 
-Vercel部署成功后，就有一个专属的ChatGPT API，假设你的Vercel访问地址是:mygpt.vercel.com，则webhook地址是：https://mygpt.vercel.com/api/bot，将该地址作为webhook回填给上面新建的机器人
+Vercel部署成功后，就有一个专属的ChatGPT API，假设你的Vercel访问地址是:gpt.vercel.com，则webhook地址是：[https://gpt.vercel.com/api/bot](https://gpt.vercel.com/api/bot) ，将该地址作为webhook回填给上面新建的机器人
 
 ## 一切就绪
 
