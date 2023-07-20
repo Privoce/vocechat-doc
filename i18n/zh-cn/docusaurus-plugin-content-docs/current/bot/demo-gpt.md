@@ -34,6 +34,10 @@ title: 机器人举例：ChatGPT机器人
 ## 回填webhook
 
 Vercel部署成功后，就有一个专属的ChatGPT API，假设你的Vercel访问地址是:gpt.vercel.com，则webhook地址是：[https://gpt.vercel.com/api/bot](https://gpt.vercel.com/api/bot) ，将该地址作为webhook回填给上面新建的机器人
+## 其他代码示例: Node.js和Python
+
+参考代码库: [https://github.com/Privoce/vocechat-chatbot-ui#readme](https://github.com/Privoce/Vocechat-Demo-Bot-All)
+也欢迎你来贡献更多示例！
 
 ## 一切就绪
 
