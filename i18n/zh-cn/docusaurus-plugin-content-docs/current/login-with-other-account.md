@@ -33,5 +33,5 @@ title: 对接自有账号系统
 
 拿到 token 后，将其作为 path 附到地址 `https://vocechat.yourdomain.com/#/oauth/[token]`，该 URL 即为自动登录 VoceChat 地址，访问该地址即可使用自家产品的账号信息自动登录 VoceChat。
 :::提示
-若要实现完成自动登录后即刻跳转到指定 path 也可以将其作为参数附到地址 `/#/oauth/[token]?path=[path]` ，即为完成自动登录 VoceChat 后跳转到目标 path。
+若要实现完成自动登录后即刻跳转到指定 path 也可以将其作为参数附到地址 `/#/oauth/[token]?path=[path]` ，即为完成自动登录 VoceChat 后跳转到目标 path。该方法仅适用于跳转至 VoceChat 内部页面 `/#/oauth/[token]?path=/chat/dm/2`。
 :::
