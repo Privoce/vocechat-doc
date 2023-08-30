@@ -7,6 +7,7 @@ VoceChat video and audio call requires your own Agora WebRTC API key (free to us
 
 ## Apply for Agora API：
 
+- Enable https
 - Agora.io Sign up
 - Some countries IP require KYC (most countries does not)
 - Create a project（https://console.agora.io/projects）

@@ -7,34 +7,35 @@ VoceChat音视频通话功能是基于Agora开发，所以只需配置下Agora�
 
 ## 准备工作：
 
+- 开启https（本地调试可以忽略https，一旦可公开访问，出于安全考虑，音视频的授权需要基于https）
 - Agora注册账号
 - 完成Agora实名认证（否则功能受限）
 - 创建一个语音通话的项目（https://console.agora.io/projects）
-![](image/agora.create.project.png)
+![create project](image/agora.create.project.png)
 
 ## 第一步：在Agora后台获取Agora项目的配置信息
 
 进入项目设置页面，找到我们需要的配置信息:
 
-![](image/agora.setting.info.png)
+![setting info](image/agora.setting.info.png)
 
 > Project ID 从网址获取，比如：https://console.agora.io/project/xxx 则Project ID为：xxx
 
 在 https://console.agora.io/restfulApi 页面，生成秘钥对（Customer ID & Customer Secret）：
 
-![](image/agora.create.secret.jpg)
+![secret](image/agora.create.secret.jpg)
 
 ## 第二步：在VoceChat配置Agora
 
 进入VoceChat设置页面，在左侧导航找到Agora配置：
-![](image/agora.setting.png)
+![setting](image/agora.setting.png)
 
 将第一步收集到的信息，填入对应的配置项中，刷新页面，即完成了音视频通话的初始化。
 
 ## 音视频通话的使用入口
 
 入口在每个channel消息流最右侧的耳机小图标
-![](image/agora.entry.png)
+![agora entry](image/agora.entry.png)
 
 
 ## 注意
