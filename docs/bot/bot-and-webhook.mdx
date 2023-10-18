@@ -92,6 +92,9 @@ VoceChat has three supported messages types：**Text**，**Markdown**和**Files*
 
 **Files need to be uploaded first using this API👇🏻, then you can use the uploaded file path as shown above**
 
+### Send welcome message to a new user
+The webhook you set will receive a message "newuser" when a user has signed up to the server where the bot resides. Then you can personalize a welcome message sending to the new user.
+
 ### Send message to a user
 
 API：`/api/bot/send_to_user/{uid}`，`uid`is the user ID. You can get the user ID on the web front end when chatting with the user (the URL will have the user ID).
