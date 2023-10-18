@@ -375,3 +375,7 @@ VoceChat 会实时向已设置的 Webhook 推送所有该机器人相关的消�
   "target": { "uid": 13466 }
 }
 ```
+
+### 自定义机器人的消息加密
+secret 的set和get接口为可选项，不设置即明文传输。
+set secret，需要自定义一个16字节长度的字符串，后端将自动aes加密。webhook收到消息后，需要aes解密，然后 pkcs7 unpad，即可得到得到原始的json。
