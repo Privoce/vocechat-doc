@@ -284,3 +284,8 @@ When a messaged is liked, the webhook will receive this:
 ``` -->
 
 There are two "type" parameters, the first one refers to the message type, and the second one refers to whether the new message is an action upon an another (older) message.
+
+
+### Custom Encryption for Robot Messages
+The set and get interfaces for the secret are optional; if not set, messages are transmitted in plaintext.
+To set secret, you need to define a 16-byte length string. The backend will then automatically encrypt it using AES. After the webhook receives a message, it needs to be decrypted with AES and then unpadded with PKCS7 to retrieve the original JSON.
