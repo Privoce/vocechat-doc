@@ -32,6 +32,12 @@ curl -sSf https://s.voce.chat/install.sh | sh
 /etc/init.d/vocechat-server.sh stop
 ```
 
+## 更新服务版本
+
+```bash
+curl -sSf https://s.voce.chat/update.sh | sh
+```
+
 ## 查看日志
 
 ```bash
