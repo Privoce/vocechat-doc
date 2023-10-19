@@ -40,4 +40,10 @@ curl -sSf https://s.voce.chat/install.sh | sh
 /etc/init.d/vocechat-server.sh log
 ```
 
+#### 5. Upgrade
+
+```bash
+curl -sSf https://s.voce.chat/update.sh | sh
+```
+
 if you need help, contact: han@privoce.com
