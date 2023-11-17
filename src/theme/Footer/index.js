@@ -3,13 +3,14 @@ import Footer from "@theme-original/Footer";
 
 export default function FooterWrapper(props) {
   useEffect(() => {
-    // 加载vocechat widget
+    // 加载 vocechat widget
     const script = document.createElement("script");
+    script.setAttribute("data-auto-reg", "true");
     script.setAttribute("data-theme-color", "#333");
     if (navigator.language === "zh-CN") {
       script.setAttribute(
         "data-welcome",
-        "欢迎来到VoceChat官方文档站点，如果您有任何问题，请联系我们。"
+        "欢迎来到 VoceChat 官方文档站点，如果您有任何问题，请联系我们。"
       );
     } else {
       script.setAttribute(
