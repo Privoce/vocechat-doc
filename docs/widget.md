@@ -6,11 +6,11 @@ title: Chat Widget
 
 ## Before you use chat widget
 
-You should have met these prerequisites：
+You should have met these prerequisites:
 
-- Have a vocechat server（host your own vocechat server：[host VoceChat](/install)）
+- Have a vocechat server (host your own vocechat server:[host VoceChat](/install)）
 - Logged in to your vocechat server.
-- Enalbe everyone to join the server （Setting --> Overview）
+- Enalbe everyone to join the server (Setting --> Overview)
   ![Enable everyone to join your server](image/setting.reg.everyone.png)
 - Enable 3rd party login
   - [Google Login Setup](/setting/third_login/login-google)
@@ -41,6 +41,7 @@ Explanation of the code above:
 </thead>
 <tbody>
   <tr ><td >host-id</td><td >1</td><td >The user (id=1 means the first user) that the guest will chat with</td></tr>
+  <tr ><td >auto-reg</td><td >false</td><td >true: visitor auto register and start chat, false: need input email</td></tr>
   <tr ><td >close-width</td><td >52(px)</td><td >Chat icon floater width</td></tr>
   <tr ><td >close-height</td><td >52(px)</td><td >Chat icon floater height</td></tr>
   <tr ><td >open-width</td><td >380(px)</td><td >Chat widget width</td></tr>
@@ -52,19 +53,19 @@ Explanation of the code above:
 
 ### https://yangerxiao.com
 
-- vocechat：https://vocechat.yangerxiao.com/
+- vocechat: https://vocechat.yangerxiao.com/
 - vocechat widget: https://yangerxiao.com/
   ![widget demo](image/widget.demo.tristan.jpeg)
 
 ### https://vc.moduoyu.com/
 
-- vocechat：https://vc.moduoyu.com/
+- vocechat: https://vc.moduoyu.com/
 - vocechat widget: https://laoona.com/
   ![widget demo](image/widget.demo.shilei.png)
 
 ### https://vocechat.tomzhu.site/
 
-- vocechat：https://vocechat.tomzhu.site/
+- vocechat: https://vocechat.tomzhu.site/
 - vocechat widget: https://tomzhu.site/
   ![widget demo](image/widget.demo.tom.png)
 
