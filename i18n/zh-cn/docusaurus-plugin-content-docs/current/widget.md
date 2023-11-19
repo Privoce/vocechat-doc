@@ -22,6 +22,7 @@ title: 网页聊天挂件
 <!-- 将以下代码片段放于你的网页内，建议放于 body 底部 -->
 <script
   data-host-id="1"
+  data-auto-reg="false"
   data-close-width="52"
   data-close-height="52"
   data-open-width="380"
