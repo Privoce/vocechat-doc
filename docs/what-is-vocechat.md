@@ -25,16 +25,16 @@ Therefore, Vocechat is created and positioned as a social collaboration program 
 | Server Image:  | Docker, Shell    | [docker image](https://hub.docker.com/r/privoce/vocechat-server/tags) | Non-commercial          | Supports platforms: Linux, Arm64 |
 | Client:  | Flutter | [vocechat-client](https://github.com/Privoce/vocechat-client)         | Yes          | Client supports Android and IOS platforms           |
 | Web:     | React   | [vocechat-web](https://github.com/privoce/vocechat-web)               | Yes          | Web App, integrated management                      |
-| Enterprise SDK: | API+SDK   | [contact us](https://voce.chat) | No           | Chat and video SDK that can be intergrated into your product easily, the SDK will be privately hosted at the server your designate.      |
+| Enterprise SDK: | API+SDK   | [contact us](https://voce.chat) | No           | Chat and video SDK that can be integrated into your product easily, the SDK will be privately hosted at the server your designate.      |
 
 ### Feature List & Roadmap
 
-- [x] DM & Group Chating / 2021-Q4
+- [x] DM & Group Chatting / 2021-Q4
 - [x] Reply, @ to mention a person / 2021-Q4
 - [x] Images and large files transmission / 2021-Q4
 - [x] Pin / 2022-Q1
 - [x] Forward / 2022-Q1
-- [x] Favorate / 2022-Q1
+- [x] Favorite / 2022-Q1
 - [x] Burn after reading / 2022-Q2
 - [x] Voice / 2022-Q3 (Enterprise Version, with Agora.io)
 - [x] Video / 2022-Q3 (Enterprise Version, with Agora.io)
