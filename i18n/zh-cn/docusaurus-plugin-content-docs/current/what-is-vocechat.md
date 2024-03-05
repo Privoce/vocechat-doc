@@ -16,7 +16,7 @@ title: 简介
 
 | 名称     | 技术    | 项目                                                          | License    | 说明                                                                 |
 | -------- | ------- | ------------------------------------------------------------- | ---------- | -------------------------------------------------------------------- |
-| 服务端:  | Rust    | vocechat-server(暂未开源)                                     | 待定       | 聊天服务端，支持主流平台: Linux x86_64, Windows 32/64, Arm32, Arch64 |
+| 服务端:  | Rust    | [vocechat-server](https://github.com/Privoce/vocechat-server-rust)                                   | Big Time Public License-2.0       | 聊天服务端，支持主流平台: Linux x86_64, Windows 32/64, Arm32, Arch64 |
 | 客户端:  | Flutter | [vocechat-client](https://github.com/privoce/vocechat-client) | Apache-2.0 | 聊天客户端，支持 Android, iOS 平台的客户端                           |
 | Web:     | React   | [vocechat-web](https://github.com/privoce/vocechat-web)       | GPL-3.0    | 聊天功能的浏览器版本，整合了管理                                     |
 | Web-SDK: | React   | vocechat-web-sdk(暂未开源)                                    | GPL-3.0    | 可以整合到其他 Web 产品中，使其赋能聊天功能                          |
