@@ -6,11 +6,11 @@ title: Chat Widget
 
 ## Before you use chat widget
 
-You should have met these prerequisites:
+You should have meet these prerequisites:
 
 - Have a vocechat server (host your own vocechat server:[host VoceChat](/install)）
 - Logged in to your vocechat server.
-- Enalbe everyone to join the server (Setting --> Overview)
+- Enable everyone to join the server (Setting --> Overview)
   ![Enable everyone to join your server](image/setting.reg.everyone.png)
 - Enable 3rd party login
   - [Google Login Setup](/setting/third_login/login-google)
@@ -59,12 +59,6 @@ Explanation of the code above:
 - vocechat: https://vocechat.yangerxiao.com/
 - vocechat widget: https://yangerxiao.com/
   ![widget demo](image/widget.demo.tristan.jpeg)
-
-### https://vc.moduoyu.com/
-
-- vocechat: https://vc.moduoyu.com/
-- vocechat widget: https://laoona.com/
-  ![widget demo](image/widget.demo.shilei.png)
 
 ### https://vocechat.tomzhu.site/
 
