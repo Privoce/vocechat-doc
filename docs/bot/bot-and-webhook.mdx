@@ -88,6 +88,16 @@ VoceChat has three supported messages types：**Text**，**Markdown**和**Files*
   {
     "path": "string"
   }
+#### Email(Set up SMTP first, then the bot will send email for you through this API)
+
+- http header: `content-type: application/json`
+- body:
+  ```json
+  {
+    "to":"youremail@gmail.com",
+    "subject":"test title",
+    "content":"test content"
+  }
   ```
 
 **Files need to be uploaded first using this API👇🏻, then you can use the uploaded file path as shown above**
