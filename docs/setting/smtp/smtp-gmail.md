@@ -12,7 +12,8 @@ With vocechat-server launched, visit your vocechat domain (http://localhost:3000
 
 ## Enable Gmail SMTP.
 
-See all settings
+Go to Gmail. See all settings.
+
 <img width="470" alt="Screenshot 2024-05-20 at 23 10 17" src="https://github.com/Privoce/vocechat-doc/assets/12148615/c7b3d523-ce49-44ea-b84a-5c07af5d7972">
 
 Turn on IMAP
