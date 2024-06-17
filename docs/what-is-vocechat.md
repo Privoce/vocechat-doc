@@ -29,22 +29,25 @@ Therefore, Vocechat is created and positioned as a social collaboration program 
 
 ### Feature List & Roadmap
 
-- [x] DM & Group Chatting / 2021-Q4
-- [x] Reply, @ to mention a person / 2021-Q4
-- [x] Images and large files transmission / 2021-Q4
-- [x] Pin / 2022-Q1
-- [x] Forward / 2022-Q1
-- [x] Favorite / 2022-Q1
-- [x] Burn after reading / 2022-Q2
+- [x] DM & Group Chatting 
+- [x] Reply, @ to mention a person 
+- [x] Images and large files transmission 
+- [x] Pin 
+- [x] Forward 
+- [x] Favorite 
+- [x] Burn after reading 
 - [x] Voice / 2022-Q3 (Enterprise Version, with Agora.io)
 - [x] Video / 2022-Q3 (Enterprise Version, with Agora.io)
-- [x] Webhook+Bot / 2022-Q4
-- [ ] Personal AI Bot (Paid Version, with OpenAI)
-- [ ] Discord & Slack bridges for data backup(Paid Version, with bridger.chat)
+- [x] Webhook+Bot
+- [x] Personal AI Bot
+- [ ] Discord & Slack bridges for data backup
+- [ ] Interoperable with Matrix
 
 
 ### Contact Us
 
 <!-- Github: [https://github.com/privoce/vocechat-server](https://github.com/privoce/vocechat-server)   -->
+Email: han@privoce.com
+WeChat: Privoce
 
 Our server: [privoce.voce.chat](https://privoce.voce.chat)
