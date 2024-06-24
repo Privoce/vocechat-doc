@@ -5,6 +5,7 @@ export default function FooterWrapper(props) {
   useEffect(() => {
     // 加载 vocechat widget
     const script = document.createElement("script");
+    script.setAttribute("data-id", "vocechat-doc");
     script.setAttribute("data-auto-reg", "true");
     script.setAttribute("data-theme-color", "#333");
     if (navigator.language === "zh-CN") {
