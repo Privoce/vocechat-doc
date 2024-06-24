@@ -42,6 +42,7 @@ title: 网页聊天挂件
   <tr><th scope="col">配置键</th><th scope="col"  >默认值</th><th scope="col"  >备注</th></tr>
 </thead>
 <tbody>
+  <tr ><td >id</td><td >""</td><td >指定挂件 ID</td></tr>
   <tr ><td >host-id</td><td >1</td><td >指定访客和谁聊天</td></tr>
   <tr ><td >auto-reg</td><td >true</td><td >true: 访客自动注册，无需任何输入项，false: 需要输入邮箱地址</td></tr>
   <tr ><td >login-token</td><td >""（空字符串）</td><td >用自有平台账号系统自动登录 Voce 的 token。如非对接自有平台请不要填写，对接方式详见:<a href="/login-with-other-account">第三方登录</a></td></tr>
