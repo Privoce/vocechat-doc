@@ -11,12 +11,12 @@ export default function FooterWrapper(props) {
     if (navigator.language === "zh-CN") {
       script.setAttribute(
         "data-welcome",
-        `欢迎来到 VoceChat 官方文档站点，如果您有任何问题，请<a href="mailto:han@privoce.com">联系我们</a>。`
+        `欢迎来到 VoceChat 官方文档站点，如果您有任何问题，请<a href="mailto:han@privoce.com" class="underline">联系我们</a>。`
       );
     } else {
       script.setAttribute(
         "data-welcome",
-        `Welcome to VoceChat official document site, if you have any questions, please <a href="mailto:han@privoce.com">contact us</a>.`
+        `Welcome to VoceChat official document site, if you have any questions, please <a class="underline" href="mailto:han@privoce.com">contact us</a>.`
       );
     }
 
