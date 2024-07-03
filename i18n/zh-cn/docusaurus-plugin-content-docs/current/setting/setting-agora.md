@@ -1,45 +1,53 @@
 ---
 sidebar_position: 4
-title: 音视频通话（基于Agora）
+title: 音视频通话（基于 Agora）
 ---
 
-VoceChat音视频通话功能是基于Agora开发，所以只需配置下Agora，即可实现音视频通话。
+VoceChat 音视频通话功能是基于 Agora 开发，所以只需配置下 Agora，即可实现音视频通话。
+
+:::warning 重要提示
+Agora 在中国区有对应的“国产版本”，产品名：声网，地址：https://shengwang.cn
+。配置项和“海外版”几乎无差别，只不过域名和使用界面不同，请注意区分。下面介绍的是国内版本的配置流程，如需国外版本，请移步此篇文章的英文版本。
+:::
 
 ## 准备工作：
 
-- 开启https（本地调试可以忽略https，一旦可公开访问，出于安全考虑，音视频的授权需要基于https）
-- Agora注册账号
-- 完成Agora实名认证（否则功能受限）
-- 创建一个语音通话的项目（https://console.agora.io/projects）
-![create project](image/agora.create.project.png)
+- 开启 https（本地调试可以忽略 https，一旦可公开访问，出于安全考虑，音视频的授权需要基于 https）
+- 声网（https://shengwang.cn）注册账号
+- 完成 声网 实名认证（否则功能受限）
+- 创建一个语音通话的项目（https://console.shengwang.cn/overview）
+![create project](image/shengwang.create.project.png)
 
-## 第一步：在Agora后台获取Agora项目的配置信息
+## 第一步：在声网后台获取项目的配置信息
 
-进入项目设置页面，找到我们需要的配置信息:
+进入项目设置页面，找到我们需要的配置信息：
 
-![setting info](image/agora.setting.info.png)
+![setting info](image/shengwang.setting.info.png)
 
-> Project ID 从网址获取，比如：https://console.agora.io/project/xxx 则Project ID为：xxx
+:::warning 重要提示
+Project ID 的获取比较特殊，需要在页面右上角切换项目的同时，查看 devtool 里的 API 请求，找到对应的 Project 的 API 请求地址，path 最后一项，即为 Project ID：
+![project ID](image/shengwang.project.id.png)
+:::
 
-在 https://console.agora.io/restfulApi 页面，生成秘钥对（Customer ID & Customer Secret）：
+在 https://console.shengwang.cn/settings/restfulApi 页面，生成秘钥对（客户 ID & 客户密钥）：
 
-![secret](image/agora.create.secret.jpg)
+![secret](image/shengwang.create.secret.png)
 
-## 第二步：在VoceChat配置Agora
+## 第二步：在 VoceChat 配置 Agora（声网）
 
-进入VoceChat设置页面，在左侧导航找到Agora配置：
+进入 VoceChat 设置页面，在左侧导航找到 Agora 配置：
 ![setting](image/agora.setting.png)
 
 将第一步收集到的信息，填入对应的配置项中，刷新页面，即完成了音视频通话的初始化。
 
 ## 音视频通话的使用入口
 
-入口在每个channel消息流最右侧的耳机小图标
+入口在每个 channel 消息流最右侧的耳机小图标
 ![agora entry](image/agora.entry.png)
 
 
 ## 注意
 
-- agora有免费音视频使用额度（以分钟计算），超出部分会产生一定费用，具体值请以官方为准
-- 除了音视频通话，VoceChat还支持屏幕分享功能
-- 一对一私聊音视频通话还在开发中，暂不支持，如有需求，可以新建只有两个人的私有Channel来替代
+- 声网 有免费音视频使用额度（以分钟计算），超出部分会产生一定费用，具体值请以官方为准
+- 除了音视频通话，VoceChat 还支持屏幕分享功能
+- 一对一私聊音视频通话还在开发中，暂不支持，如有需求，可以新建只有两个人的私有 Channel 来替代
