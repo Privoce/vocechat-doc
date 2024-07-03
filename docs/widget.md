@@ -50,7 +50,12 @@ Explanation of the code above:
   <tr ><td >close-height</td><td >52(px)</td><td >Chat icon floater height</td></tr>
   <tr ><td >open-width</td><td >380(px)</td><td >Chat widget width</td></tr>
   <tr ><td >open-height</td><td >680(px)</td><td >Chat widget height</td></tr>
+  <tr ><td >welcome</td><td >Hi, feel free to email me here</td><td >Define your welcome message, which supports html, e.g., &lt;a href="mailto:co
+tact@example.com"&gt;contact me&lt;/a&gt;</td></tr>
 </tbody>
+  <tfoot >
+  <tr><td colSpan="3">* all settings are optional, add <i >data-</i> in the beginning</td></tr>
+</tfoot>
 </table>
 
 ## Use VoceChat widget for "Contact me" example
