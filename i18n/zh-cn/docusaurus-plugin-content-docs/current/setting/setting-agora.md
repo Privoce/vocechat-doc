@@ -25,7 +25,8 @@ Agora 在中国区有对应的“国产版本”，产品名：声网，地址�
 ![setting info](image/shengwang.setting.info.png)
 
 :::warning 重要提示
-Project ID 的获取比较特殊，需要在页面右上角切换项目的同时，查看 devtool 里的 API 请求，找到对应的 Project 的 API 请求地址，path 最后一项，即为 Project ID：
+Project ID 的获取比较特殊，需先打开页面，打开DevTools中的“网络（部分可能显示为Network）”面板，刷新网页，查看 DevTools 里的 API 请求，按Ctrl+F输入“v2/project”找到一串标题为此处标黄的9位的随机字符。
+为保护隐私，后6位此处使用红色涂掉了。
 ![project ID](image/shengwang.project.id.png)
 :::
 
