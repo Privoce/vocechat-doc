@@ -16,12 +16,12 @@ If you have Docker in your local machine, you may run VoceChat with the followin
 
 ```shell
 docker run -d --restart=always \
-  -p 3009:3000 \
+  -p 3000:3000 \
   --name vocechat-server \
   privoce/vocechat-server:latest
 ```
 
-Open this URL on your browser: `http://localhost:3009/`
+Open this URL on your browser: `http://localhost:3000/`
 
 ## Run VoceChat on your server
 
@@ -35,7 +35,7 @@ Let's suppose your domain is `vocechat.yourdomain.com`:
 
 ```shell
 docker run -d --restart=always \
-  -p 3009:3000 \
+  -p 3000:3000 \
   --name vocechat-server \
   -v ~/.vocechat-server/data:/home/vocechat-server/data \
   privoce/vocechat-server:latest \
@@ -54,7 +54,7 @@ At Nginx configration file（usually at `/etc/nginx/conf.d`）creat new file--`v
 server{
   server_name vocechat.yourdomain.com;
   location / {
-        proxy_pass http://127.0.0.1:3009; # this port number "3009" should be the same as the port of the vocechat docker image
+        proxy_pass http://127.0.0.1:3000; # this port number "3000" should be the same as the port of the vocechat docker image
         proxy_redirect off;
         proxy_set_header        Host    $host;
         proxy_set_header        X-Real-IP       $remote_addr;
@@ -76,7 +76,7 @@ Don't forget to set up your DNS :)
 
 #### Set up https
 
-How it works：Let nginx listen to port 443, the https SSL certificate is set to nginx so that port 443 is with https, and the reverse proxy will direct request to `vocechat-server:3009`.
+How it works：Let nginx listen to port 443, the https SSL certificate is set to nginx so that port 443 is with https, and the reverse proxy will direct request to `vocechat-server:3000`.
 
 ```
 ┌─────────┐                  ┌─────────┐        ┌─────────┐
@@ -108,7 +108,7 @@ At this step, the `vocechat.yourdomain.com.conf` should be look like this：
 server{
     server_name vocechat.yourdomain.com;
     location / {
-        proxy_pass http://127.0.0.1:3009; # this port number "3009" should be the same as the port of the vocechat docker image
+        proxy_pass http://127.0.0.1:3000; # this port number "3000" should be the same as the port of the vocechat docker image
         proxy_redirect off;
         proxy_set_header        Host    $host;
         proxy_set_header        X-Real-IP       $remote_addr;
@@ -204,7 +204,7 @@ docker pull privoce/vocechat-server:latest
 
 # Change the following lines to fit your own settings:)
 docker run -d --restart=always \
-  -p 3009:3000 \
+  -p 3000:3000 \
   --name vocechat-server \
   -v ~/.vocechat-server/data:/home/vocechat-server/data \
   privoce/vocechat-server:latest \
