@@ -4,8 +4,8 @@ title: Modify user/admin password in Docker/Shell
 ---
 
 # Modify user/admin password in Docker/Shell
-Sometimes we forget our passwords, but we can bypass business logic constraints through the command line.
-The user's password and other information are stored in the user table (sqlite3), and we can directly operate on this table.
+Sometimes we forget our passwords, but we can bypass business logic constraints through the command line.  
+The user's password and other information are stored in the user table (sqlite3), and we can directly operate on this table.  
 
 Steps:
 
@@ -24,7 +24,9 @@ update user set password='14e1b600b1fd579f47433b88e8d85291' where email='admin@e
 ```
 
 3. copy back file from host to container
-   docker cp /home/vocechat-server/data/db/db.sqlite vocechat-server:/home/vocechat-server/data/db/db.sqlite
+```
+docker cp vocechat-server:/home/vocechat-server/data/db/db.sqlite ./db.sqlite
+```
 
 4. start container
 ```

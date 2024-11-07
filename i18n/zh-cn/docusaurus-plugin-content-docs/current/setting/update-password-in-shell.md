@@ -4,8 +4,8 @@ title: 在命令行下修改用户/管理员密码
 ---
 
 # 在命令行下修改用户/管理员密码
-有时侯我们会忘记密码，通过命令行可以不受业务逻辑约束。
-用户的密码等信息都保存在 user 表中(sqlite3)，我们直接操作这张表。
+有时侯我们会忘记密码，通过命令行可以不受业务逻辑约束。  
+用户的密码等信息都保存在 user 表中(sqlite3)，我们直接操作这张表。  
 
 具体步骤：
 
@@ -24,8 +24,9 @@ update user set password='14e1b600b1fd579f47433b88e8d85291' where email='admin@e
 ```
 
 3. 将修改后的文件复制回容器
-   docker cp /home/vocechat-server/data/db/db.sqlite vocechat-server:/home/vocechat-server/data/db/db.sqlite
-
+```
+docker cp vocechat-server:/home/vocechat-server/data/db/db.sqlite ./db.sqlite
+```
 4. 启动容器
 ```
 docker start vocechat-server

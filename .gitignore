@@ -9,6 +9,8 @@
 .cache-loader
 
 # Misc
+.gitconfig
+.idea
 .DS_Store
 .env.local
 .env.development.local
