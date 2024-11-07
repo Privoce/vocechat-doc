@@ -80,6 +80,12 @@ Widget 支持嵌入的同时，也支持直接链接访问，还是以部署实�
 
 ## 线上实例
 
+### 柴柴的个人博客
+
+- vocechat: https://chat.cqucc4433.top/
+- vocechat widget: https://chaichaisocute.top/
+  ![widget demo](image/widget.demo.chaichai.jpg)
+
 ### 杨二的个人站点
 
 - vocechat: https://vocechat.yangerxiao.com/
