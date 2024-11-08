@@ -65,8 +65,12 @@ rsync -av root@old-server:/root/.vocechat-server/* ./
 docker start vocechat-server
 ```
 
-### 备注
-如果
+# 其他
+如果 docker run 没有指定 -v 参数，那么需要将数据从容器中拷贝出来
 ```
-
+docker cp vocechat-server:/home/vocechat-server/data ./
+```
+data 包含了 vocechat-server 所有保存的数据，将它拷贝到新的容器中:
+```
+docker cp ./data vocechat-server:/home/vocechat-server/
 ```

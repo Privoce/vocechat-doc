@@ -63,3 +63,13 @@ rsync -av root@old-server:/root/.vocechat-server/* ./
 ```shell
 docker start vocechat-server
 ```
+
+# Other
+If Docker run does not specify the -v parameter, then the data needs to be copied from the container
+```
+docker cp vocechat-server:/home/vocechat-server/data ./
+```
+The data contains all the saved data of the vocechat server, copy it to a new container:
+```
+docker cp ./data vocechat-server:/home/vocechat-server/
+```
