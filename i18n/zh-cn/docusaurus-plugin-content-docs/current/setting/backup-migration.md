@@ -1,6 +1,6 @@
 ---
 sidebar_position: 6
-title: 如何备份
+title: 如何备份/迁移
 ---
 
 # 如何备份？
@@ -63,4 +63,10 @@ rsync -av root@old-server:/root/.vocechat-server/* ./
 
 ```shell
 docker start vocechat-server
+```
+
+### 备注
+如果
+```
+
 ```
