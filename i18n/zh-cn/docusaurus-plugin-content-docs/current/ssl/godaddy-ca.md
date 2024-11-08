@@ -3,11 +3,11 @@ sidebar_position: 3
 title: Godaddy
 ---
 
-# How to get certificates in GoDaddy?
+# 如何在 GoDaddy 获取证书?
 
-### GoDaddy 购买并配置 SSL 证书常在英文环境中进行，暂未进行中文翻译。
+### GoDaddy 购买并配置 SSL 证书常在英文环境中进行。
 
-Prepositional knowledges:
+前置知识:
 
 - .key: PKCS8 格式的私钥文件 (Base64 编码)
 - .csr:  PKCS10 格式证书中的部分信息(包含了公钥、组织名等，公钥由私钥文件 xxx.key 生成)
