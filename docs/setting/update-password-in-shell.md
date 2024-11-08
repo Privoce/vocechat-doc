@@ -25,7 +25,7 @@ update user set password='14e1b600b1fd579f47433b88e8d85291' where email='admin@e
 
 3. copy back file from host to container
 ```
-docker cp vocechat-server:/home/vocechat-server/data/db/db.sqlite ./db.sqlite
+docker cp ./db.sqlite vocechat-server:/home/vocechat-server/data/db/db.sqlite
 ```
 
 4. start container
