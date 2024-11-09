@@ -12,8 +12,11 @@ It's simple to backup vocechat-server, copy the data directory while making sure
 docker stop vocechat-server
 ```
 
-2. Backup data：
-
+2. Backup:
+```shell
+docker cp vocechat-server:/home/vocechat-server/data /backup/
+```
+if you know the vocechat-server data path, copy directly:
 ```shell
 cp -rf ~/.vocechat-server/data /backup/
 ```
@@ -62,14 +65,4 @@ rsync -av root@old-server:/root/.vocechat-server/* ./
 
 ```shell
 docker start vocechat-server
-```
-
-# Other
-If Docker run does not specify the -v parameter, then the data needs to be copied from the container
-```
-docker cp vocechat-server:/home/vocechat-server/data ./
-```
-The data contains all the saved data of the vocechat server, copy it to a new container:
-```
-docker cp ./data vocechat-server:/home/vocechat-server/
 ```
