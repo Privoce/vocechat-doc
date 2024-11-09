@@ -42,5 +42,5 @@ update user set password='14e1b600b1fd579f47433b88e8d85291' where email='admin@e
 ```
 
 Explain:
-`admin@email.com` for the password that needs to be changed
+`admin@email.com` for the password that needs to be changed  
 `a02cc9a3fc5def5275b5ca22f0d8f414privoce` the corresponding password is `123456`

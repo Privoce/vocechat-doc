@@ -41,5 +41,5 @@ update user set password='14e1b600b1fd579f47433b88e8d85291' where email='admin@e
 ```
 
 解释：
-`admin@email.com` 为需要修改的 Email
+`admin@email.com` 为需要修改的 Email  
 `a02cc9a3fc5def5275b5ca22f0d8f414privoce` 对应的密码为 `123456`
