@@ -16,12 +16,12 @@ description: 我们推荐使用Docker+Nginx的安装方式
 
 ```shell
 docker run -d --restart=always \
-  -p 3009:3000 \
+  -p 3000:3000 \
   --name vocechat-server \
   privoce/vocechat-server:latest
 ```
 
-浏览器访问: `http://localhost:3009/`
+浏览器访问: `http://localhost:3000/`
 
 ## 服务器部署
 
@@ -35,7 +35,7 @@ docker run -d --restart=always \
 
 ```shell
 docker run -d --restart=always \
-  -p 3009:3000 \
+  -p 3000:3000 \
   --name vocechat-server \
   -v ~/.vocechat-server/data:/home/vocechat-server/data \
   privoce/vocechat-server:latest \
@@ -57,7 +57,7 @@ docker run -d --restart=always \
 server{
   server_name vocechat.yourdomain.com;
   location / {
-        proxy_pass http://127.0.0.1:3009; # 此处端口号取决于docker运行的对外端口号
+        proxy_pass http://127.0.0.1:3000; # 此处端口号取决于docker运行的对外端口号
         proxy_redirect off;
         proxy_set_header        Host    $host;
         proxy_set_header        X-Real-IP       $remote_addr;
@@ -79,7 +79,7 @@ server{
 
 #### 配置 https
 
-基本原理：让 Nginx 监听 443 端口，证书配置在 Nginx，通过 host 转发给 `vocechat-server:3009`，此时 vocechat-server 接受的依旧是 http。
+基本原理：让 Nginx 监听 443 端口，证书配置在 Nginx，通过 host 转发给 `vocechat-server:3000`，此时 vocechat-server 接受的依旧是 http。
 
 ```
 ┌─────────┐                  ┌─────────┐        ┌─────────┐
@@ -111,7 +111,7 @@ sudo certbot certonly --nginx
 server{
     server_name vocechat.yourdomain.com;
     location / {
-        proxy_pass http://127.0.0.1:3009; # 此处端口号取决于docker运行的对外端口号
+        proxy_pass http://127.0.0.1:3000; # 此处端口号取决于docker运行的对外端口号
         proxy_redirect off;
         proxy_set_header        Host    $host;
         proxy_set_header        X-Real-IP       $remote_addr;
@@ -207,7 +207,7 @@ docker pull privoce/vocechat-server:latest
 
 # 这里改为自己之前部署执行过的docker命令行
 docker run -d --restart=always \
-  -p 3009:3000 \
+  -p 3000:3000 \
   --name vocechat-server \
   -v ~/.vocechat-server/data:/home/vocechat-server/data \
   privoce/vocechat-server:latest \
