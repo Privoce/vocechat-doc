@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3
+sidebar_position: 4
 title: Shell 脚本安装
 description: 适用于小型设备（比如树莓派、NAS设备），或者想最大化性能
 ---
