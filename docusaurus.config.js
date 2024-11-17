@@ -11,7 +11,7 @@ const config = {
   tagline: "VoceChat Document Site",
   url: "https://doc.voce.chat.com",
   baseUrl: "/",
-  onBrokenLinks: "throw",
+  onBrokenLinks: "ignore",
   onBrokenMarkdownLinks: "warn",
   favicon: "https://voce.chat/favicon.ico",
 

@@ -26,7 +26,8 @@
     "url": "^0.11.0"
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "2.4.1"
+    "@docusaurus/module-type-aliases": "2.4.1",
+    "@docusaurus/types": "2.4.1"
   },
   "browserslist": {
     "production": [
