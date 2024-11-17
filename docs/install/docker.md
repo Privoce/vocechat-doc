@@ -9,7 +9,8 @@ System architecture：the default platform is for `linux/amd64`, if you are `lin
 :::
 
 ## 1. Quck start
-Install Docker as quickly as possible and set up the environment:
+Install Docker as quickly as possible and set up the environment:  
+Assuming your system is Debian 11, with root privileges and domain name domain.com
 ```shell
 # Install Docker
 apt update

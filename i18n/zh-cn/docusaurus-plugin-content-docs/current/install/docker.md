@@ -8,8 +8,11 @@ description: 使用 Docker 可以快速的布署，测试环境建议使用。
 请确认你的系统架构：默认安装 `linux/amd64`，如果是 `linux/arm64`，请拉取`privoce/vocechat-server:latest-arm64`
 :::
 
+
+
 ## 1. 快速体验
-最快速度安装 docker, 并搞定环境:
+最快速度安装 docker, 并搞定环境:    
+假定您的系统为 Debian 11, root 权限，域名为 domain.com
 ```shell
 # 安装 Docker
 apt update

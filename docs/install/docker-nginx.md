@@ -68,6 +68,8 @@ nginx -t
 # Restart
 systemctl restart nginx
 
+# View nginx log
+journalctl -u nginx -f
 ```
 
 ### Sign & Apply Certificate

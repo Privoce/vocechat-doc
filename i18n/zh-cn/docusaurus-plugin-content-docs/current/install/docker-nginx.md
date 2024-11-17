@@ -80,6 +80,9 @@ nginx -t
 
 # 重启 nginx
 systemctl restart nginx
+
+# 查看 nginx 日志 
+journalctl -u nginx -f
 ```
 
 浏览器访问 https://domain.com/
