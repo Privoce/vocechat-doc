@@ -55,7 +55,7 @@ title: 网页聊天挂件
   <tr ><td >open-height</td><td >680(px)</td><td >挂件打开态的高度</td></tr>
   <tr ><td >position</td><td >right</td><td >挂件的位置，居左 (left) 或居右 (right)</td></tr>
   <tr ><td >welcome</td><td >你好，很高兴认识你</td><td >自定义欢迎语，可包含 html 代码片段，比如加个超链接代码：&lt;a href="mailto:co
-tact@example.com"&gt;联系我&lt;/a&gt;</td></tr>
+tact@example.com"&gt;联系我&lt;/a&gt;，或者图片&lt;img src="xxx"/&gt;</td></tr>
 </tbody>
 <tfoot >
   <tr><td colSpan="3">* 所有的配置项目都是可选的，并以<i >data-</i>开头</td></tr>
