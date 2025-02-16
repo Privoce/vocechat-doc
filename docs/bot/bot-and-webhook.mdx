@@ -22,7 +22,7 @@ import InlineImages from "@site/src/components/InlineImages";
   ]}
 />
 
-Try the bots above at [SilenceChat](https://chat.silencetime.com/) built by our friend Oliver, website：[https://ai.silencetime.com/](https://ai.silencetime.com/)
+Try the bots above at [SilenceChat](https://chat.silencetime.com/) built by our friend Oliver, website:[https://ai.silencetime.com/](https://ai.silencetime.com/)
 
 ## What is a VoceChat Bot User
 
@@ -50,9 +50,9 @@ You can change the profile of the bot as well.
 :::tip
 API Key is used for the bot to send message to VoceChat, please save it privately. If you have losed or exposed it, don't hesitate to delete the old key and create a new one.
 :::
-You can also name an API Key to distinguish its usage from other API keys：
+You can also name an API Key to distinguish its usage from other API keys:
 ![create api key](image/bot.api.key.png)
-Copy the API Key：
+Copy the API Key:
 ![copy api key](image/bot.copy.api.key.png)
 
 ## How to use API key
@@ -63,7 +63,7 @@ All the messaging related API can be found at the [API doc](/api-doc),
 
 After gettnig the API Key, you can send messages to a user or a channel:
 :::warning Attention
-When sending messages, you should set the http header：`x-api-key`:`xxxxxxxxxxxxxxxxxx`(change to your API key's real value)
+When sending messages, you should set the http header:`x-api-key`:`xxxxxxxxxxxxxxxxxx`(change to your API key's real value)
 :::
 
 ### Types of Messages
@@ -183,9 +183,8 @@ VoceChat will send messages to webhooks including:
 - **Edit of a Message**
 - **Deletion of a Message**
 - **Reply of a Message**
-<!-- - **Like of a Message** -->
 
-Here are how the messages look like：
+Here are how the messages look like:
 
 ### New Message
 
@@ -271,27 +270,6 @@ When a messaged is a reply message, the webhook will receive this:
   "target": { "uid": 13466 }
 }
 ```
-
-<!-- ### Like
-
-When a messaged is liked, the webhook will receive this:
-
-```json
-{
-  "created_at": 1672061213196,
-  "detail": {
-    "detail": {
-      "action": "👍", //the emoji used
-      "type": "like"
-    },
-    "mid": 2881, //the ID of the message being liked
-    "type": "reaction"
-  },
-  "from_uid": 722,
-  "mid": 2982,
-  "target": { "uid": 13466 }
-}
-``` -->
 
 There are two "type" parameters, the first one refers to the message type, and the second one refers to whether the new message is an action upon an another (older) message.
 
