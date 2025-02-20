@@ -10,7 +10,7 @@ const downloads = [
     title: "download Android APP from APK file",
     icon: `/img/icon.app.apk.png`,
     alt: "APK Icon",
-    link: "https://vocechat.s3.amazonaws.com/vocechat.android.apk",
+    link: "https://s.voce.chat/vocechat.android.apk",
   },
   {
     title: "download iOS APP from app store",
