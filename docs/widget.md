@@ -30,9 +30,13 @@ Take this as an example`https://vocechat.yourdomain.com`:
   data-close-height="52"
   data-open-width="380"
   data-open-height="680"
+  data-position="right"
+  data-welcome="Welcome phrase"
+  data-theme-color="#1fe1f9"
+  data-logo="https://yourimage.link/icon.jpg"
   src="https://vocechat.yourdomain.com/widget.js"
   async
-/>
+></script>
 ```
 
 Explanation of the code above:
@@ -50,6 +54,9 @@ Explanation of the code above:
   <tr ><td >close-height</td><td >52(px)</td><td >Chat icon floater height</td></tr>
   <tr ><td >open-width</td><td >380(px)</td><td >Chat widget width</td></tr>
   <tr ><td >open-height</td><td >680(px)</td><td >Chat widget height</td></tr>
+  <tr ><td >theme-color</td><td >#1fe1f9</td><td >Theme color</td></tr>
+  <tr ><td >title</td><td >Title on the top</td><td >Title</td></tr>
+  <tr ><td >logo</td><td >Icon image</td><td >url to your logo</td></tr>
   <tr ><td >welcome</td><td >Hi, feel free to email me here</td><td >Define your welcome message, which supports html, e.g., &lt;a href="mailto:co
 tact@example.com"&gt;contact me&lt;/a&gt;</td></tr>
 </tbody>
