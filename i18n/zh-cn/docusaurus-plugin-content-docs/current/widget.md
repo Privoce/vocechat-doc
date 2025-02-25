@@ -30,6 +30,8 @@ title: 网页聊天挂件
   data-open-height="680"
   data-position="right"
   data-welcome="自定义欢迎语"
+  data-theme-color="#1fe1f9"
+  data-logo="https://yourimage.link/icon.jpg"
   src="https://vocechat.yourdomain.com/widget.js"
   async
 ></script>
