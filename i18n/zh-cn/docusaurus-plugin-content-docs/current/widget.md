@@ -48,8 +48,8 @@ title: 网页聊天挂件
   <tr ><td >host-id</td><td >1</td><td >指定访客和谁聊天</td></tr>
   <tr ><td >auto-reg</td><td >true</td><td >true: 访客自动注册，无需任何输入项，false: 需要输入邮箱地址</td></tr>
   <tr ><td >login-token</td><td >""（空字符串）</td><td >用自有平台账号系统自动登录 Voce 的 token。如非对接自有平台请不要填写，对接方式详见:<a href="/login-with-other-account">第三方登录</a></td></tr>
-  <tr ><td >title</td><td >(vocecaht 实例名称)</td><td >聊天弹窗顶部自定义标题</td></tr>
-  <tr ><td >logo</td><td >(vocechat 实例 logo 地址)</td><td >聊天弹窗顶部自定义 logo 图标地址</td></tr>
+  <tr ><td >title</td><td >弹窗标题</td><td >聊天弹窗顶部自定义标题</td></tr>
+  <tr ><td >logo</td><td >logo图片URL</td><td >聊天弹窗顶部自定义 logo 图标地址</td></tr>
   <tr ><td >theme-color</td><td >#1fe1f9</td><td >挂件主题色</td></tr>
   <tr ><td >close-width</td><td >52(px)</td><td >挂件关闭态的宽度</td></tr>
   <tr ><td >close-height</td><td >52(px)</td><td >挂件关闭态的高度</td></tr>
