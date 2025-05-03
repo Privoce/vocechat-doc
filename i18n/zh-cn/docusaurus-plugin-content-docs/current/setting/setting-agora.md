@@ -13,7 +13,7 @@ Agora 在中国区有对应的“国产版本”，产品名：声网，地址�
 ## 准备工作：
 
 - 开启 https（本地调试可以忽略 https，一旦可公开访问，出于安全考虑，音视频的授权需要基于 https）
-- 声网（https://shengwang.cn）注册账号
+- 声网 ([https://shengwang.cn](https://shengwang.cn))注册账号
 - 完成 声网 实名认证（否则功能受限）
 - 创建一个语音通话的项目（https://console.shengwang.cn/overview）
 ![create project](image/shengwang.create.project.png)
