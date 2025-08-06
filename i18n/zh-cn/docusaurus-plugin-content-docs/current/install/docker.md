@@ -8,11 +8,11 @@ description: 使用 Docker 可以快速的布署，测试环境建议使用。
 请确认你的系统架构：默认安装 `linux/amd64`，如果是 `linux/arm64`，请拉取`privoce/vocechat-server:latest-arm64`
 :::
 
-
-
 ## 1. 快速体验
-最快速度安装 docker, 并搞定环境:    
+
+最快速度安装 docker, 并搞定环境：  
 假定您的系统为 Debian 11, root 权限，域名为 domain.com
+
 ```shell
 # 安装 Docker
 apt update
@@ -26,7 +26,9 @@ ufw disable
 systemctl stop iptables
 systemctl stop nftables
 ```
-一行启动服务:
+
+一行启动服务：
+
 ```shell
 # 运行容器
 docker run -d --restart=always \
@@ -34,12 +36,26 @@ docker run -d --restart=always \
   --name vocechat-server \
   privoce/vocechat-server:latest
 ```
-浏览器访问: `http://domain.com:3000/`
+
+推荐：将数据映射到服务器目录，此处以当下目录有`data`为演示
+
+```shell
+# 运行容器
+docker run -d --restart=always \
+  -p 3000:3000 \
+  --name vocechat-server \
+  -v ./data:/home/vocechat-server/data \
+  privoce/vocechat-server:latest
+```
+
+浏览器访问：`http://domain.com:3000/`
 
 ## 2. 启用域名 + TLS
+
 vocechat-server 内置了 WebServer, 集成了 CertBot, 可以自动申请免费证书。  
 这种情况 vocechat-server 独占服务器 443 端口。  
 如果你需要和其他服务共享 443 端口，请参考其他文档。
+
 ```shell
 mkdir data
 docker run -d --restart=always \
@@ -52,7 +68,8 @@ docker run -d --restart=always \
   --network.tls.type "acme_tls_alpn_01" \
   --network.tls.acme.cache_path "/home/vocechat-server/data/cert"
 ```
-浏览器访问: `https://domain.com/`
+
+浏览器访问：`https://domain.com/`
 
 ## 3. 其他相关命令
 
@@ -74,17 +91,18 @@ docker logs -f vocechat-server
 cp -rf ~/.vocechat-server/data ~/.vocechat-server/backup
 ```
 
-### 3.4 升级server版本（更新docker镜像）{#upgrade}
+### 3.4 升级 server 版本（更新 docker 镜像）{#upgrade}
 
 ```shell
 docker stop vocechat-server
 docker rm vocechat-server
 docker pull privoce/vocechat-server:latest
 
-# 这里改为自己之前部署执行过的docker命令行
+# 这里改为自己之前部署执行过的docker命令行，注意请自行调整传参
 docker run -d --restart=always \
   -p 3000:3000 \
   --name vocechat-server \
+  -v ./data:/home/vocechat-server/data \
   privoce/vocechat-server:latest
 ```
 
