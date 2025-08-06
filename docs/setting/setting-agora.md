@@ -5,15 +5,15 @@ title: Video and Audio Call (Agora)
 
 VoceChat video and audio call requires your own Agora WebRTC API key (free to use, 167 hours free usage per month.)
 
-## Apply for Agora API：
+## Apply for Agora API:
 
 - Enable https
 - Agora.io Sign up
 - Some countries IP require KYC (most countries does not)
-- Create a project（https://console.agora.io/projects）
-![](image/agora.create.project.png)
+- Create a project: https://console.agora.io/projects
+  ![](image/agora.create.project.png)
 
-## 1st step：Get Agora project info
+## 1st step: Get Agora project info
 
 Go to settings, you will see the info we need.
 
@@ -25,7 +25,7 @@ From https://console.agora.io/restfulApi generate keys(Customer ID & Customer Se
 
 ![](image/agora.create.secret.jpg)
 
-## 2nd step：Go to VoceChat settings -> Agora
+## 2nd step: Go to VoceChat settings -> Agora
 
 Go to VoceChat settings, copy and paste your Agora project info there:
 ![](image/agora.setting.png)
@@ -36,7 +36,6 @@ Now you are all set. Let's use video/audio call!
 
 There's an icon at the right column of each chat window:
 ![](image/agora.entry.png)
-
 
 ## Attention
 

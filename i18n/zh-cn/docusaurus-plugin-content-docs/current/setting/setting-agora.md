@@ -13,10 +13,10 @@ Agora 在中国区有对应的“国产版本”，产品名：声网，地址�
 ## 准备工作：
 
 - 开启 https（本地调试可以忽略 https，一旦可公开访问，出于安全考虑，音视频的授权需要基于 https）
-- 声网（https://shengwang.cn）注册账号
+- [声网](https://shengwang.cn)注册账号
 - 完成 声网 实名认证（否则功能受限）
-- 创建一个语音通话的项目（https://console.shengwang.cn/overview）
-![create project](image/shengwang.create.project.png)
+- 创建一个语音通话的项目：https://console.shengwang.cn/overview
+  ![create project](image/shengwang.create.project.png)
 
 ## 第一步：在声网后台获取项目的配置信息
 
@@ -25,8 +25,8 @@ Agora 在中国区有对应的“国产版本”，产品名：声网，地址�
 ![setting info](image/shengwang.setting.info.png)
 
 :::warning 重要提示
-Project ID 的获取比较特殊，需先打开页面，打开DevTools中的“网络（部分可能显示为Network）”面板，刷新网页，查看 DevTools 里的 API 请求，按Ctrl+F输入“v2/project”找到一串标题为此处标黄的9位的随机字符。
-为保护隐私，后6位此处使用红色涂掉了。
+Project ID 的获取比较特殊，需先打开页面，打开 DevTools 中的“网络（部分可能显示为 Network）”面板，刷新网页，查看 DevTools 里的 API 请求，按 Ctrl+F 输入“v2/project”找到一串标题为此处标黄的 9 位的随机字符。
+为保护隐私，后 6 位此处使用红色涂掉了。
 ![project ID](image/shengwang.project.id.png)
 :::
 
@@ -45,7 +45,6 @@ Project ID 的获取比较特殊，需先打开页面，打开DevTools中的“�
 
 入口在每个 channel 消息流最右侧的耳机小图标
 ![agora entry](image/agora.entry.png)
-
 
 ## 注意
 
