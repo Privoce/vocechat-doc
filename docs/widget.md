@@ -34,6 +34,10 @@ Take this as an example`https://vocechat.yourdomain.com`:
   data-welcome="Welcome phrase"
   data-theme-color="#1fe1f9"
   data-logo="https://yourimage.link/icon.jpg"
+  data-icon-title="Need help?"
+  data-icon-subtitle="Our staff are always ready to help!"
+  data-icon-image="https://yourimage.link/avatar.jpg"
+  data-icon-closable="true"
   src="https://vocechat.yourdomain.com/widget.js"
   async
 ></script>
@@ -57,13 +61,54 @@ Explanation of the code above:
   <tr ><td >theme-color</td><td >#1fe1f9</td><td >Theme color</td></tr>
   <tr ><td >title</td><td >Title on the top</td><td >Title</td></tr>
   <tr ><td >logo</td><td >Icon image</td><td >url to your logo</td></tr>
+  <tr ><td >position</td><td >right</td><td >Widget position: left or right</td></tr>
   <tr ><td >welcome</td><td >Hi, feel free to email me here</td><td >Define your welcome message, which supports html, e.g., &lt;a href="mailto:co
 tact@example.com"&gt;contact me&lt;/a&gt;</td></tr>
+  <tr ><td >icon-title</td><td >Need help?</td><td >Tooltip title displayed next to the closed widget icon</td></tr>
+  <tr ><td >icon-subtitle</td><td >Our staff are always ready to help!</td><td >Tooltip subtitle displayed next to the closed widget icon</td></tr>
+  <tr ><td >icon-image</td><td >-</td><td >Tooltip image URL displayed next to the closed widget icon (optional)</td></tr>
+  <tr ><td >icon-closable</td><td >true</td><td >Whether the tooltip can be closed (true/false)</td></tr>
 </tbody>
   <tfoot >
   <tr><td colSpan="3">* all settings are optional, add <i >data-</i> in the beginning</td></tr>
 </tfoot>
 </table>
+
+Example of the tooltip shown next to the closed widget icon:
+
+![Closed widget tooltip example](image/widget.title.jpg)
+
+## Control Widget with JavaScript
+
+You can programmatically control the widget using JavaScript functions:
+
+```html
+<!-- Open widget with a button -->
+<button onclick="VoceChatWidget.open()">Contact Support</button>
+
+<!-- Custom styled button -->
+<button
+  onclick="VoceChatWidget.open()"
+  style="background: #1fe1f9; color: white; padding: 12px 24px; border: none; border-radius: 8px; cursor: pointer; font-size: 16px;"
+>
+  💬 Chat with us
+</button>
+
+<!-- Toggle widget open/close -->
+<button onclick="VoceChatWidget.toggle()">Toggle Chat</button>
+
+<!-- Close widget -->
+<button onclick="VoceChatWidget.close()">Close Chat</button>
+```
+
+Example of opening the widget with a custom button:
+
+![Widget button example](image/widget.button.png)
+
+Available JavaScript API:
+- `VoceChatWidget.open()` - Open the widget
+- `VoceChatWidget.close()` - Close the widget
+- `VoceChatWidget.toggle()` - Toggle widget open/close state
 
 ## Use VoceChat widget for "Contact me" example
 

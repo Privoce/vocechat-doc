@@ -32,6 +32,10 @@ title: 网页聊天挂件
   data-welcome="自定义欢迎语"
   data-theme-color="#1fe1f9"
   data-logo="https://yourimage.link/icon.jpg"
+  data-icon-title="需要帮助吗？"
+  data-icon-subtitle="我们的客服随时为您服务！"
+  data-icon-image="https://yourimage.link/avatar.jpg"
+  data-icon-closable="true"
   src="https://vocechat.yourdomain.com/widget.js"
   async
 ></script>
@@ -58,11 +62,51 @@ title: 网页聊天挂件
   <tr ><td >position</td><td >right</td><td >挂件的位置，居左 (left) 或居右 (right)</td></tr>
   <tr ><td >welcome</td><td >你好，很高兴认识你</td><td >自定义欢迎语，可包含 html 代码片段，比如加个超链接代码：&lt;a href="mailto:co
 tact@example.com"&gt;联系我&lt;/a&gt;，或者图片&lt;img src="xxx"/&gt;</td></tr>
+  <tr ><td >icon-title</td><td >Need help?</td><td >关闭状态下显示在挂件按钮旁边的提示框标题</td></tr>
+  <tr ><td >icon-subtitle</td><td >Our staff are always ready to help!</td><td >关闭状态下显示在挂件按钮旁边的提示框副标题</td></tr>
+  <tr ><td >icon-image</td><td >-</td><td >关闭状态下显示在挂件按钮旁边的提示框图片地址（可选）</td></tr>
+  <tr ><td >icon-closable</td><td >true</td><td >提示框是否可以关闭 (true/false)</td></tr>
 </tbody>
 <tfoot >
   <tr><td colSpan="3">* 所有的配置项目都是可选的，并以<i >data-</i>开头</td></tr>
 </tfoot>
 </table>
+
+下面是挂件处于关闭状态时，按钮旁边 `Need help?` 提示框的示例：
+
+![关闭状态提示框示例](image/widget.title.jpg)
+
+## 使用 JavaScript 控制挂件
+
+你可以使用 JavaScript 函数来控制挂件的打开和关闭：
+
+```html
+<!-- 使用按钮打开挂件 -->
+<button onclick="VoceChatWidget.open()">联系客服</button>
+
+<!-- 自定义样式的按钮 -->
+<button
+  onclick="VoceChatWidget.open()"
+  style="background: #1fe1f9; color: white; padding: 12px 24px; border: none; border-radius: 8px; cursor: pointer; font-size: 16px;"
+>
+  💬 在线咨询
+</button>
+
+<!-- 切换挂件开关 -->
+<button onclick="VoceChatWidget.toggle()">切换聊天窗口</button>
+
+<!-- 关闭挂件 -->
+<button onclick="VoceChatWidget.close()">关闭聊天</button>
+```
+
+下面是使用自定义按钮打开挂件的效果示例：
+
+![按钮打开挂件示例](image/widget.button.png)
+
+可用的 JavaScript API：
+- `VoceChatWidget.open()` - 打开挂件
+- `VoceChatWidget.close()` - 关闭挂件
+- `VoceChatWidget.toggle()` - 切换挂件开关状态
 
 如果你想更精确控制挂件的样式，可以借助 widget 元素的 ID，自行写 CSS 样式，加到自己的 html 或者 css 文件中，如下示例：
 
