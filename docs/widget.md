@@ -34,10 +34,10 @@ Take this as an example`https://vocechat.yourdomain.com`:
   data-welcome="Welcome phrase"
   data-theme-color="#1fe1f9"
   data-logo="https://yourimage.link/icon.jpg"
-  data-icon-title="Need help?"
-  data-icon-subtitle="Our staff are always ready to help!"
-  data-icon-image="https://yourimage.link/avatar.jpg"
-  data-icon-closable="true"
+  data-popup-title="Need help?"
+  data-popup-subtitle="Our staff are always ready to help!"
+  data-popup-image="https://yourimage.link/avatar.jpg"
+  data-popup-closable="true"
   src="https://vocechat.yourdomain.com/widget.js"
   async
 ></script>
@@ -64,10 +64,10 @@ Explanation of the code above:
   <tr ><td >position</td><td >right</td><td >Widget position: left or right</td></tr>
   <tr ><td >welcome</td><td >Hi, feel free to email me here</td><td >Define your welcome message, which supports html, e.g., &lt;a href="mailto:co
 tact@example.com"&gt;contact me&lt;/a&gt;</td></tr>
-  <tr ><td >icon-title</td><td >Need help?</td><td >Tooltip title displayed next to the closed widget icon</td></tr>
-  <tr ><td >icon-subtitle</td><td >Our staff are always ready to help!</td><td >Tooltip subtitle displayed next to the closed widget icon</td></tr>
-  <tr ><td >icon-image</td><td >-</td><td >Tooltip image URL displayed next to the closed widget icon (optional)</td></tr>
-  <tr ><td >icon-closable</td><td >true</td><td >Whether the tooltip can be closed (true/false)</td></tr>
+  <tr ><td >popup-title</td><td >Need help?</td><td >Tooltip title displayed next to the closed widget icon</td></tr>
+  <tr ><td >popup-subtitle</td><td >Our staff are always ready to help!</td><td >Tooltip subtitle displayed next to the closed widget icon</td></tr>
+  <tr ><td >popup-image</td><td >-</td><td >Tooltip image URL displayed next to the closed widget icon (optional)</td></tr>
+  <tr ><td >popup-closable</td><td >true</td><td >Whether the tooltip can be closed (true/false)</td></tr>
 </tbody>
   <tfoot >
   <tr><td colSpan="3">* all settings are optional, add <i >data-</i> in the beginning</td></tr>

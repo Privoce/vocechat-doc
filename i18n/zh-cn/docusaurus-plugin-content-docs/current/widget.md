@@ -32,10 +32,10 @@ title: 网页聊天挂件
   data-welcome="自定义欢迎语"
   data-theme-color="#1fe1f9"
   data-logo="https://yourimage.link/icon.jpg"
-  data-icon-title="需要帮助吗？"
-  data-icon-subtitle="我们的客服随时为您服务！"
-  data-icon-image="https://yourimage.link/avatar.jpg"
-  data-icon-closable="true"
+  data-popup-title="需要帮助吗？"
+  data-popup-subtitle="我们的客服随时为您服务！"
+  data-popup-image="https://yourimage.link/avatar.jpg"
+  data-popup-closable="true"
   src="https://vocechat.yourdomain.com/widget.js"
   async
 ></script>
@@ -62,10 +62,10 @@ title: 网页聊天挂件
   <tr ><td >position</td><td >right</td><td >挂件的位置，居左 (left) 或居右 (right)</td></tr>
   <tr ><td >welcome</td><td >你好，很高兴认识你</td><td >自定义欢迎语，可包含 html 代码片段，比如加个超链接代码：&lt;a href="mailto:co
 tact@example.com"&gt;联系我&lt;/a&gt;，或者图片&lt;img src="xxx"/&gt;</td></tr>
-  <tr ><td >icon-title</td><td >Need help?</td><td >关闭状态下显示在挂件按钮旁边的提示框标题</td></tr>
-  <tr ><td >icon-subtitle</td><td >Our staff are always ready to help!</td><td >关闭状态下显示在挂件按钮旁边的提示框副标题</td></tr>
-  <tr ><td >icon-image</td><td >-</td><td >关闭状态下显示在挂件按钮旁边的提示框图片地址（可选）</td></tr>
-  <tr ><td >icon-closable</td><td >true</td><td >提示框是否可以关闭 (true/false)</td></tr>
+  <tr ><td >popup-title</td><td >Need help?</td><td >关闭状态下显示在挂件按钮旁边的提示框标题</td></tr>
+  <tr ><td >popup-subtitle</td><td >Our staff are always ready to help!</td><td >关闭状态下显示在挂件按钮旁边的提示框副标题</td></tr>
+  <tr ><td >popup-image</td><td >-</td><td >关闭状态下显示在挂件按钮旁边的提示框图片地址（可选）</td></tr>
+  <tr ><td >popup-closable</td><td >true</td><td >提示框是否可以关闭 (true/false)</td></tr>
 </tbody>
 <tfoot >
   <tr><td colSpan="3">* 所有的配置项目都是可选的，并以<i >data-</i>开头</td></tr>
