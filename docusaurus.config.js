@@ -112,6 +112,11 @@ const config = {
             position: "left",
           },
           {
+            to: "/openclaw-integration",
+            label: "OpenClaw",
+            position: "left",
+          },
+          {
             label: "APIs",
             to: "/api",
             position: "left",
