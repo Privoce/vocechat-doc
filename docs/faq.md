@@ -9,7 +9,10 @@ VoceChat has a free tier for community server no more than **20** members. You n
 
 ## Is there a backdoor?
 
-VoceChat has no backdoor, no data collection, everything is hosted on your own server, even the license mechanism is based on RSA and runs locally.
+VoceChat has no backdoor, no user data collection, everything is hosted on your own server, even the license mechanism is based on RSA and runs locally.
+
+#### Telemetry Notice
+To measure global self-hosted installations and activity, our frontend utilizes a lightweight, privacy-focused tool called Umami. Your privacy is fully protected: we use zero cookies, never log IP addresses, chat history, or personal data, and only collect anonymous usage counts and device types.
 
 ## Can't receive notification?
 
