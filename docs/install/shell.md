@@ -20,6 +20,11 @@ In the previous page, we introduced installing vocechat through docker. Generall
 During the installation process, the bound port, domain name and whether TLS is enabled will be asked (the certificate will be applied automatically).
 
 ```bash
+curl -sSfL https://github.com/Privoce/vocechat-doc/raw/refs/heads/main/static/install.sh | sh
+```
+
+If you are unable to connect to GitHub normally, you can use the following backup script:
+```bash
 curl -sSf https://s.voce.chat/install.sh | sh
 ```
 
